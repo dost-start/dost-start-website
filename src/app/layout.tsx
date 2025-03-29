@@ -1,18 +1,8 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import Navbar from "@/components/Navbar";
+import type { Metadata } from "next";
+import "./globals.css";
+import { montserrat, orbitron, roboto, robotoMono } from "@/lib/fonts";
 
 export const metadata: Metadata = {
   title: "START",
@@ -27,11 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased max-w-[1920px] mx-auto`}
+        className={`${roboto.variable} ${robotoMono.variable} ${montserrat.variable} ${orbitron.variable} font-sans antialiased max-w-[1920px] mx-auto flex flex-col min-h-screen`}
       >
         <Navbar />
         <div className="max-w-[1920px] mx-auto">{children}</div>
-        <Footer />
+        <Footer className="mt-auto" />
       </body>
     </html>
   );
