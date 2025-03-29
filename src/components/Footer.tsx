@@ -1,27 +1,10 @@
-import { FacebookIcon, InstagramIcon, Mail } from "lucide-react";
 import Image from "next/image";
-import logo from "../../public/logo-s.png";
-import { twMerge } from "tailwind-merge";
 import Link from "next/link";
+import { twMerge } from "tailwind-merge";
+import logo from "../../public/logo-s.png";
+import socialLinks from "./SocialLinks";
 
 export default function Footer({ className }: { className?: string }) {
-  const contactUsLinks = [
-    {
-      icon: FacebookIcon,
-      text: "Facebook",
-      link: "#"
-    },
-    {
-      icon: InstagramIcon,
-      text: "Instagram",
-      link: "#"
-    },
-    {
-      icon: Mail,
-      text: "Email",
-      link: "#"
-    },
-  ];
 
   const quickLinks = [
     {
@@ -62,7 +45,7 @@ export default function Footer({ className }: { className?: string }) {
             Contact Us
           </h2>
           <ul className="space-y-3">
-            {contactUsLinks.map(({ icon: Icon, text, link }) => (
+            {socialLinks.map(({ icon: Icon, text, link }) => (
               <li
                 key={text}
                 className="flex items-center gap-3 hover:text-primary cursor-pointer w-fit"
