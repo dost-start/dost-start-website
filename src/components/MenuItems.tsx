@@ -1,27 +1,40 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import logo from "../../public/logo.png";
+import { twMerge } from "tailwind-merge";
 
 function MenuItemLink({
   name,
   link,
   active,
+  className,
 }: {
   name: string;
   link: string;
   active: string;
+  className?: string;
 }) {
   return (
     <Link
       href={link}
       key={name}
-      className={`text-lg  ${
-        active === link ? "text-primary font-bold" : "hover:text-primary"
-      }`}
+      className={twMerge(
+        ` text-lg ${
+          active === link ? "text-primary font-bold" : "hover:text-primary"
+        } ${className}`
+      )}
     >
       {name}
     </Link>
@@ -45,7 +58,7 @@ export default function MenuItems() {
   }, [pathname]);
 
   return (
-    <nav className="flex items-center">
+    <nav className="flex items-center font-montserrat">
       <div className="lg:hidden">
         <Sheet>
           <SheetTrigger asChild>
@@ -53,15 +66,29 @@ export default function MenuItems() {
               <Menu className="h-6 w-6" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="left">
-            <ul className="space-y-4 p-4">
+          <SheetContent side="right" className="p-4">
+            <SheetTitle>
+              <Image
+                src={logo}
+                alt="START Logo"
+                height={40}
+                className="mx-auto"
+              />
+            </SheetTitle>
+            <SheetDescription></SheetDescription>
+            <ul className="space-y-4 p-4 flex flex-col font-montserrat w-full">
               {menuItems.map(({ name, link }, index) => (
-                <MenuItemLink
+                <div
                   key={"sm" + name + index}
-                  name={name}
-                  link={link}
-                  active={active}
-                />
+                  className="border-b last:border-b-0 border-gray-300 pb-2 w-full"
+                >
+                  <MenuItemLink
+                    name={name}
+                    link={link}
+                    active={active}
+                    className="w-full block text-center"
+                  />
+                </div>
               ))}
             </ul>
           </SheetContent>
