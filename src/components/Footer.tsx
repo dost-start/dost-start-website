@@ -45,7 +45,7 @@ export default function Footer({ className }: { className?: string }) {
   return (
     <div
       className={twMerge(
-        `border-t bg-muted font-montserrat py-8 px-6 ${className}`
+        `bg-muted font-montserrat py-6 px-6 ${className}`
       )}
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
@@ -58,7 +58,7 @@ export default function Footer({ className }: { className?: string }) {
         </div>
 
         <div>
-          <h2 className="font-orbitron text-primary text-lg mb-4">
+          <h2 className="font-orbitron text-primary text-2xl mb-4">
             Contact Us
           </h2>
           <ul className="space-y-3">
@@ -75,7 +75,7 @@ export default function Footer({ className }: { className?: string }) {
         </div>
 
         <div>
-          <h2 className="font-orbitron text-primary text-lg mb-4">
+          <h2 className="font-orbitron text-primary text-2xl mb-4">
             Quick Links
           </h2>
           <ul className="space-y-2">
@@ -88,6 +88,9 @@ export default function Footer({ className }: { className?: string }) {
             ))}
           </ul>
         </div>
+      </div>
+      <div className="text-center mt-4">
+        <p>Copyright © {new Date().getFullYear()} DOST START | All Rights Reserved</p>
       </div>
     </div>
   );
