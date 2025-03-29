@@ -32,7 +32,7 @@ function MenuItemLink({
       key={name}
       className={twMerge(
         ` text-lg ${
-          active === link ? "text-primary font-bold" : "hover:text-primary"
+          active === link ? "text-primary font-semibold" : "hover:text-primary"
         } ${className}`
       )}
     >

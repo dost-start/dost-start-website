@@ -2,20 +2,24 @@ import { FacebookIcon, InstagramIcon, Mail } from "lucide-react";
 import Image from "next/image";
 import logo from "../../public/logo-s.png";
 import { twMerge } from "tailwind-merge";
+import Link from "next/link";
 
 export default function Footer({ className }: { className?: string }) {
   const contactUsLinks = [
     {
       icon: FacebookIcon,
       text: "Facebook",
+      link: "#"
     },
     {
       icon: InstagramIcon,
       text: "Instagram",
+      link: "#"
     },
     {
       icon: Mail,
       text: "Email",
+      link: "#"
     },
   ];
 
@@ -41,7 +45,7 @@ export default function Footer({ className }: { className?: string }) {
   return (
     <div
       className={twMerge(
-        `border-t bg-muted font-montserrat py-8 px-6 ${className}`
+        `bg-muted font-montserrat py-6 px-6 ${className}`
       )}
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
@@ -54,36 +58,39 @@ export default function Footer({ className }: { className?: string }) {
         </div>
 
         <div>
-          <h2 className="font-orbitron text-primary text-lg mb-4">
+          <h2 className="font-orbitron text-primary text-2xl mb-4">
             Contact Us
           </h2>
           <ul className="space-y-3">
-            {contactUsLinks.map(({ icon: Icon, text }) => (
+            {contactUsLinks.map(({ icon: Icon, text, link }) => (
               <li
                 key={text}
-                className="flex items-center gap-3 "
+                className="flex items-center gap-3 hover:text-primary cursor-pointer w-fit"
               >
                 <Icon size={20} />
-                <span>{text}</span>
+                <a href={link} target="_blank" >{text}</a>
               </li>
             ))}
           </ul>
         </div>
 
         <div>
-          <h2 className="font-orbitron text-primary text-lg mb-4">
+          <h2 className="font-orbitron text-primary text-2xl mb-4">
             Quick Links
           </h2>
           <ul className="space-y-2">
             {quickLinks.map(({ text, link }) => (
               <li key={text}>
-                <a href={link} className="hover:text-primary cursor-pointer">
+                <Link href={link} className="hover:text-primary cursor-pointer">
                   {text}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
         </div>
+      </div>
+      <div className="text-center mt-4">
+        <p>Copyright © {new Date().getFullYear()} DOST START | All Rights Reserved</p>
       </div>
     </div>
   );
