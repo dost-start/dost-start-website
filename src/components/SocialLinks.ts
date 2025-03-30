@@ -1,18 +1,18 @@
-import { FacebookIcon, InstagramIcon, Mail } from "lucide-react";
+import { FaEnvelope, FaFacebook, FaInstagram } from "react-icons/fa";
 
 const socialLinks = [
   {
-    icon: FacebookIcon,
+    icon: FaFacebook,
     text: "facebook.com/STARTDOST",
     link: "#",
   },
   {
-    icon: InstagramIcon,
+    icon: FaInstagram,
     text: "startdost",
     link: "#",
   },
   {
-    icon: Mail,
+    icon: FaEnvelope,
     text: "dost.start@gmail.com",
     link: "#",
   },
