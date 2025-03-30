@@ -7,7 +7,7 @@ import ContactForm from "@/components/contact/ContactForm";
 
 export default function page() {
   return (
-    <div className="px-1 text-white max-w-[1200px]">
+    <div className="px-1 text-white">
       <PageTitle text="Contact Us" />
 
       <section className="mb-12 relative rounded-2xl border-4 z-10 overflow-hidden">
@@ -18,7 +18,7 @@ export default function page() {
         />
         <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-primary/80 to-transparent" />
         <div className="absolute z-50 text-white bottom-[50px] left-[50px]">
-          <h2 className=" hidden lg:text-4xl font-bold">Reach Us!</h2>
+          <h2 className=" hidden lg:block lg:text-4xl font-bold">Reach Us!</h2>
           <p className="hidden lg:block">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt,
             provident? Molestias in expedita et. Vero iusto temporibus eum
