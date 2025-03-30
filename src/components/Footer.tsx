@@ -5,7 +5,6 @@ import logo from "../../public/logo-s.png";
 import socialLinks from "./SocialLinks";
 
 export default function Footer({ className }: { className?: string }) {
-
   const quickLinks = [
     {
       text: "About",
@@ -26,11 +25,7 @@ export default function Footer({ className }: { className?: string }) {
   ];
 
   return (
-    <div
-      className={twMerge(
-        `bg-muted font-montserrat py-6 px-6 ${className}`
-      )}
-    >
+    <div className={twMerge(`bg-muted font-montserrat py-6 px-6 ${className}`)}>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {/* Logo and Description */}
         <div className="flex flex-col">
@@ -50,8 +45,10 @@ export default function Footer({ className }: { className?: string }) {
                 key={text}
                 className="flex items-center gap-3 hover:text-primary cursor-pointer w-fit"
               >
-                <Icon size={20} />
-                <a href={link} target="_blank" >{text}</a>
+                <Icon size={24} />
+                <a href={link} target="_blank">
+                  {text}
+                </a>
               </li>
             ))}
           </ul>
@@ -73,7 +70,10 @@ export default function Footer({ className }: { className?: string }) {
         </div>
       </div>
       <div className="text-center mt-4">
-        <p>Copyright © {new Date().getFullYear()} DOST START | All Rights Reserved</p>
+        <p>
+          Copyright © {new Date().getFullYear()} DOST START | All Rights
+          Reserved
+        </p>
       </div>
     </div>
   );

@@ -18,8 +18,8 @@ export default function page() {
         />
         <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-primary/80 to-transparent" />
         <div className="absolute z-50 text-white bottom-[50px] left-[50px]">
-          <h2 className=" text-4xl font-bold">Reach Us!</h2>
-          <p>
+          <h2 className=" hidden lg:text-4xl font-bold">Reach Us!</h2>
+          <p className="hidden lg:block">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt,
             provident? Molestias in expedita et. Vero iusto temporibus eum
             reiciendis molestias quaerat quo obcaecati ad. Ipsam numquam optio
@@ -29,7 +29,7 @@ export default function page() {
       </section>
 
       <section>
-        <StartDiv className="bg-primary border-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <StartDiv className="bg-primary border-4 grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <h2 className="text-3xl font-bold mb-4">Contact Information</h2>
             <p className="mb-8">
