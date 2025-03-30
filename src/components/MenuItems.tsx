@@ -54,7 +54,7 @@ export default function MenuItems() {
   const pathname = usePathname();
 
   useEffect(() => {
-    setActive(pathname);
+    setActive("/" + pathname.split("/")[1]);
   }, [pathname]);
 
   return (
