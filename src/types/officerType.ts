@@ -8,6 +8,9 @@ interface Officer {
     linkedin?: string;
     instagram?: string;
     website?: string;
+    behance?: string;
+    youtube?: string;
+    twitter?: string;
   };
 }
 

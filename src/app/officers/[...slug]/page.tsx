@@ -1,3 +1,4 @@
+import OfficerCard from "@/components/officers/OfficerCard";
 import PageTitle from "@/components/PageTitle";
 import {
   Select,
@@ -52,19 +53,26 @@ export default async function page({
   }
 
   return (
-    <div className="text-center px-2 max-w-[1400px]">
+    <div className="text-center px-2">
       <PageTitle text="Officers" />
       <div>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius earum quis
-        ab itaque accusamus omnis alias consequatur nostrum, ipsum officiis unde
-        id rem nesciunt eum iure ipsam veniam, assumenda eligendi!
+        ab itaque accusamus!
       </div>
-      <section className="mt-8">
-        <Tabs defaultValue={currentDepartment.tabName}>
+      <section>
+        <Tabs defaultValue={currentDepartment.tabName} className="my-8">
           <div className="flex flex-wrap-reverse gap-2 lg:flex-row items-center justify-between">
             <TabsList className="flex items-center flex-wrap h-auto space-y-2 md:space-y-0 space-x-2 start">
               {currentBatch.departments.map((department) => (
-                <TabsTrigger key={department.name} value={department.tabName}>
+                <TabsTrigger
+                  key={department.name}
+                  value={department.tabName}
+                  className={
+                    department.tabName === currentDepartment.tabName
+                      ? "start-dropshadow"
+                      : ""
+                  }
+                >
                   <Link
                     href={`/officers/${currentBatch.year}/${department.tabName}`}
                   >
@@ -91,6 +99,28 @@ export default async function page({
           <h2 className="text-2xl font-semibold">{currentDepartment.name}</h2>
           <p className="mt-2">{currentDepartment.description}</p>
         </div>
+        {/* special officers */}
+        <section>
+          {currentDepartment.specialOfficers.length > 0 ? (
+            <div className="mt-14">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
+                {currentDepartment.specialOfficers.map((officer) => (
+                  <OfficerCard key={officer.name} officer={officer} />
+                ))}
+              </div>
+            </div>
+          ) : null}
+        </section>
+        {/* officers */}
+        <section>
+          <div className="mt-14">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
+              {currentDepartment.officers.map((officer) => (
+                <OfficerCard key={officer.name} officer={officer} />
+              ))}
+            </div>
+          </div>
+        </section>
       </section>
     </div>
   );
