@@ -11,11 +11,7 @@ export default function page() {
       <PageTitle text="Contact Us" />
 
       <section className="mb-12 relative rounded-2xl border-4 z-10 overflow-hidden">
-        <Image
-          src={image}
-          alt="Contact Us"
-          className="object-cover"
-        />
+        <Image src={image} alt="Contact Us" className="object-cover" />
         <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-primary/80 to-transparent" />
         <div className="absolute z-50 text-white bottom-[50px] left-[50px]">
           <h2 className=" hidden lg:block lg:text-4xl font-bold">Reach Us!</h2>
@@ -29,8 +25,17 @@ export default function page() {
       </section>
 
       <section>
-        <StartDiv className="bg-primary border-4 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div>
+        <StartDiv className="bg-primary border-4 grid grid-cols-1 md:grid-cols-2 gap-8 relative overflow-hidden z-50">
+          <div
+            className="h-full w-full absolute start-0 top-0 object-cover z-0"
+            style={{
+              backgroundImage: "url(/texture.png)",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              opacity: 0.2,
+            }}
+          ></div>
+          <div className="z-10">
             <h2 className="text-3xl font-bold mb-4">Contact Information</h2>
             <p className="mb-8">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo
@@ -52,7 +57,7 @@ export default function page() {
               ))}
             </ul>
           </div>
-          <div>
+          <div className="z-10">
             <h2 className="text-3xl font-bold mb-4">Message us!</h2>
             <ContactForm />
           </div>
