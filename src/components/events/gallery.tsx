@@ -1,5 +1,4 @@
 import gallery from "@/lib/events/gallery";
-import StartDivider from "../StartDivider";
 import Image from "next/image";
 
 function chunkGallery(images: string[]) {
@@ -15,17 +14,16 @@ function chunkGallery(images: string[]) {
   }
   return chunks;
 }
-export default function Gallery({ className }: { className?: string }) {
-  const galleryChunks = chunkGallery(gallery);
+export default function Gallery({
+  className,
+  images,
+}: {
+  className?: string;
+  images: string[];
+}) {
+  const galleryChunks = chunkGallery(images);
   return (
     <section className={className}>
-      <div className="flex items-center mb-4 gap-2">
-        <h2 className="text-4xl font-bold shrink-0 mr-4 my-6">Gallery</h2>
-        <StartDivider variant="accent" width="10%" />
-        <StartDivider variant="accent" width="20%" />
-        <StartDivider variant="accent" width="20%" />
-        <StartDivider variant="accent" />
-      </div>
       <div className="hidden xl:block space-y-4">
         {galleryChunks.map((chunk, chunkIndex) => (
           <div

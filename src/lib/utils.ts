@@ -12,5 +12,12 @@ export function formatDate(date: Date) {
     year: "numeric",
     weekday: "long",
   });
-  return formatter.format(date);
+
+  const parts = formatter.formatToParts(date);
+  const day = parts.find((p) => p.type === "day")?.value ?? "";
+  const month = parts.find((p) => p.type === "month")?.value ?? "";
+  const year = parts.find((p) => p.type === "year")?.value ?? "";
+  const weekday = parts.find((p) => p.type === "weekday")?.value ?? "";
+
+  return `${day} ${month} ${year}, ${weekday}`;
 }

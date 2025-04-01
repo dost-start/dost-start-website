@@ -18,7 +18,7 @@ const upcomingEvents: Event[] = [
       facebook: "https://facebook.com/aiworkshop2025",
       instagram: "https://instagram.com/aiworkshop2025",
     },
-    hashtags: ["#AIWorkshop", "#MachineLearning"],
+    hashtags: ["AIWorkshop", "MachineLearning"],
     coverImage: "/event-cover-placeholder.png",
     images: [
       "https://source.unsplash.com/800x600/?ai,workshop",
@@ -40,7 +40,7 @@ const upcomingEvents: Event[] = [
       facebook: "https://facebook.com/startupmeetup2025",
       website: "https://startupmeetup2025.com",
     },
-    hashtags: ["#StartupMeetup", "#Entrepreneurs"],
+    hashtags: ["StartupMeetup", "Entrepreneurs"],
     coverImage: "/event-cover-placeholder.png",
     images: [
       "https://source.unsplash.com/800x600/?business,meeting",
@@ -62,7 +62,7 @@ const upcomingEvents: Event[] = [
       facebook: "https://facebook.com/womenintech2025",
       instagram: "https://instagram.com/womenintech2025",
     },
-    hashtags: ["#WomenInTech", "#DiversityInTech"],
+    hashtags: ["WomenInTech", "DiversityInTech"],
     coverImage: "/event-cover-placeholder.png",
     images: [
       "https://source.unsplash.com/800x600/?conference,women",
