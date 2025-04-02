@@ -4,106 +4,96 @@ const department: Department = {
   name: "Technology Department",
   tabName: "Technology",
   description:
-    "The Communications Department is responsible for managing the organization's social media accounts, website, and email communications.",
+    "The Technology Department is responsible for overseeing the development and maintenance of the organization's technological infrastructure, including software development, cybersecurity, and system architecture.",
   specialOfficers: [
     {
-      name: "Sarah Johnson",
-      position: "Director of Communications",
+      name: "Ethan Adams",
+      position: "Chief Technology Officer",
       imageSrc: "/profile-placeholder.jpg",
       socialLinks: {
-        linkedin: "https://linkedin.com/in/sarahjohnson",
-        twitter: "https://twitter.com/sarahj",
+        linkedin: "https://linkedin.com/in/ethanadams",
       },
     },
     {
-      name: "Michael Chen",
-      position: "Social Media Manager",
+      name: "Olivia Clark",
+      position: "Deputy Chief Technology Officer",
       imageSrc: "/profile-placeholder.jpg",
       socialLinks: {
-        instagram: "https://instagram.com/michaelchen",
-        facebook: "https://facebook.com/michaelchen.sm",
+        twitter: "https://twitter.com/oliviaclark",
+      },
+    },
+    {
+      name: "Liam Turner",
+      position: "Deputy Chief Technology Officer",
+      imageSrc: "/profile-placeholder.jpg",
+      socialLinks: {
+        github: "https://github.com/liamturner",
       },
     },
   ],
   officers: [
     {
-      name: "Emily Rodriguez",
-      position: "Content Writer",
+      name: "Sophia White",
+      position: "Web Development Lead",
       imageSrc: "/profile-placeholder.jpg",
       socialLinks: {
-        website: "https://emilyrodriguez.com",
+        website: "https://sophiawhite.com",
       },
     },
     {
-      name: "David Kim",
-      position: "Graphic Designer",
+      name: "Jackson Brown",
+      position: "Backend Development Lead",
       imageSrc: "/profile-placeholder.jpg",
       socialLinks: {
-        behance: "https://behance.net/davidkim",
+        linkedin: "https://linkedin.com/in/jacksonbrown",
       },
     },
     {
-      name: "Jessica Wong",
-      position: "Email Marketing Specialist",
+      name: "Ava Green",
+      position: "UI/UX Lead",
       imageSrc: "/profile-placeholder.jpg",
       socialLinks: {
-        linkedin: "https://linkedin.com/in/jessicawong",
+        instagram: "https://instagram.com/ava.green",
       },
     },
     {
-      name: "Robert Taylor",
-      position: "Video Producer",
+      name: "Ethan Moore",
+      position: "Mobile Development Lead",
       imageSrc: "/profile-placeholder.jpg",
       socialLinks: {
-        youtube: "https://youtube.com/roberttaylorfilms",
+        twitter: "https://twitter.com/ethanmoore",
       },
     },
     {
-      name: "Amanda Patel",
-      position: "Public Relations Officer",
+      name: "Lily Martinez",
+      position: "Systems Architecture Lead",
       imageSrc: "/profile-placeholder.jpg",
       socialLinks: {
-        twitter: "https://twitter.com/amandapratel",
+        github: "https://github.com/lilymartinez",
       },
     },
     {
-      name: "Daniel Brown",
-      position: "Web Developer",
+      name: "Lucas Harris",
+      position: "Cybersecurity Lead",
       imageSrc: "/profile-placeholder.jpg",
       socialLinks: {
-        github: "https://github.com/danielbrown",
+        linkedin: "https://linkedin.com/in/lucasharris",
       },
     },
     {
-      name: "Olivia Martinez",
-      position: "Social Media Coordinator",
+      name: "Mia Wilson",
+      position: "Data and AI Innovation Lead",
       imageSrc: "/profile-placeholder.jpg",
       socialLinks: {
-        instagram: "https://instagram.com/oliviam",
+        website: "https://miawilson.com",
       },
     },
     {
-      name: "James Wilson",
-      position: "Photographer",
+      name: "Benjamin Lee",
+      position: "DevOps Lead",
       imageSrc: "/profile-placeholder.jpg",
       socialLinks: {
-        website: "https://jameswilsonphotos.com",
-      },
-    },
-    {
-      name: "Sophia Lee",
-      position: "Content Editor",
-      imageSrc: "/profile-placeholder.jpg",
-      socialLinks: {
-        linkedin: "https://linkedin.com/in/sophialee",
-      },
-    },
-    {
-      name: "William Garcia",
-      position: "SEO Specialist",
-      imageSrc: "/profile-placeholder.jpg",
-      socialLinks: {
-        twitter: "https://twitter.com/williamseo",
+        twitter: "https://twitter.com/benjaminlee",
       },
     },
   ],

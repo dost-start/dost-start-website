@@ -64,21 +64,11 @@ export default async function page({
           <div className="flex flex-wrap-reverse gap-2 lg:flex-row items-center justify-between">
             <TabsList className="flex items-center flex-wrap h-auto space-y-2 md:space-y-0 space-x-2 start">
               {currentBatch.departments.map((department) => (
-                <TabsTrigger
-                  key={department.name}
-                  value={department.tabName}
-                  className={
-                    department.tabName === currentDepartment.tabName
-                      ? "start-dropshadow"
-                      : ""
-                  }
-                >
-                  <Link
-                    href={`/officers/${currentBatch.year}/${department.tabName}`}
-                  >
-                    {department.tabName}
-                  </Link>
+                <Link key={department.name} href={`/officers/${currentBatch.year}/${department.tabName}`} passHref>
+                <TabsTrigger value={department.tabName}>
+                  {department.tabName}
                 </TabsTrigger>
+              </Link>
               ))}
             </TabsList>
             <Select defaultValue={slug[0]}>
@@ -103,7 +93,7 @@ export default async function page({
         <section>
           {currentDepartment.specialOfficers.length > 0 ? (
             <div className="mt-14">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
+              <div className="flex flex-wrap justify-center gap-40 w-full max-w-6xl mx-auto">
                 {currentDepartment.specialOfficers.map((officer) => (
                   <OfficerCard key={officer.name} officer={officer} />
                 ))}
@@ -111,10 +101,11 @@ export default async function page({
             </div>
           ) : null}
         </section>
+
         {/* officers */}
         <section>
           <div className="mt-14">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
+            <div className="flex flex-wrap justify-center gap-30 w-full max-w-6xl mx-auto">
               {currentDepartment.officers.map((officer) => (
                 <OfficerCard key={officer.name} officer={officer} />
               ))}
