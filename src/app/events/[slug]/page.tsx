@@ -10,6 +10,21 @@ import { Calendar, Clock, Globe, MapPin } from "lucide-react";
 import Image from "next/image";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 
+export async function generateStaticParams() {
+  const pastEventSlugs: string[] = eventsData.pastEvents.map((value) => {
+    return value.slug;
+  });
+  const upcomingEventSlugs: string[] = eventsData.upcomingEvents.map(
+    (value) => {
+      return value.slug;
+    }
+  );
+
+  return [...pastEventSlugs, ...upcomingEventSlugs].map((value) => {
+    return { slug: value };
+  });
+}
+
 export default async function page({
   params,
 }: {
