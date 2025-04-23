@@ -1,3 +1,4 @@
+import MaxLayout from "@/components/MaxLayout";
 import OfficerCard from "@/components/officers/OfficerCard";
 import PageTitle from "@/components/PageTitle";
 import {
@@ -53,66 +54,75 @@ export default async function page({
   }
 
   return (
-    <div className="text-center px-2">
-      <PageTitle text="Officers" />
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius earum quis
-        ab itaque accusamus!
-      </div>
-      <section>
-        <Tabs defaultValue={currentDepartment.tabName} className="my-8">
-          <div className="flex flex-wrap-reverse gap-2 lg:flex-row items-center justify-between">
-            <TabsList className="flex items-center flex-wrap h-auto space-y-2 md:space-y-0 space-x-2 start">
-              {currentBatch.departments.map((department) => (
-                <Link key={department.name} href={`/officers/${currentBatch.year}/${department.tabName}`} passHref>
-                <TabsTrigger value={department.tabName}>
-                  {department.tabName}
-                </TabsTrigger>
-              </Link>
-              ))}
-            </TabsList>
-            <Select defaultValue={slug[0]}>
-              <SelectTrigger className="w-[180px]">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {officerBatchYears.batchYears.map((year) => (
-                  <SelectItem key={`batch-year-${year.year}`} value={year.year}>
-                    {year.year}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-        </Tabs>
-        <div className="mt-4">
-          <h2 className="text-2xl font-semibold">{currentDepartment.name}</h2>
-          <p className="mt-2">{currentDepartment.description}</p>
+    <MaxLayout>
+      <div className="text-center">
+        <PageTitle text="Officers" />
+        <div>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius earum
+          quis ab itaque accusamus!
         </div>
-        {/* special officers */}
         <section>
-          {currentDepartment.specialOfficers.length > 0 ? (
+          <Tabs defaultValue={currentDepartment.tabName} className="my-8">
+            <div className="flex flex-wrap-reverse gap-2 lg:flex-row items-center justify-between">
+              <TabsList className="flex items-center flex-wrap h-auto space-y-2 md:space-y-0 space-x-2 start">
+                {currentBatch.departments.map((department) => (
+                  <Link
+                    key={department.name}
+                    href={`/officers/${currentBatch.year}/${department.tabName}`}
+                    passHref
+                  >
+                    <TabsTrigger value={department.tabName}>
+                      {department.tabName}
+                    </TabsTrigger>
+                  </Link>
+                ))}
+              </TabsList>
+              <Select defaultValue={slug[0]}>
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {officerBatchYears.batchYears.map((year) => (
+                    <SelectItem
+                      key={`batch-year-${year.year}`}
+                      value={year.year}
+                    >
+                      {year.year}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+          </Tabs>
+          <div className="mt-4">
+            <h2 className="text-2xl font-semibold">{currentDepartment.name}</h2>
+            <p className="mt-2">{currentDepartment.description}</p>
+          </div>
+          {/* special officers */}
+          <section>
+            {currentDepartment.specialOfficers.length > 0 ? (
+              <div className="mt-14">
+                <div className="flex flex-wrap justify-center gap-40 w-full max-w-6xl mx-auto">
+                  {currentDepartment.specialOfficers.map((officer) => (
+                    <OfficerCard key={officer.name} officer={officer} />
+                  ))}
+                </div>
+              </div>
+            ) : null}
+          </section>
+
+          {/* officers */}
+          <section>
             <div className="mt-14">
-              <div className="flex flex-wrap justify-center gap-40 w-full max-w-6xl mx-auto">
-                {currentDepartment.specialOfficers.map((officer) => (
+              <div className="flex flex-wrap justify-center gap-30 w-full max-w-6xl mx-auto">
+                {currentDepartment.officers.map((officer) => (
                   <OfficerCard key={officer.name} officer={officer} />
                 ))}
               </div>
             </div>
-          ) : null}
+          </section>
         </section>
-
-        {/* officers */}
-        <section>
-          <div className="mt-14">
-            <div className="flex flex-wrap justify-center gap-30 w-full max-w-6xl mx-auto">
-              {currentDepartment.officers.map((officer) => (
-                <OfficerCard key={officer.name} officer={officer} />
-              ))}
-            </div>
-          </div>
-        </section>
-      </section>
-    </div>
+      </div>
+    </MaxLayout>
   );
 }
