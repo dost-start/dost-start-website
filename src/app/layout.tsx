@@ -22,7 +22,7 @@ export default function RootLayout({
         className={`${roboto.variable} ${robotoMono.variable} ${montserrat.variable} ${orbitron.variable} font-sans antialiased max-w-[1920px] mx-auto flex flex-col min-h-screen`}
       >
         <Navbar />
-        <div className="w-full max-w-[1400px] mx-auto mb-10">{children}</div>
+        <div className="w-full  mx-auto mb-10">{children}</div>
         <Footer className="mt-auto" />
         <Toaster richColors />
       </body>
