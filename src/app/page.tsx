@@ -5,6 +5,7 @@ import SocialLinks from "@/components/SocialLinks";
 import StartDiv from "@/components/StartDiv";
 import { Button } from "@/components/ui/button";
 import MaxLayout from "@/components/MaxLayout";
+import officerImage from "../../public/officers.png";
 
 export default function HomePage() {
   return (
@@ -43,7 +44,7 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="relative z-20 w-full max-w-5xl mx-auto flex justify-center items-center gap-1 md:gap-2 mt-6 md:mt-8 mb-4">
+        <div className="relative z-20 w-full max-w-5xl mx-auto flex justify-center items-center gap-1 md:gap-2 my-12">
           <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border border-black w-[2%]"></div>
           <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border border-black w-[28%]"></div>
           <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border border-black w-[36%]"></div>
@@ -53,7 +54,9 @@ export default function HomePage() {
 
         <div className="flex justify-center mt-6 mb-8 md:mb-12">
           <Link href="/about">
-            <Button size={"xl"}>About START →</Button>
+            <Button size={"xl"} className="text-lg">
+              About START →
+            </Button>
           </Link>
         </div>
       </section>
@@ -90,7 +93,9 @@ export default function HomePage() {
                     </p>
                     <div>
                       <Link href="/events">
-                        <Button>Events →</Button>
+                        <Button size={"xl"} className="text-lg">
+                          Events →
+                        </Button>
                       </Link>
                     </div>
                   </div>
@@ -131,7 +136,7 @@ export default function HomePage() {
 
         <UpcomingEventsSection />
 
-        <div className="w-full max-w-5xl mx-auto flex justify-center items-center gap-1 md:gap-2 mt-6 md:mt-8 mb-4">
+        <div className="w-full max-w-5xl mx-auto flex justify-center items-center gap-1 md:gap-2 my-12">
           <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border border-black w-[2%]"></div>
           <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border border-black w-[28%]"></div>
           <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border border-black w-[36%]"></div>
@@ -139,21 +144,17 @@ export default function HomePage() {
           <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border border-black w-[2%]"></div>
         </div>
 
-        <section className="py-8 md:py-12 px-4 w-full max-w-5xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
-            <div className="md:w-3/5 relative overflow-hidden rounded-lg order-1 md:order-1 h-full">
-              <div className="relative w-full" style={{ height: "120%" }}>
-                <Image
-                  src="/home-officers-image.png"
-                  alt="Officers"
-                  className="object-cover"
-                  fill
-                  sizes="(max-width: 768px) 60vw, 40vw"
-                />
-              </div>
+        <section className="px-4 w-full max-w-7xl mx-auto">
+          <div className="flex flex-col lg:flex-row items-center gap-6 md:gap-8 w-full md:min-h-[600px]">
+            <div className="lg:w-3/5 order-1 md:order-1 h-[500px]">
+              <Image
+                src={officerImage}
+                alt="Officers"
+                className="object-cover w-full h-full rounded-tl-4xl rounded-br-4xl drop-shadow-2xl"
+              />
             </div>
-            {/* adjusting right now for mobile */}
-            <StartDiv className="start-dropshadow bg-accent rounded-lg p-6 md:p-8 w-full md:w-2/5 order-2 md:order-2">
+
+            <StartDiv className="start-dropshadow bg-accent rounded-lg p-6 md:p-8 w-full lg:w-2/5 order-2 md:order-2">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-6 font-orbitron">
                 Officers
               </h2>
@@ -165,15 +166,17 @@ export default function HomePage() {
                 magna mauris cras nunc in.
               </p>
               <div>
-                <Link href="/officers" className=" font-medium">
-                  <Button className="my-6">Officers →</Button>
+                <Link href="/officers" className="font-medium">
+                  <Button className="my-6 text-xl" size={"xl"}>
+                    Officers →
+                  </Button>
                 </Link>
               </div>
             </StartDiv>
           </div>
         </section>
 
-        <div className="w-full max-w-5xl mx-auto flex justify-center items-center gap-1 md:gap-2 mt-6 md:mt-8 mb-4">
+        <div className="w-full max-w-7xl mx-auto flex justify-center items-center gap-1 md:gap-2 my-12">
           <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border border-black w-[2%]"></div>
           <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border border-black w-[28%]"></div>
           <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border border-black w-[36%]"></div>
@@ -182,7 +185,7 @@ export default function HomePage() {
         </div>
 
         <section className="px-4">
-          <StartDiv className="start-dropshadow border-4 bg-primary w-full max-w-5xl mx-auto justify-center grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 my-4 text-white py-8 md:py-12 px-4 md:px-8">
+          <StartDiv className="start-dropshadow border-4 bg-primary w-full max-w-7xl mx-auto justify-center grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 my-4 text-white px-4 md:px-8">
             <div className="md:col-span-2">
               <h2 className="font-orbitron text-3xl mb-8">Contact Us</h2>
               <p>
@@ -196,7 +199,7 @@ export default function HomePage() {
                 quidem est.
               </p>
               <Link href="/contact-us">
-                <Button className="my-6" variant={"accent"}>
+                <Button className="my-6" variant={"accent"} size={"xl"}>
                   Send us message
                 </Button>
               </Link>
@@ -222,18 +225,18 @@ export default function HomePage() {
           </StartDiv>
         </section>
       </MaxLayout>
-      <div className="w-full max-w-5xl mx-auto flex justify-center items-center gap-1 md:gap-2 my-6 md:my-8">
-        <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border-2 md:border-3 border-black w-[7%]"></div>
-        <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border-2 md:border-3 border-black w-[1%]"></div>
-        <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border-2 md:border-3 border-black w-[20%]"></div>
-        <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border-2 md:border-3 border-black w-[7%]"></div>
-        <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border-2 md:border-3 border-black w-[1%]"></div>
-        <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border-2 md:border-3 border-black w-[20%]"></div>
-        <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border-2 md:border-3 border-black w-[7%]"></div>
-        <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border-2 md:border-3 border-black w-[1%]"></div>
-        <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border-2 md:border-3 border-black w-[20%]"></div>
-        <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border-2 md:border-3 border-black w-[7%]"></div>
-        <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border-2 md:border-3 border-black w-[1%]"></div>
+      <div className="w-full max-w-7xl mx-auto flex justify-center items-center gap-1 md:gap-2 my-6 md:my-12">
+        <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border-2 border-black w-[7%]"></div>
+        <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border-2 border-black w-[1%]"></div>
+        <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border-2 border-black w-[20%]"></div>
+        <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border-2 border-black w-[7%]"></div>
+        <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border-2 border-black w-[1%]"></div>
+        <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border-2 border-black w-[20%]"></div>
+        <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border-2 border-black w-[7%]"></div>
+        <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border-2 border-black w-[1%]"></div>
+        <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border-2 border-black w-[20%]"></div>
+        <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border-2 border-black w-[7%]"></div>
+        <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border-2 border-black w-[1%]"></div>
       </div>
     </div>
   );
