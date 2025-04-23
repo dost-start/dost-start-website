@@ -145,7 +145,7 @@ export default function HomePage() {
         </div>
 
         <section className="px-4 w-full max-w-7xl mx-auto">
-          <div className="flex flex-col lg:flex-row items-center gap-6 md:gap-8 w-full md:min-h-[600px]">
+          <div className="flex flex-col lg:flex-row items-center gap-6 md:gap-8 w-full md:min-h-[500px]">
             <div className="lg:w-3/5 order-1 md:order-1 h-[500px]">
               <Image
                 src={officerImage}
