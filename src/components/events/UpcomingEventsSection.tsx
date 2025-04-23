@@ -5,7 +5,7 @@ import EventCard from "./EventCard";
 
 export default function UpcomingEventsSection() {
   return (
-    <StartDiv className="relative border md:border-4 p-2 py-8 sm:mx-2 md:p-8 shadow-xl bg-gradient-to-br from-primary/70 from-20% to-accent/70 z-50 overflow-hidden">
+    <StartDiv className="relative border md:border-4 p-2 py-8 sm:mx-2 md:p-8 shadow-xl bg-gradient-to-br from-primary/70 from-20% to-accent/70 z-30 overflow-hidden">
       <div
         className="h-full w-full absolute start-0 top-0 object-cover z-0"
         style={{

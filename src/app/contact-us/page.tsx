@@ -15,7 +15,7 @@ export default function page() {
         <section className="mb-12 relative rounded-2xl border-4 z-10 overflow-hidden">
           <Image src={image} alt="Contact Us" className="object-cover w-full" />
           <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-primary/80 to-transparent" />
-          <div className="absolute z-50 text-white bottom-[50px] left-[50px]">
+          <div className="absolute z-30 text-white bottom-[50px] left-[50px]">
             <h2 className=" hidden lg:block lg:text-4xl font-bold">
               Reach Us!
             </h2>
@@ -29,7 +29,7 @@ export default function page() {
         </section>
 
         <section>
-          <StartDiv className="bg-primary border-4 grid grid-cols-1 md:grid-cols-2 gap-8 relative overflow-hidden z-50">
+          <StartDiv className="bg-primary border-4 grid grid-cols-1 md:grid-cols-2 gap-8 relative overflow-hidden z-30">
             <div
               className="h-full w-full absolute start-0 top-0 object-cover z-0"
               style={{
