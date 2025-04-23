@@ -136,7 +136,7 @@ export default function HomePage() {
 
         <UpcomingEventsSection />
 
-        <div className="w-full max-w-5xl mx-auto flex justify-center items-center gap-1 md:gap-2 my-12">
+        <div className="w-full max-w-7xl mx-auto flex justify-center items-center gap-1 md:gap-2 my-12">
           <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border border-black w-[2%]"></div>
           <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border border-black w-[28%]"></div>
           <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border border-black w-[36%]"></div>
