@@ -1,13 +1,14 @@
 import Gallery from "@/components/events/gallery";
 import PastEventsSection from "@/components/events/PastEventsSection";
 import UpcomingEventsSection from "@/components/events/UpcomingEventsSection";
+import MaxLayout from "@/components/MaxLayout";
 import PageTitle from "@/components/PageTitle";
 import StartDivider from "@/components/StartDivider";
 import gallery from "@/lib/events/gallery";
 
 export default function Page() {
   return (
-    <div>
+    <MaxLayout>
       <PageTitle text="Events" />
       <UpcomingEventsSection />
 
@@ -25,6 +26,6 @@ export default function Page() {
           <Gallery images={gallery} />
         </div>
       </section>
-    </div>
+    </MaxLayout>
   );
 }
