@@ -19,10 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${roboto.variable} ${robotoMono.variable} ${montserrat.variable} ${orbitron.variable} font-sans antialiased max-w-[1920px] mx-auto flex flex-col min-h-screen`}
+        className={`${roboto.variable} ${robotoMono.variable} ${montserrat.variable} ${orbitron.variable} font-sans antialiased  mx-auto flex flex-col min-h-screen`}
       >
         <Navbar />
-        <div className="w-full  mx-auto mb-10">{children}</div>
+        <div className="w-full  mx-auto mb-10 max-w-[1920px]">{children}</div>
         <Footer className="mt-auto" />
         <Toaster richColors />
       </body>

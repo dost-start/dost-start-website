@@ -10,8 +10,8 @@ import officerImage from "../../public/officers.png";
 export default function HomePage() {
   return (
     <div className="flex flex-col w-full">
-      <section className="relative w-full">
-        <div className="relative m-auto w-[95vw] h-[50vh] md:h-[60vh] rounded-b-3xl md:rounded-b-[5rem] mx-auto">
+      <section className="relative w-full px-4">
+        <div className="relative m-auto w-full h-[40vh] md:h-[55vh] rounded-b-3xl md:rounded-b-[5rem] mx-auto">
           <Image
             src="/contact-image.png"
             alt="DOST START group photo"
@@ -134,7 +134,9 @@ export default function HomePage() {
           </div>
         </section>
 
-        <UpcomingEventsSection />
+        <div className="px-4">
+          <UpcomingEventsSection />
+        </div>
 
         <div className="w-full max-w-7xl mx-auto flex justify-center items-center gap-1 md:gap-2 my-12">
           <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border border-black w-[2%]"></div>
@@ -144,17 +146,17 @@ export default function HomePage() {
           <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border border-black w-[2%]"></div>
         </div>
 
-        <section className="px-4 w-full max-w-7xl mx-auto">
-          <div className="flex flex-col lg:flex-row items-center gap-6 md:gap-8 w-full md:min-h-[500px]">
-            <div className="lg:w-3/5 order-1 md:order-1 h-[500px]">
+        <section className="max-w-7xl px-4 w-full mx-auto xl:py-10">
+          <StartDiv className="start-dropshadow bg-accent rounded-lg p-6 md:p-8 w-full relative flex flex-col-reverse lg:flex-row items-center gap-6 md:gap-8">
+            <div className="w-full xl:w-3/5 xl:absolute">
               <Image
                 src={officerImage}
                 alt="Officers"
-                className="object-cover w-full h-full rounded-tl-4xl rounded-br-4xl drop-shadow-2xl"
+                className="object-cover w-full h-full rounded-tl-4xl rounded-br-4xl shadow-2xl"
               />
             </div>
 
-            <StartDiv className="start-dropshadow bg-accent rounded-lg p-6 md:p-8 w-full lg:w-2/5 order-2 md:order-2">
+            <div className="lg:w-3/5 xl:w-1/3 ml-auto">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-6 font-orbitron">
                 Officers
               </h2>
@@ -172,11 +174,11 @@ export default function HomePage() {
                   </Button>
                 </Link>
               </div>
-            </StartDiv>
-          </div>
+            </div>
+          </StartDiv>
         </section>
 
-        <div className="w-full max-w-7xl mx-auto flex justify-center items-center gap-1 md:gap-2 my-12">
+        <div className=" w-full max-w-7xl mx-auto flex justify-center items-center gap-1 md:gap-2 my-12">
           <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border border-black w-[2%]"></div>
           <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border border-black w-[28%]"></div>
           <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border border-black w-[36%]"></div>
@@ -184,8 +186,8 @@ export default function HomePage() {
           <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border border-black w-[2%]"></div>
         </div>
 
-        <section className="px-4">
-          <StartDiv className="start-dropshadow border-4 bg-primary w-full max-w-7xl mx-auto justify-center grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 my-4 text-white px-4 md:px-8">
+        <section className="px-4 max-w-7xl mx-auto">
+          <StartDiv className="start-dropshadow border-4 bg-primary w-full mx-auto justify-center grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 my-4 text-white px-4 md:px-8">
             <div className="md:col-span-2">
               <h2 className="font-orbitron text-3xl mb-8">Contact Us</h2>
               <p>
