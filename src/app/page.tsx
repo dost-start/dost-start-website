@@ -77,7 +77,6 @@ export default function HomePage() {
                     opacity: 0.2,
                   }}
                 ></div>{" "}
-                {/* large screen bug, not going full width */}
                 <div className="flex flex-col md:flex-row p-4 md:p-8 z-10 relative">
                   <div className="md:w-1/2 flex flex-col justify-center md:pr-8">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-6 font-orbitron">
