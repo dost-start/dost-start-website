@@ -4,17 +4,17 @@ const socialLinks = [
   {
     icon: FaFacebook,
     text: "facebook.com/STARTDOST",
-    link: "#",
+    link: "https://www.facebook.com/STARTDOST",
   },
   {
     icon: FaInstagram,
     text: "startdost",
-    link: "#",
+    link: "https://www.instagram.com/start_dost",
   },
   {
     icon: FaEnvelope,
     text: "dost.start@gmail.com",
-    link: "#",
+    link: "mailto:dost.start@gmail.com",
   },
 ];
 

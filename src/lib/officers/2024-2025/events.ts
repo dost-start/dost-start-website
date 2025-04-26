@@ -89,6 +89,31 @@ const department: Department = {
       },
     },
   ],
+  subDepartment: [
+    {
+      name: "Public Relations",
+      description:
+        "The Public Relations sub-department is responsible for managing the department's image and communication with the public.",
+      officers: [
+        {
+          name: "Mia Wilson",
+          position: "PR Lead",
+          imageSrc: "/profile-placeholder.jpg",
+          socialLinks: {
+            linkedin: "https://linkedin.com/in/miawilson",
+          },
+        },
+        {
+          name: "Noah Martinez",
+          position: "Media Officer",
+          imageSrc: "/profile-placeholder.jpg",
+          socialLinks: {
+            twitter: "https://twitter.com/noahmartinez",
+          },
+        },
+      ],
+    },
+  ],
 };
 
 export default department;

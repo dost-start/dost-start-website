@@ -17,7 +17,7 @@ export default function UpcomingEventsSection() {
       ></div>
       <h2 className="text-4xl font-bold relative z-10">Upcoming Events</h2>
       <div className="flex gap-2 my-4">
-        <StartDivider variant="accent" width="150px" />
+        <StartDivider variant="accent" width="170px" />
         <StartDivider variant="accent" width="20px" />
         <StartDivider variant="accent" width="80px" />
       </div>

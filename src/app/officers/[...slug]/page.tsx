@@ -71,7 +71,10 @@ export default async function page({
                     href={`/officers/${currentBatch.year}/${department.tabName}`}
                     passHref
                   >
-                    <TabsTrigger value={department.tabName}>
+                    <TabsTrigger
+                      value={department.tabName}
+                      className="hover:cursor-pointer"
+                    >
                       {department.tabName}
                     </TabsTrigger>
                   </Link>
@@ -94,33 +97,46 @@ export default async function page({
               </Select>
             </div>
           </Tabs>
+
           <div className="mt-4">
             <h2 className="text-2xl font-semibold">{currentDepartment.name}</h2>
             <p className="mt-2">{currentDepartment.description}</p>
           </div>
-          {/* special officers */}
-          <section>
-            {currentDepartment.specialOfficers.length > 0 ? (
-              <div className="mt-14">
-                <div className="flex flex-wrap justify-center gap-40 w-full max-w-6xl mx-auto">
-                  {currentDepartment.specialOfficers.map((officer) => (
-                    <OfficerCard key={officer.name} officer={officer} />
-                  ))}
-                </div>
-              </div>
-            ) : null}
-          </section>
 
-          {/* officers */}
-          <section>
-            <div className="mt-14">
-              <div className="flex flex-wrap justify-center gap-30 w-full max-w-6xl mx-auto">
-                {currentDepartment.officers.map((officer) => (
+          {currentDepartment.specialOfficers.length > 0 && (
+            <section className="mt-14">
+              <div className="flex flex-wrap justify-center gap-40 w-full max-w-6xl mx-auto">
+                {currentDepartment.specialOfficers.map((officer) => (
                   <OfficerCard key={officer.name} officer={officer} />
                 ))}
               </div>
+            </section>
+          )}
+
+          <section className="mt-14">
+            <div className="flex flex-wrap justify-center gap-30 w-full max-w-6xl mx-auto">
+              {currentDepartment.officers.map((officer) => (
+                <OfficerCard key={officer.name} officer={officer} />
+              ))}
             </div>
           </section>
+
+          {currentDepartment.subDepartment &&
+            currentDepartment.subDepartment.length > 0 && (
+              <section className="mt-14">
+                {currentDepartment.subDepartment.map((subDept) => (
+                  <div key={subDept.name} className="mt-8">
+                    <h4 className="text-lg font-semibold">{subDept.name}</h4>
+                    <p className="mt-2">{subDept.description}</p>
+                    <div className="flex flex-wrap justify-center gap-30 w-full max-w-6xl mx-auto mt-4">
+                      {subDept.officers.map((officer) => (
+                        <OfficerCard key={officer.name} officer={officer} />
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </section>
+            )}
         </section>
       </div>
     </MaxLayout>
