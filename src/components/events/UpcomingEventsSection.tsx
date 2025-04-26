@@ -17,9 +17,9 @@ export default function UpcomingEventsSection() {
       ></div>
       <h2 className="text-4xl font-bold relative z-10">Upcoming Events</h2>
       <div className="flex gap-2 my-4">
-        <StartDivider variant="accent" width="180px" />
+        <StartDivider variant="accent" width="150px" />
         <StartDivider variant="accent" width="20px" />
-        <StartDivider variant="accent" width="100px" />
+        <StartDivider variant="accent" width="80px" />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 relative z-10">
         {upcomingEvents.map((event, index) => (

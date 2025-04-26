@@ -20,21 +20,24 @@ function MenuItemLink({
   link,
   active,
   className,
+  onClick,
 }: {
   name: string;
   link: string;
   active: string;
   className?: string;
+  onClick?: () => void;
 }) {
   return (
     <Link
       href={link}
       key={name}
       className={twMerge(
-        ` text-lg font-medium ${
+        `text-lg font-medium ${
           active === link ? "text-primary font-semibold" : "hover:text-primary"
         } ${className}`
       )}
+      onClick={onClick}
     >
       {name}
     </Link>
@@ -52,6 +55,7 @@ const menuItems = [
 export default function MenuItems() {
   const [active, setActive] = useState("/");
   const pathname = usePathname();
+  const [open, setOpen] = useState(false); // Sheet open state
 
   useEffect(() => {
     setActive("/" + pathname.split("/")[1]);
@@ -60,7 +64,7 @@ export default function MenuItems() {
   return (
     <nav className="flex items-center font-montserrat">
       <div className="lg:hidden">
-        <Sheet>
+        <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
             <Button variant="ghost" size="icon">
               <Menu className="h-6 w-6" />
@@ -87,6 +91,8 @@ export default function MenuItems() {
                     link={link}
                     active={active}
                     className="w-full block text-center"
+                    // Close sheet on click
+                    onClick={() => setOpen(false)}
                   />
                 </div>
               ))}
