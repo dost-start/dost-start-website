@@ -12,8 +12,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import logo from "../../public/logo.png";
 import { twMerge } from "tailwind-merge";
+import logo from "../../public/logo.png";
 
 function MenuItemLink({
   name,

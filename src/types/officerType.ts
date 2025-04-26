@@ -20,6 +20,11 @@ interface Department {
   description: string;
   specialOfficers: Officer[];
   officers: Officer[];
+  subDepartment?: {
+    name: string;
+    description: string;
+    officers: Officer[];
+  }[];
 }
 
 interface BatchYear {

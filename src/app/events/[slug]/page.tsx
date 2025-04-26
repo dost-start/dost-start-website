@@ -1,5 +1,6 @@
 import BackButton from "@/components/BackButton";
 import Gallery from "@/components/events/gallery";
+import ShareButton from "@/components/events/ShareButton";
 import MaxLayout from "@/components/MaxLayout";
 import StartDiv from "@/components/StartDiv";
 import StartDivider from "@/components/StartDivider";
@@ -93,12 +94,12 @@ export default async function page({
 
         <section className="mt-6 px-1">
           <div className="space-x-4">
-            <Button variant={"accent"} size={"lg"} className="px-10">
-              Register
-            </Button>
-            <Button size={"lg"} className="px-10">
-              Share
-            </Button>
+            {eventData.registrationLink && (
+              <Button variant={"accent"} size={"lg"} className="px-10">
+                Register
+              </Button>
+            )}
+            <ShareButton />
           </div>
           <div className="flex mt-4 gap-3 px-1">
             {eventData.socialLinks.facebook && (
