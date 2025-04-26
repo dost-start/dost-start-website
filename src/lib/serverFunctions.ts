@@ -16,7 +16,7 @@ export async function sendEmail(
 
   const mailOptions = {
     from: process.env.EMAIL_USER,
-    to: "dost.start@gmail.com",
+    to: data.isPartner ? process.env.COMMS_EMAIL : process.env.CRRD_EMAIL,
     subject: `START WEBSITE | New Message from ${data.name}`,
     text: `
       Name: ${data.name}

@@ -25,11 +25,13 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
+import { Checkbox } from "../ui/checkbox";
 
 const formSchema = z.object({
   name: z.string().min(1, "Name is required").max(50),
   email: z.string().email("Invalid email format"),
   purpose: z.string().min(1, "Purpose is required"),
+  isPartner: z.boolean(),
   message: z.string().min(1, "Message is required").max(500),
 });
 
@@ -39,7 +41,8 @@ export default function ContactForm() {
     defaultValues: {
       name: "",
       email: "",
-      purpose: "",
+      purpose: "inquiry",
+      isPartner: false,
       message: "",
     },
   });
@@ -118,6 +121,24 @@ export default function ContactForm() {
                     <SelectItem value="other">Other</SelectItem>
                   </SelectContent>
                 </Select>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="isPartner"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Are you a partner?</FormLabel>
+              <FormControl>
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                  className="size-6"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
