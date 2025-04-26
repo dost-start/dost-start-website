@@ -133,7 +133,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <div className="px-4">
+        <div className="px-2">
           <UpcomingEventsSection />
         </div>
 
@@ -145,7 +145,7 @@ export default function HomePage() {
           <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border border-black w-[2%]"></div>
         </div>
 
-        <section className="max-w-7xl px-4 w-full mx-auto xl:py-10">
+        <section className="max-w-7xl px-2 w-full mx-auto xl:py-10">
           <StartDiv className="start-dropshadow bg-accent rounded-lg p-6 md:p-8 w-full relative flex flex-col-reverse lg:flex-row items-center gap-6 md:gap-8">
             <div className="w-full xl:w-3/5 xl:absolute">
               <Image
@@ -185,7 +185,7 @@ export default function HomePage() {
           <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border border-black w-[2%]"></div>
         </div>
 
-        <section className="px-4 max-w-7xl mx-auto">
+        <section className="px-2 max-w-7xl mx-auto">
           <StartDiv className="start-dropshadow border-4 bg-primary w-full mx-auto justify-center grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 my-4 text-white px-4 md:px-8">
             <div className="md:col-span-2">
               <h2 className="font-orbitron text-3xl mb-8">Contact Us</h2>
@@ -226,7 +226,7 @@ export default function HomePage() {
           </StartDiv>
         </section>
       </MaxLayout>
-      <div className="w-full max-w-7xl mx-auto flex justify-center items-center gap-1 md:gap-2 my-6 md:my-12">
+      <div className="px-2 w-full max-w-7xl mx-auto flex justify-center items-center gap-1 md:gap-2 my-6 md:my-12">
         <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border-2 border-black w-[7%]"></div>
         <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border-2 border-black w-[1%]"></div>
         <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border-2 border-black w-[20%]"></div>
