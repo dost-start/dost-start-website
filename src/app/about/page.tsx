@@ -1,6 +1,6 @@
-import PageTitle from "@/components/PageTitle"
-import StartDiv from "@/components/StartDiv"
-import Image from "next/image"
+import PageTitle from "@/components/PageTitle";
+import StartDiv from "@/components/StartDiv";
+import Image from "next/image";
 
 export default function AboutUs() {
   return (
@@ -36,60 +36,77 @@ export default function AboutUs() {
       </section>
 
       <section className="mb-12 relative">
-        <div className="absolute left-0 top-0 bottom-0 w-4">
+        <div className="hidden md:block absolute left-0 top-0 bottom-0 w-4">
           <div className="absolute top-0 w-4 h-110 bg-blue-500 border-2 border-black rounded-full"></div>
           <div className="absolute top-114 w-4 h-4 bg-blue-500 border-2 border-black rounded-full"></div>
           <div className="absolute top-122 w-4 h-34 bg-blue-500 border-2 border-black rounded-full"></div>
         </div>
 
-        <div className="absolute right-0 top-0 bottom-0 w-4">
+        <div className="hidden md:block absolute right-0 top-0 bottom-0 w-4">
           <div className="absolute bottom-122 w-4 h-34 bg-blue-500 border-2 border-black rounded-full"></div>
           <div className="absolute bottom-114 w-4 h-4 bg-blue-500 border-2 border-black rounded-full"></div>
           <div className="absolute bottom-0 w-4 h-110 bg-blue-500 border-2 border-black rounded-full"></div>
         </div>
 
-        <div className="px-8 mx-6">
+        <div className="md:px-8 md:mx-6">
           <div className="flex flex-col mb-8">
-            <h1 className="text-3xl mb-6 font-orbitron text-primary text-left">WHAT IS START?</h1>
+            <h1 className="text-3xl mb-6 font-orbitron text-primary text-left">
+              WHAT IS START?
+            </h1>
             <div className="space-y-4">
               <p className="text-justify">
-                Lorem ipsum dolor sit amet consectetur. Tortor ultrices tristique id at donec id. Molestie est neque ac
-                pharetra diam pulvinar augue. Elementum lectus nibh at lacus. Risus enim vivamus sagittis morbi
-                suscipit. Elit gravida tellus blandit magna mauris cras nunc in. Venenatis ornare gravida eu at dolor a
-                nunc. Lorem ipsum dolor sit amet consectetur. Tortor ultrices tristique id at donec id. Molestie est
-                neque ac pharetra diam pulvinar augue. Elementum lectus nibh at lacus. Risus enim vivamus sagittis morbi
-                suscipit. Elit gravida tellus blandit magna mauris cras nunc in.
+                Lorem ipsum dolor sit amet consectetur. Tortor ultrices
+                tristique id at donec id. Molestie est neque ac pharetra diam
+                pulvinar augue. Elementum lectus nibh at lacus. Risus enim
+                vivamus sagittis morbi suscipit. Elit gravida tellus blandit
+                magna mauris cras nunc in. Venenatis ornare gravida eu at dolor
+                a nunc. Lorem ipsum dolor sit amet consectetur. Tortor ultrices
+                tristique id at donec id. Molestie est neque ac pharetra diam
+                pulvinar augue. Elementum lectus nibh at lacus. Risus enim
+                vivamus sagittis morbi suscipit. Elit gravida tellus blandit
+                magna mauris cras nunc in.
               </p>
               <p className="text-justify">
-                Lorem ipsum dolor sit amet consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Donec
-                sit amet turpis libero. Nam facilisis interdum lorem, eget iaculis risus dapibus sit amet. Nulla
-                facilisi. Curabitur scelerisque nulla ut euismod tincidunt. Lorem ipsum dolor sit amet consectetur
-                adipiscing elit. Nulla vitae elit libero, a pharetra augue. Donec sit amet turpis libero. Nam facilisis
-                interdum lorem, eget iaculis risus dapibus sit amet. Nulla facilisi. Curabitur scelerisque nulla ut
+                Lorem ipsum dolor sit amet consectetur adipiscing elit. Nulla
+                vitae elit libero, a pharetra augue. Donec sit amet turpis
+                libero. Nam facilisis interdum lorem, eget iaculis risus dapibus
+                sit amet. Nulla facilisi. Curabitur scelerisque nulla ut euismod
+                tincidunt. Lorem ipsum dolor sit amet consectetur adipiscing
+                elit. Nulla vitae elit libero, a pharetra augue. Donec sit amet
+                turpis libero. Nam facilisis interdum lorem, eget iaculis risus
+                dapibus sit amet. Nulla facilisi. Curabitur scelerisque nulla ut
                 euismod tincidunt.
               </p>
               <p className="text-justify">
-                Aenean et leo orci. Donec luctus, nulla at venenatis pretium, erat lorem iaculis lorem, eget rhoncus
-                turpis dui non ante. Etiam eu erat at nulla eleifend ullamcorper ac non nunc. Integer tincidunt vehicula
-                quam eu convallis. Aenean et leo orci. Donec luctus, nulla at venenatis pretium, erat lorem iaculis
-                lorem, eget rhoncus turpis dui non ante. Etiam eu erat at nulla eleifend ullamcorper ac non nunc.
-                Integer tincidunt vehicula quam eu convallis.
+                Aenean et leo orci. Donec luctus, nulla at venenatis pretium,
+                erat lorem iaculis lorem, eget rhoncus turpis dui non ante.
+                Etiam eu erat at nulla eleifend ullamcorper ac non nunc. Integer
+                tincidunt vehicula quam eu convallis. Aenean et leo orci. Donec
+                luctus, nulla at venenatis pretium, erat lorem iaculis lorem,
+                eget rhoncus turpis dui non ante. Etiam eu erat at nulla
+                eleifend ullamcorper ac non nunc. Integer tincidunt vehicula
+                quam eu convallis.
               </p>
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-8 mb-10">
+          <div className="flex flex-col md:flex-row gap-8 md:mb-10">
             <StartDiv className="start-dropshadow bg-primary flex-1 rounded-xl">
               <div className="flex flex-col gap-4">
                 <h2 className="text-2xl md:text-3xl font-semibold">Vision</h2>
                 <p className="text-justify">
-                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                  laborum. Etiam eu erat at nulla eleifend ullamcorper ac non nunc. Integer tincidunt vehicula quam eu
-                  convallis. Ut ullamcorper ultricies lorem, non accumsan dui tempus ac. Duis aute irure dolor in
-                  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Etiam eu erat
-                  at nulla eleifend ullamcorper ac non nunc. Integer tincidunt vehicula quam eu convallis.
+                  Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                  occaecat cupidatat non proident, sunt in culpa qui officia
+                  deserunt mollit anim id est laborum. Etiam eu erat at nulla
+                  eleifend ullamcorper ac non nunc. Integer tincidunt vehicula
+                  quam eu convallis. Ut ullamcorper ultricies lorem, non
+                  accumsan dui tempus ac. Duis aute irure dolor in reprehenderit
+                  in voluptate velit esse cillum dolore eu fugiat nulla
+                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt
+                  in culpa qui officia deserunt mollit anim id est laborum.
+                  Etiam eu erat at nulla eleifend ullamcorper ac non nunc.
+                  Integer tincidunt vehicula quam eu convallis.
                 </p>
               </div>
             </StartDiv>
@@ -120,14 +137,19 @@ export default function AboutUs() {
               <div className="flex flex-col gap-4">
                 <h2 className="text-2xl md:text-3xl font-semibold">Mission</h2>
                 <p className="text-justify">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam suscipit, leo ac vestibulum fermentum,
-                  metus augue luctus enim, nec venenatis nulla libero at nisl. Mauris at velit et neque euismod cursus.
-                  Cras ut lacus at purus dictum sollicitudin. Suspendisse varius libero vitae sem euismod, id efficitur
-                  turpis condimentum. Aenean et leo orci. Donec luctus, nulla at venenatis pretium, erat lorem iaculis
-                  lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam suscipit, leo ac vestibulum
-                  fermentum, metus augue luctus enim, nec venenatis nulla libero at nisl. Mauris at velit et neque
-                  euismod cursus. Cras ut lacus at purus dictum sollicitudin. Suspendisse varius libero vitae sem
-                  euismod, id efficitur turpis condimentum. Aenean et leo orci.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                  suscipit, leo ac vestibulum fermentum, metus augue luctus
+                  enim, nec venenatis nulla libero at nisl. Mauris at velit et
+                  neque euismod cursus. Cras ut lacus at purus dictum
+                  sollicitudin. Suspendisse varius libero vitae sem euismod, id
+                  efficitur turpis condimentum. Aenean et leo orci. Donec
+                  luctus, nulla at venenatis pretium, erat lorem iaculis lorem.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                  suscipit, leo ac vestibulum fermentum, metus augue luctus
+                  enim, nec venenatis nulla libero at nisl. Mauris at velit et
+                  neque euismod cursus. Cras ut lacus at purus dictum
+                  sollicitudin. Suspendisse varius libero vitae sem euismod, id
+                  efficitur turpis condimentum. Aenean et leo orci.
                 </p>
               </div>
             </StartDiv>
@@ -135,5 +157,5 @@ export default function AboutUs() {
         </div>
       </section>
     </div>
-  )
+  );
 }
