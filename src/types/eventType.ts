@@ -13,8 +13,8 @@ interface Event {
     website?: string;
   };
   hashtags: string[];
-  coverImage: string;
-  images: string[];
+  coverImage?: string;
+  images?: string[];
   slug: string;
 }
 

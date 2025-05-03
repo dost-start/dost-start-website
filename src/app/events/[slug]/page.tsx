@@ -11,6 +11,7 @@ import { formatDate } from "@/lib/utils";
 import { Calendar, Clock, Globe, MapPin } from "lucide-react";
 import Image from "next/image";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
+import placeholder from "../../../../public/event-placeholder.png";
 
 export async function generateStaticParams() {
   const pastEventSlugs: string[] = eventsData.pastEvents.map((value) => {
@@ -52,7 +53,7 @@ export default async function page({
         <BackButton className="mb-4" />
         <StartDiv className="p-0 overflow-hidden border-4 w-full">
           <Image
-            src={eventData.coverImage}
+            src={eventData.coverImage ?? placeholder}
             alt="Event Image"
             height={2000}
             width={2000}
@@ -146,7 +147,7 @@ export default async function page({
           </div>
         </section>
 
-        <Gallery images={eventData.images} />
+        {eventData.images && <Gallery images={eventData.images} />}
       </div>
     </MaxLayout>
   );

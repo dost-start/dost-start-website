@@ -18,7 +18,7 @@ const pastEvents: Event[] = [
       website: "https://techsummit2025.com",
     },
     hashtags: ["TechSummit2025", "Innovation"],
-    coverImage: "/event-cover-placeholder.png",
+    // coverImage: "/event-cover-placeholder.png",
     images: [
       "https://source.unsplash.com/800x600/?tech,event",
       "https://source.unsplash.com/800x600/?conference,people",
