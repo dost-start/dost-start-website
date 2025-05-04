@@ -39,12 +39,14 @@ export default function EventCard({
         <div className="flex items-center text-sm text-gray-600 line-clamp-1">
           <Calendar className="w-4 h-4 mr-2 shrink-0" />
           <p className="line-clamp-1">
-            {event.date.toLocaleDateString("en-US", {
-              day: "numeric",
-              month: "long",
-              year: "numeric",
-              weekday: "long",
-            })}
+            {event.date
+              ? event.date.toLocaleDateString("en-US", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                  weekday: "long",
+                })
+              : "TBA"}
           </p>
         </div>
         {eventType === "upcoming" && (
