@@ -11,6 +11,7 @@ import { formatDate } from "@/lib/utils";
 import { Calendar, Clock, Globe, MapPin } from "lucide-react";
 import Image from "next/image";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
+import placeholder from "../../../../public/event-placeholder.png";
 
 export async function generateStaticParams() {
   const pastEventSlugs: string[] = eventsData.pastEvents.map((value) => {
@@ -52,7 +53,7 @@ export default async function page({
         <BackButton className="mb-4" />
         <StartDiv className="p-0 overflow-hidden border-4 w-full">
           <Image
-            src={eventData.coverImage}
+            src={eventData.coverImage ?? placeholder}
             alt="Event Image"
             height={2000}
             width={2000}
@@ -62,15 +63,17 @@ export default async function page({
 
         <section className="my-4">
           <h1 className="font-bold text-2xl">{eventData.title}</h1>
-          <div className="flex flex-wrap items-center gap-2 mt-2">
-            {eventData.tags.map((tag, index) => {
-              return (
-                <Badge variant={"outline"} key={index}>
-                  {tag}
-                </Badge>
-              );
-            })}
-          </div>
+          {eventData.tags && (
+            <div className="flex flex-wrap items-center gap-2 mt-2">
+              {eventData.tags.map((tag, index) => {
+                return (
+                  <Badge variant={"outline"} key={index}>
+                    {tag}
+                  </Badge>
+                );
+              })}
+            </div>
+          )}
         </section>
 
         <section className="space-y-3 mt-6 font-light">
@@ -80,15 +83,19 @@ export default async function page({
           </div>
           <div className="flex">
             <Calendar className="mr-2 shrink-0" strokeWidth={1.5} />{" "}
-            <span>{formatDate(eventData.date)}</span>
+            <span>{eventData.date ? formatDate(eventData.date) : "TBA"}</span>
           </div>
           <div className="flex">
             <Clock className="mr-2 shrink-0" strokeWidth={1.5} />{" "}
-            <span>
-              {eventData.startingTime.toUpperCase() +
-                " - " +
-                eventData.endingTime.toUpperCase()}
-            </span>
+            {eventData.startingTime && eventData.endingTime ? (
+              <span>
+                {eventData.startingTime.toUpperCase() +
+                  " - " +
+                  eventData.endingTime.toUpperCase()}
+              </span>
+            ) : (
+              <span>TBA</span>
+            )}
           </div>
         </section>
 
@@ -101,39 +108,43 @@ export default async function page({
             )}
             <ShareButton />
           </div>
-          <div className="flex mt-4 gap-3 px-1">
-            {eventData.socialLinks.facebook && (
-              <a href={eventData.socialLinks.facebook}>
-                <FaFacebook size={30} />
-              </a>
-            )}
+          {eventData.socialLinks && (
+            <div className="flex mt-4 gap-3 px-1">
+              {eventData.socialLinks.facebook && (
+                <a href={eventData.socialLinks.facebook}>
+                  <FaFacebook size={30} />
+                </a>
+              )}
 
-            {eventData.socialLinks.instagram && (
-              <a href={eventData.socialLinks.instagram}>
-                <FaInstagram size={30} />
-              </a>
-            )}
-            {eventData.socialLinks.website && (
-              <a href={eventData.socialLinks.website}>
-                <Globe size={30} />
-              </a>
-            )}
-          </div>
+              {eventData.socialLinks.instagram && (
+                <a href={eventData.socialLinks.instagram}>
+                  <FaInstagram size={30} />
+                </a>
+              )}
+              {eventData.socialLinks.website && (
+                <a href={eventData.socialLinks.website}>
+                  <Globe size={30} />
+                </a>
+              )}
+            </div>
+          )}
         </section>
 
         <section>
           <h2 className="mt-12 text-xl font-extrabold">About this Event</h2>
           <p className="my-4">{eventData.description}</p>
-          <div className="flex gap-2">
-            {eventData.hashtags.map((value, index) => {
-              return (
-                <span key={value + " " + index} className="font-semibold">
-                  <span className="text-xl">#</span>
-                  {value}
-                </span>
-              );
-            })}
-          </div>
+          {eventData.hashtags && (
+            <div className="flex gap-2">
+              {eventData.hashtags.map((value, index) => {
+                return (
+                  <span key={value + " " + index} className="font-semibold">
+                    <span className="text-xl">#</span>
+                    {value}
+                  </span>
+                );
+              })}
+            </div>
+          )}
         </section>
 
         <section className="mt-16">
@@ -146,7 +157,7 @@ export default async function page({
           </div>
         </section>
 
-        <Gallery images={eventData.images} />
+        {eventData.images && <Gallery images={eventData.images} />}
       </div>
     </MaxLayout>
   );

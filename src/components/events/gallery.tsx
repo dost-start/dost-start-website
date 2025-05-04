@@ -2,7 +2,7 @@ import gallery from "@/lib/events/gallery";
 import Image from "next/image";
 
 function chunkGallery(images: string[]) {
-  const pattern = [1, 2, 3, 2, 1, 3];
+  const pattern = [2, 3, 2, 3];
   const chunks = [];
   let i = 0,
     patternIndex = 0;

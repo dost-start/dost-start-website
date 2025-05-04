@@ -6,6 +6,7 @@ import { ArrowRight, Calendar, MapPin } from "lucide-react";
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
+import placeholder from "../../../public/event-placeholder.png";
 
 export default function EventCard({
   event,
@@ -27,7 +28,7 @@ export default function EventCard({
       onClick={() => router.push(`/events/${event.slug}`)}
     >
       <Image
-        src={event.coverImage}
+        src={event.coverImage ?? placeholder}
         alt={event.title}
         className="w-full h-[55%] object-cover"
         height={200}
@@ -38,12 +39,14 @@ export default function EventCard({
         <div className="flex items-center text-sm text-gray-600 line-clamp-1">
           <Calendar className="w-4 h-4 mr-2 shrink-0" />
           <p className="line-clamp-1">
-            {event.date.toLocaleDateString("en-US", {
-              day: "numeric",
-              month: "long",
-              year: "numeric",
-              weekday: "long",
-            })}
+            {event.date
+              ? event.date.toLocaleDateString("en-US", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                  weekday: "long",
+                })
+              : "TBA"}
           </p>
         </div>
         {eventType === "upcoming" && (
