@@ -55,37 +55,16 @@ export default function AboutUs() {
             </h1>
             <div className="space-y-4">
               <p className="text-justify">
-                Lorem ipsum dolor sit amet consectetur. Tortor ultrices
-                tristique id at donec id. Molestie est neque ac pharetra diam
-                pulvinar augue. Elementum lectus nibh at lacus. Risus enim
-                vivamus sagittis morbi suscipit. Elit gravida tellus blandit
-                magna mauris cras nunc in. Venenatis ornare gravida eu at dolor
-                a nunc. Lorem ipsum dolor sit amet consectetur. Tortor ultrices
-                tristique id at donec id. Molestie est neque ac pharetra diam
-                pulvinar augue. Elementum lectus nibh at lacus. Risus enim
-                vivamus sagittis morbi suscipit. Elit gravida tellus blandit
-                magna mauris cras nunc in.
-              </p>
-              <p className="text-justify">
-                Lorem ipsum dolor sit amet consectetur adipiscing elit. Nulla
-                vitae elit libero, a pharetra augue. Donec sit amet turpis
-                libero. Nam facilisis interdum lorem, eget iaculis risus dapibus
-                sit amet. Nulla facilisi. Curabitur scelerisque nulla ut euismod
-                tincidunt. Lorem ipsum dolor sit amet consectetur adipiscing
-                elit. Nulla vitae elit libero, a pharetra augue. Donec sit amet
-                turpis libero. Nam facilisis interdum lorem, eget iaculis risus
-                dapibus sit amet. Nulla facilisi. Curabitur scelerisque nulla ut
-                euismod tincidunt.
-              </p>
-              <p className="text-justify">
-                Aenean et leo orci. Donec luctus, nulla at venenatis pretium,
-                erat lorem iaculis lorem, eget rhoncus turpis dui non ante.
-                Etiam eu erat at nulla eleifend ullamcorper ac non nunc. Integer
-                tincidunt vehicula quam eu convallis. Aenean et leo orci. Donec
-                luctus, nulla at venenatis pretium, erat lorem iaculis lorem,
-                eget rhoncus turpis dui non ante. Etiam eu erat at nulla
-                eleifend ullamcorper ac non nunc. Integer tincidunt vehicula
-                quam eu convallis.
+                START is a national organization of scholars of the Department
+                of Science and Technology - Science Education Institute
+                (DOST-SEI) committed to bridging the technological gap across
+                the Philippines. Representing all 17 regions, the organization
+                unites scholars with diverse expertise in various tech fields,
+                aiming to foster collaboration, innovation, and regional
+                development. By connecting technology-driven scholars, START
+                creates a dynamic network where members can share knowledge,
+                mentor one another, and drive impactful tech solutions that
+                benefit both local communities and the nation.
               </p>
             </div>
           </div>
@@ -95,18 +74,11 @@ export default function AboutUs() {
               <div className="flex flex-col gap-4">
                 <h2 className="text-2xl md:text-3xl font-semibold">Vision</h2>
                 <p className="text-justify">
-                  Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                  occaecat cupidatat non proident, sunt in culpa qui officia
-                  deserunt mollit anim id est laborum. Etiam eu erat at nulla
-                  eleifend ullamcorper ac non nunc. Integer tincidunt vehicula
-                  quam eu convallis. Ut ullamcorper ultricies lorem, non
-                  accumsan dui tempus ac. Duis aute irure dolor in reprehenderit
-                  in voluptate velit esse cillum dolore eu fugiat nulla
-                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-                  in culpa qui officia deserunt mollit anim id est laborum.
-                  Etiam eu erat at nulla eleifend ullamcorper ac non nunc.
-                  Integer tincidunt vehicula quam eu convallis.
+                  START is dedicated to fostering technological development and
+                  innovation through collaboration among scholars. By promoting
+                  leadership, mentorship, and regional representation, the
+                  organization aims to empower members to drive positive change
+                  across all regions of the Philippines.
                 </p>
               </div>
             </StartDiv>
@@ -137,19 +109,12 @@ export default function AboutUs() {
               <div className="flex flex-col gap-4">
                 <h2 className="text-2xl md:text-3xl font-semibold">Mission</h2>
                 <p className="text-justify">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                  suscipit, leo ac vestibulum fermentum, metus augue luctus
-                  enim, nec venenatis nulla libero at nisl. Mauris at velit et
-                  neque euismod cursus. Cras ut lacus at purus dictum
-                  sollicitudin. Suspendisse varius libero vitae sem euismod, id
-                  efficitur turpis condimentum. Aenean et leo orci. Donec
-                  luctus, nulla at venenatis pretium, erat lorem iaculis lorem.
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                  suscipit, leo ac vestibulum fermentum, metus augue luctus
-                  enim, nec venenatis nulla libero at nisl. Mauris at velit et
-                  neque euismod cursus. Cras ut lacus at purus dictum
-                  sollicitudin. Suspendisse varius libero vitae sem euismod, id
-                  efficitur turpis condimentum. Aenean et leo orci.
+                  We aim to build a future where DOST scholars across the
+                  Philippines are united in a thriving community that fosters
+                  collaboration and drives technological innovation. Through
+                  collective efforts, we envision our scholars becoming key
+                  contributors to the country&apos;s progress, shaping a
+                  technologically advanced and sustainable nation.
                 </p>
               </div>
             </StartDiv>
