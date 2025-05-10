@@ -4,8 +4,65 @@ const department: Department = {
   name: "Executive Leadership",
   tabName: "Executive",
   description:
-    "The Executive Leadership department is responsible for overseeing the strategic direction of the organization, guiding key decisions, and ensuring the alignment of all departments with the organizations goals.",
-  specialOfficers: [],
+    "The Executive Leadership department is responsible for overseeing the strategic direction of the organization, guiding key decisions, and ensuring the alignment of all departments with the organization's goals.",
+  specialOfficers: [
+    {
+      name: "Kristoffe Bien Montelibano",
+      position: "Chief Executive Officer",
+      imageSrc: "https://i.imgur.com/b5Pzi0w.jpeg",
+      socialLinks: {
+        facebook: "https://www.facebook.com/kristoffebien.montelibano.3/",
+        linkedin: "https://www.linkedin.com/in/kristoffe-montelibano-1a66ba2aa/",
+      },
+    },
+    {
+      name: "Winmark Chan",
+      position: "Chief Operations Officer",
+      imageSrc: "https://media1.tenor.com/m/_M07E1kX-DMAAAAC/hammy-brian-hairliners.gif",
+      socialLinks: {},
+    },
+    {
+      name: "Harold James D. Cruz",
+      position: "Chief Technology Officer",
+      imageSrc: "https://i.imgur.com/1Z59Phl.png",
+      socialLinks: {
+        linkedin: "https://www.linkedin.com/in/harome/",
+      },
+    },
+    {
+      name: "Mark Gelson Panganoron",
+      position: "Chief Finance Officer",
+      imageSrc: "https://media1.tenor.com/m/_M07E1kX-DMAAAAC/hammy-brian-hairliners.gif",
+      socialLinks: {
+        facebook: "https://www.facebook.com/markgelson.panganoron.1",
+      },
+    },
+    {
+      name: "Andrei Rouiz Pascual",
+      position: "Chief Communications Officer",
+      imageSrc: "https://media1.tenor.com/m/_M07E1kX-DMAAAAC/hammy-brian-hairliners.gif",
+      socialLinks: {
+        facebook: "https://www.facebook.com/pscl.ndr",
+      },
+    },
+    {
+      name: "Mc Genrev P. Egar",
+      position: "Chief Community Development Officer",
+      imageSrc: "https://media1.tenor.com/m/_M07E1kX-DMAAAAC/hammy-brian-hairliners.gif",
+      socialLinks: {
+        facebook: "https://www.facebook.com/profile.php?id=100006891945256",
+        linkedin: "https://www.linkedin.com/in/mcgenrevegar/",
+      },
+    },
+    {
+      name: "Jesscor P. Fulay",
+      position: "Chief Events Officer",
+      imageSrc: "https://i.imgur.com/NmOFL6j.jpeg",
+      socialLinks: {
+        facebook: "https://www.facebook.com/jesscor.palmafulay",
+      },
+    },
+  ],
   officers: [],
 };
 

@@ -7,93 +7,63 @@ const department: Department = {
     "The Technology Department is responsible for overseeing the development and maintenance of the organization's technological infrastructure, including software development, cybersecurity, and system architecture.",
   specialOfficers: [
     {
-      name: "Ethan Adams",
+      name: "Harold James D. Cruz",
       position: "Chief Technology Officer",
-      imageSrc: "/profile-placeholder.jpg",
+      imageSrc: "https://i.imgur.com/1Z59Phl.png",
       socialLinks: {
-        linkedin: "https://linkedin.com/in/ethanadams",
+        github: "https://github.com/Harome",
+        linkedin: "https://www.linkedin.com/in/harome/",
       },
     },
     {
-      name: "Olivia Clark",
+      name: "John Roice Aldeza",
       position: "Deputy Chief Technology Officer",
-      imageSrc: "/profile-placeholder.jpg",
+      imageSrc: "https://www.roice.xyz/profile.png",
       socialLinks: {
-        twitter: "https://twitter.com/oliviaclark",
-      },
-    },
-    {
-      name: "Liam Turner",
-      position: "Deputy Chief Technology Officer",
-      imageSrc: "/profile-placeholder.jpg",
-      socialLinks: {
-        github: "https://github.com/liamturner",
+        github: "https://github.com/roiceee",
+        linkedin: "https://linkedin.com/in/johnroicealdeza",
+        website: "https://roice.xyz",
       },
     },
   ],
   officers: [
     {
-      name: "Sophia White",
+      name: "John Patrick DP. Ancajas",
       position: "Web Development Lead",
-      imageSrc: "/profile-placeholder.jpg",
+      imageSrc: "https://i.imgur.com/C1QPNZn.png",
       socialLinks: {
-        website: "https://sophiawhite.com",
+        facebook: "https://www.facebook.com/profile.php?id=100082552025420&mibextid=2JQ9oc",
+        github: "https://github.com/JohnPatrickAncajas",
+        linkedin: "www.linkedin.com/in/john-patrick-ancajas",
       },
     },
     {
-      name: "Jackson Brown",
+      name: "Edward Jerome Magtoto",
       position: "Backend Development Lead",
-      imageSrc: "/profile-placeholder.jpg",
+      imageSrc: "https://i.imgur.com/WhsL8Nw.jpeg",
       socialLinks: {
-        linkedin: "https://linkedin.com/in/jacksonbrown",
+        facebook: "https://www.facebook.com/edwardjeromemagtoto/",
+        github: "https://github.com/KingEddeh",
       },
     },
     {
-      name: "Ava Green",
-      position: "UI/UX Lead",
-      imageSrc: "/profile-placeholder.jpg",
+      name: "Rai Peladas",
+      position: "Data and AI Lead",
+      imageSrc: "https://i.imgur.com/3txwSxQ.png",
       socialLinks: {
-        instagram: "https://instagram.com/ava.green",
+        github: "omoraisu (Rai Peladas)",
+        linkedin: "(4) Rai Peladas | LinkedIn",
+        instagram: "onigirai",
       },
     },
     {
-      name: "Ethan Moore",
-      position: "Mobile Development Lead",
-      imageSrc: "/profile-placeholder.jpg",
+      name: "Mark Jayson T. Agao",
+      position: "UI/UX Designer",
+      imageSrc: "https://i.imgur.com/8zmzmoC.png",
       socialLinks: {
-        twitter: "https://twitter.com/ethanmoore",
-      },
-    },
-    {
-      name: "Lily Martinez",
-      position: "Systems Architecture Lead",
-      imageSrc: "/profile-placeholder.jpg",
-      socialLinks: {
-        github: "https://github.com/lilymartinez",
-      },
-    },
-    {
-      name: "Lucas Harris",
-      position: "Cybersecurity Lead",
-      imageSrc: "/profile-placeholder.jpg",
-      socialLinks: {
-        linkedin: "https://linkedin.com/in/lucasharris",
-      },
-    },
-    {
-      name: "Mia Wilson",
-      position: "Data and AI Innovation Lead",
-      imageSrc: "/profile-placeholder.jpg",
-      socialLinks: {
-        website: "https://miawilson.com",
-      },
-    },
-    {
-      name: "Benjamin Lee",
-      position: "DevOps Lead",
-      imageSrc: "/profile-placeholder.jpg",
-      socialLinks: {
-        twitter: "https://twitter.com/benjaminlee",
+        facebook: "Facebook",
+        github: "Mark-Jayson (Mark Jayson Agao)",
+        linkedin: "LinkedIn",
       },
     },
   ],
