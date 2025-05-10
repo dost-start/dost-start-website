@@ -7,53 +7,46 @@ const department: Department = {
     "The Finance Department is responsible for managing the organization's financial planning, budgeting, and procurement processes.",
   specialOfficers: [
     {
-      name: "Ethan Moore",
+      name: "Mark Gelson E. Panganoron",
       position: "Chief Finance Officer",
-      imageSrc: "/profile-placeholder.jpg",
+      imageSrc: "https://media1.tenor.com/m/_M07E1kX-DMAAAAC/hammy-brian-hairliners.gif",
       socialLinks: {
-        linkedin: "https://linkedin.com/in/ethanmoore",
-        twitter: "https://twitter.com/ethanmoore",
+        facebook: "https://www.facebook.com/markgelson.panganoron.1",
       },
     },
     {
-      name: "Sophia Wilson",
+      name: "Al-abass D. Ibrahim",
       position: "Deputy Chief Finance Officer",
-      imageSrc: "/profile-placeholder.jpg",
+      imageSrc: "https://i.imgur.com/u42q3Zv.jpeg",
       socialLinks: {
-        linkedin: "https://linkedin.com/in/sophiawilson",
-        twitter: "https://twitter.com/sophiawilson",
+        facebook: "https://www.facebook.com/abass.ibrahim.0713",
+        github: "https://github.com/yuuwa13",
+        linkedin: "https://www.linkedin.com/in/al-abass-ibrahim-a0865227a/?trk=opento_sprofile_details",
       },
     },
   ],
   officers: [
     {
-      name: "Liam Turner",
+      name: "Muttia Selgas",
       position: "Budget and Accounting Officer",
-      imageSrc: "/profile-placeholder.jpg",
+      imageSrc: "https://i.imgur.com/eQhvSDF.png",
       socialLinks: {
-        linkedin: "https://linkedin.com/in/liamturner",
-        twitter: "https://twitter.com/liamturner",
+        facebook: "https://www.facebook.com/selgas.16",
+        github: "https://github.com/MuttiaSelgas",
+        linkedin: "https://www.linkedin.com/in/muttia-selgas-549350338/",
       },
     },
     {
-      name: "Olivia Carter",
+      name: "Glency Retardo",
       position: "Procurement Officer",
-      imageSrc: "/profile-placeholder.jpg",
+      imageSrc: "https://i.imgur.com/jfhrmtb.png",
       socialLinks: {
-        linkedin: "https://linkedin.com/in/oliviacarter",
-        twitter: "https://twitter.com/oliviacarter",
+        facebook: "https://www.facebook.com/glency.retardo",
+        github: "https://github.com/glencyretardo",
+        linkedin: "www.linkedin.com/in/glency-retardo-4481bb313",
       },
     },
-    {
-      name: "Benjamin Lee",
-      position: "Canvasser",
-      imageSrc: "/profile-placeholder.jpg",
-      socialLinks: {
-        linkedin: "https://linkedin.com/in/benjaminlee",
-        twitter: "https://twitter.com/benjaminlee",
-      },
-    },
-  ],
+  ]
 };
 
 export default department;
