@@ -16,6 +16,14 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "i.imgur.com",
       },
+      {
+        protocol: "https",
+        hostname: "media1.tenor.com",
+      },
+      {
+        protocol: "https",
+        hostname: "www.roice.xyz", // Added this line
+      },
     ],
   },
 };

@@ -7,111 +7,92 @@ const department: Department = {
     "The Events Department is responsible for planning, organizing, and executing events, managing logistics, and ensuring the smooth operation of all activities.",
   specialOfficers: [
     {
-      name: "Ethan Peterson",
+      name: "Jesscor P. Fulay",
       position: "Chief Events Officer",
-      imageSrc: "/profile-placeholder.jpg",
+      imageSrc: "https://i.imgur.com/NmOFL6j.jpeg",
       socialLinks: {
-        linkedin: "https://linkedin.com/in/ethanpeterson",
+        facebook: "https://www.facebook.com/share/194F4izTbf/",
       },
     },
     {
-      name: "Olivia Harris",
+      name: "Kyle Matthew Cordero",
       position: "Deputy Chief Events Officer",
-      imageSrc: "/profile-placeholder.jpg",
+      imageSrc: "https://i.imgur.com/Oq28H8q.png",
       socialLinks: {
-        twitter: "https://twitter.com/oliviaharris",
+        facebook: "https://www.facebook.com/kyle.cordero2",
+        github: "https://github.com/kyelmatt",
+        instagram: "https://www.instagram.com/kymatchuu/",
       },
     },
   ],
   officers: [
     {
-      name: "Charlotte Green",
+      name: "Stella Abigail Verana",
       position: "Program Management Lead",
-      imageSrc: "/profile-placeholder.jpg",
+      imageSrc: "https://i.imgur.com/wehj65B.png",
       socialLinks: {
-        website: "https://charlottegreen.com",
+        facebook: "https://www.facebook.com/share/16CigM5jCj/",
+        instagram: "https://www.instagram.com/stella_verana?igsh=MW1oOHljeGVrcnBwcA==",
       },
     },
     {
-      name: "James Thompson",
-      position: "Event Coordinator",
-      imageSrc: "/profile-placeholder.jpg",
+      name: "Chaeil Meneses",
+      position: "Resource Management Lead",
+      imageSrc: "https://i.imgur.com/v7oMApX.jpeg",
       socialLinks: {
-        instagram: "https://instagram.com/jamesthompson",
+        facebook: "https://www.facebook.com/share/16RSZHX4Mp/?mibextid=wwXIfr",
+        linkedin: "http://www.linkedin.com/in/chaeil-meneses-220337358",
+        instagram: "https://www.instagram.com/crylexia?igsh=Ym0wbm1zYjg2eXBy&utm_source=qr",
       },
     },
     {
-      name: "Liam Mitchell",
-      position: "Logistics Lead",
-      imageSrc: "/profile-placeholder.jpg",
-      socialLinks: {
-        github: "https://github.com/liammitch",
-      },
-    },
-    {
-      name: "Ava Johnson",
-      position: "Resource Management Officer",
-      imageSrc: "/profile-placeholder.jpg",
-      socialLinks: {
-        linkedin: "https://linkedin.com/in/avajohnson",
-      },
-    },
-    {
-      name: "Lucas Brown",
+      name: "Alexandra Princess Panela",
       position: "Technical Lead",
-      imageSrc: "/profile-placeholder.jpg",
+      imageSrc: "https://i.imgur.com/yqa8G2t.png",
       socialLinks: {
-        facebook: "https://facebook.com/lucasbrown",
+        facebook: "https://www.facebook.com/abclexd",
+        linkedin: "https://www.linkedin.com/in/abclexd/",
+        instagram: "https://www.instagram.com/abclexd/",
       },
     },
     {
-      name: "Sophia Carter",
-      position: "Safety Lead",
-      imageSrc: "/profile-placeholder.jpg",
+      name: "Erik James Medallada",
+      position: "Program Manager",
+      imageSrc: "https://i.imgur.com/rEdIviq.jpeg",
       socialLinks: {
-        youtube: "https://youtube.com/sophiacarter",
+        facebook: "https://www.facebook.com/erik.medallada",
+        instagram: "https://www.instagram.com/kireeeeee?igsh=MW94MGJzOG05OHI5bQ==",
       },
     },
     {
-      name: "Benjamin Davis",
-      position: "Venue Officer",
-      imageSrc: "/profile-placeholder.jpg",
+      name: "Honeylet Igot",
+      position: "Program Manager",
+      imageSrc: "https://i.imgur.com/lcigL9w.png",
       socialLinks: {
-        website: "https://benjamindavis.com",
+        facebook: "https://www.facebook.com/honeyletigot",
+        linkedin: "https://www.linkedin.com/in/honeyletigot/",
+        instagram: "https://www.instagram.com/hanyyylet/",
       },
     },
     {
-      name: "Emily Scott",
-      position: "AV Technician",
-      imageSrc: "/profile-placeholder.jpg",
+      name: "Leinn Margarette Lontiong",
+      position: "Events Coordinator",
+      imageSrc: "https://i.imgur.com/w5bCiwo.png",
       socialLinks: {
-        instagram: "https://instagram.com/emilyscott",
+        facebook: "https://www.facebook.com/leinn.lontiong",
+        github: "https://github.com/leinnlontiong",
+        linkedin: "https://www.linkedin.com/in/leinnlontiong/",
       },
     },
-  ],
-  subDepartment: [
     {
-      name: "Public Relations",
-      description:
-        "The Public Relations sub-department is responsible for managing the department's image and communication with the public.",
-      officers: [
-        {
-          name: "Mia Wilson",
-          position: "PR Lead",
-          imageSrc: "/profile-placeholder.jpg",
-          socialLinks: {
-            linkedin: "https://linkedin.com/in/miawilson",
-          },
-        },
-        {
-          name: "Noah Martinez",
-          position: "Media Officer",
-          imageSrc: "/profile-placeholder.jpg",
-          socialLinks: {
-            twitter: "https://twitter.com/noahmartinez",
-          },
-        },
-      ],
+      name: "Joshua Sam Bargola",
+      position: "Resource Officer",
+      imageSrc: "https://i.imgur.com/YhhpbUU.jpeg",
+      socialLinks: {
+        facebook: "https://www.facebook.com/joshua.bargola.9/",
+        linkedin: "https://www.linkedin.com/in/joshua-sam-g-bargola/",
+        instagram: "https://www.instagram.com/joshua19113/",
+      },
     },
   ],
 };
