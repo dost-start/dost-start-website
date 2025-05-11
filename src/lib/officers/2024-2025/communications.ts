@@ -30,7 +30,7 @@ const department: Department = {
     {
       name: "Anthony Karl M. Miranda",
       position: "External Management Officer",
-      imageSrc: "https://media1.tenor.com/m/_M07E1kX-DMAAAAC/hammy-brian-hairliners.gif",
+      imageSrc: "/profile-placeholder.jpg",
       socialLinks: {
         facebook: "https://www.facebook.com/akmrndd",
         linkedin: "https://www.linkedin.com/in/akmrnd/",
@@ -40,7 +40,7 @@ const department: Department = {
     {
       name: "Andrei Rouiz Pascual",
       position: "Chief Communications Officer",
-      imageSrc: "https://media1.tenor.com/m/_M07E1kX-DMAAAAC/hammy-brian-hairliners.gif",
+      imageSrc: "/profile-placeholder.jpg",
       socialLinks: {
         twitter: "https://www.facebook.com/pscl.ndr"
       }
