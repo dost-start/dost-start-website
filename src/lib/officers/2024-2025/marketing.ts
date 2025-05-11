@@ -20,7 +20,7 @@ const department: Department = {
     {
       name: "Dynise Manuelle R. Lira",
       position: "Deputy Chief Marketing Officer",
-      imageSrc: "https://media1.tenor.com/m/_M07E1kX-DMAAAAC/hammy-brian-hairliners.gif",
+      imageSrc: "/profile-placeholder.jpg",
       socialLinks: {
         facebook: "https://www.facebook.com/dynise.lira",
         github: "https://github.com/theniecelira",

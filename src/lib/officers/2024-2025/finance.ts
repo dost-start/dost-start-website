@@ -9,7 +9,7 @@ const department: Department = {
     {
       name: "Mark Gelson E. Panganoron",
       position: "Chief Finance Officer",
-      imageSrc: "https://media1.tenor.com/m/_M07E1kX-DMAAAAC/hammy-brian-hairliners.gif",
+      imageSrc: "/profile-placeholder.jpg",
       socialLinks: {
         facebook: "https://www.facebook.com/markgelson.panganoron.1",
       },

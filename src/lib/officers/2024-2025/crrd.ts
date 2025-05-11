@@ -9,7 +9,7 @@ const department: Department = {
     {
       name: "Mc Genrev P. Egar",
       position: "Chief Community Development Officer",
-      imageSrc: "https://media1.tenor.com/m/_M07E1kX-DMAAAAC/hammy-brian-hairliners.gif",
+      imageSrc: "/profile-placeholder.jpg",
       socialLinks: {
         facebook: "https://www.facebook.com/profile.php?id=100006891945256",
         linkedin: "https://www.linkedin.com/in/mcgenrevegar/",
@@ -71,7 +71,7 @@ const department: Department = {
     {
       name: "Sean Kyron Z. Briones",
       position: "Region 4A Representative",
-      imageSrc: "https://media1.tenor.com/m/_M07E1kX-DMAAAAC/hammy-brian-hairliners.gif",
+      imageSrc: "/profile-placeholder.jpg",
       socialLinks: {
         facebook: "facebook.com/seankyronbriones",
         github: "github.com/Seankyron",
@@ -91,7 +91,7 @@ const department: Department = {
     {
       name: "Marianne Charesse C. Cali",
       position: "Region 1 Representative",
-      imageSrc: "https://media1.tenor.com/m/_M07E1kX-DMAAAAC/hammy-brian-hairliners.gif",
+      imageSrc: "/profile-placeholder.jpg",
       socialLinks: {
         facebook: "https://www.facebook.com/mares.cali",
         instagram: "instagram.com/po_0r_",
@@ -118,7 +118,7 @@ const department: Department = {
     {
       name: "Abby Gail N. Aguas",
       position: "Research and Development Assistant Lead",
-      imageSrc: "https://media1.tenor.com/m/_M07E1kX-DMAAAAC/hammy-brian-hairliners.gif",
+      imageSrc: "/profile-placeholder.jpg",
       socialLinks: {
         facebook: "https://www.facebook.com/share/15Y5goWCdh/?mibextid=wwXIfr",
         instagram: "https://www.instagram.com/mlemlou",
