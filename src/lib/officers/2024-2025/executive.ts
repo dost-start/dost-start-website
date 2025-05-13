@@ -9,10 +9,12 @@ const department: Department = {
     {
       name: "Kristoffe Bien Montelibano",
       position: "Chief Executive Officer",
-      imageSrc: "https://i.imgur.com/b5Pzi0w.jpeg",
+      imageSrc:
+        "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747125579/b5Pzi0w_cqh6ji.jpg",
       socialLinks: {
         facebook: "https://www.facebook.com/kristoffebien.montelibano.3/",
-        linkedin: "https://www.linkedin.com/in/kristoffe-montelibano-1a66ba2aa/",
+        linkedin:
+          "https://www.linkedin.com/in/kristoffe-montelibano-1a66ba2aa/",
       },
     },
     {
@@ -24,7 +26,8 @@ const department: Department = {
     {
       name: "Harold James D. Cruz",
       position: "Chief Technology Officer",
-      imageSrc: "https://i.imgur.com/1Z59Phl.png",
+      imageSrc:
+        "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747125612/1Z59Phl_djasyh.png",
       socialLinks: {
         linkedin: "https://www.linkedin.com/in/harome/",
       },
@@ -57,7 +60,8 @@ const department: Department = {
     {
       name: "Jesscor P. Fulay",
       position: "Chief Events Officer",
-      imageSrc: "https://i.imgur.com/NmOFL6j.jpeg",
+      imageSrc:
+        "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747125639/NmOFL6j_dngx3d.jpg",
       socialLinks: {
         facebook: "https://www.facebook.com/jesscor.palmafulay",
       },

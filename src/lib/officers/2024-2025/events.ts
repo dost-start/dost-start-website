@@ -9,7 +9,8 @@ const department: Department = {
     {
       name: "Jesscor P. Fulay",
       position: "Chief Events Officer",
-      imageSrc: "https://i.imgur.com/NmOFL6j.jpeg",
+      imageSrc:
+        "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747126128/NmOFL6j_ur3q3x.jpg",
       socialLinks: {
         facebook: "https://www.facebook.com/share/194F4izTbf/",
       },
@@ -17,7 +18,8 @@ const department: Department = {
     {
       name: "Kyle Matthew Cordero",
       position: "Deputy Chief Events Officer",
-      imageSrc: "https://i.imgur.com/Oq28H8q.png",
+      imageSrc:
+        "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747126149/Oq28H8q_vry66a.png",
       socialLinks: {
         facebook: "https://www.facebook.com/kyle.cordero2",
         github: "https://github.com/kyelmatt",
@@ -29,26 +31,31 @@ const department: Department = {
     {
       name: "Stella Abigail Verana",
       position: "Program Management Lead",
-      imageSrc: "https://i.imgur.com/wehj65B.png",
+      imageSrc:
+        "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747126170/wehj65B_cpippd.png",
       socialLinks: {
         facebook: "https://www.facebook.com/share/16CigM5jCj/",
-        instagram: "https://www.instagram.com/stella_verana?igsh=MW1oOHljeGVrcnBwcA==",
+        instagram:
+          "https://www.instagram.com/stella_verana?igsh=MW1oOHljeGVrcnBwcA==",
       },
     },
     {
       name: "Chaeil Meneses",
       position: "Resource Management Lead",
-      imageSrc: "https://i.imgur.com/v7oMApX.jpeg",
+      imageSrc:
+        "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747126188/v7oMApX_idfxfj.jpg",
       socialLinks: {
         facebook: "https://www.facebook.com/share/16RSZHX4Mp/?mibextid=wwXIfr",
         linkedin: "http://www.linkedin.com/in/chaeil-meneses-220337358",
-        instagram: "https://www.instagram.com/crylexia?igsh=Ym0wbm1zYjg2eXBy&utm_source=qr",
+        instagram:
+          "https://www.instagram.com/crylexia?igsh=Ym0wbm1zYjg2eXBy&utm_source=qr",
       },
     },
     {
       name: "Alexandra Princess Panela",
       position: "Technical Lead",
-      imageSrc: "https://i.imgur.com/yqa8G2t.png",
+      imageSrc:
+        "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747126207/yqa8G2t_dhuuzc.png",
       socialLinks: {
         facebook: "https://www.facebook.com/abclexd",
         linkedin: "https://www.linkedin.com/in/abclexd/",
@@ -58,16 +65,19 @@ const department: Department = {
     {
       name: "Erik James Medallada",
       position: "Program Manager",
-      imageSrc: "https://i.imgur.com/rEdIviq.jpeg",
+      imageSrc:
+        "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747126227/rEdIviq_xec9b8.jpg",
       socialLinks: {
         facebook: "https://www.facebook.com/erik.medallada",
-        instagram: "https://www.instagram.com/kireeeeee?igsh=MW94MGJzOG05OHI5bQ==",
+        instagram:
+          "https://www.instagram.com/kireeeeee?igsh=MW94MGJzOG05OHI5bQ==",
       },
     },
     {
       name: "Honeylet Igot",
       position: "Program Manager",
-      imageSrc: "https://i.imgur.com/lcigL9w.png",
+      imageSrc:
+        "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747126244/lcigL9w_bmkaua.png",
       socialLinks: {
         facebook: "https://www.facebook.com/honeyletigot",
         linkedin: "https://www.linkedin.com/in/honeyletigot/",
@@ -77,7 +87,8 @@ const department: Department = {
     {
       name: "Leinn Margarette Lontiong",
       position: "Events Coordinator",
-      imageSrc: "https://i.imgur.com/w5bCiwo.png",
+      imageSrc:
+        "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747126261/w5bCiwo_ztcehl.png",
       socialLinks: {
         facebook: "https://www.facebook.com/leinn.lontiong",
         github: "https://github.com/leinnlontiong",
@@ -87,7 +98,8 @@ const department: Department = {
     {
       name: "Joshua Sam Bargola",
       position: "Resource Officer",
-      imageSrc: "https://i.imgur.com/YhhpbUU.jpeg",
+      imageSrc:
+        "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747126279/YhhpbUU_uiqe3t.jpg",
       socialLinks: {
         facebook: "https://www.facebook.com/joshua.bargola.9/",
         linkedin: "https://www.linkedin.com/in/joshua-sam-g-bargola/",
