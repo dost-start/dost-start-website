@@ -17,11 +17,13 @@ const department: Department = {
     {
       name: "Al-abass D. Ibrahim",
       position: "Deputy Chief Finance Officer",
-      imageSrc: "https://i.imgur.com/u42q3Zv.jpeg",
+      imageSrc:
+        "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747126310/u42q3Zv_pm4lcv.jpg",
       socialLinks: {
         facebook: "https://www.facebook.com/abass.ibrahim.0713",
         github: "https://github.com/yuuwa13",
-        linkedin: "https://www.linkedin.com/in/al-abass-ibrahim-a0865227a/?trk=opento_sprofile_details",
+        linkedin:
+          "https://www.linkedin.com/in/al-abass-ibrahim-a0865227a/?trk=opento_sprofile_details",
       },
     },
   ],
@@ -29,7 +31,8 @@ const department: Department = {
     {
       name: "Muttia Selgas",
       position: "Budget and Accounting Officer",
-      imageSrc: "https://i.imgur.com/eQhvSDF.png",
+      imageSrc:
+        "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747126337/eQhvSDF_qihxcq.png",
       socialLinks: {
         facebook: "https://www.facebook.com/selgas.16",
         github: "https://github.com/MuttiaSelgas",
@@ -39,14 +42,15 @@ const department: Department = {
     {
       name: "Glency Retardo",
       position: "Procurement Officer",
-      imageSrc: "https://i.imgur.com/jfhrmtb.png",
+      imageSrc:
+        "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747126359/jfhrmtb_oyjaci.png",
       socialLinks: {
         facebook: "https://www.facebook.com/glency.retardo",
         github: "https://github.com/glencyretardo",
         linkedin: "www.linkedin.com/in/glency-retardo-4481bb313",
       },
     },
-  ]
+  ],
 };
 
 export default department;
