@@ -83,12 +83,15 @@ export default function HomePage() {
                       Events
                     </h2>
                     <p className="text-justify mb-6 md:mb-8 text-sm md:text-base">
-                      Lorem ipsum dolor sit amet consectetur. Tortor ultrices
-                      tristique id at donec id. Molestie est neque ac pharetra
-                      diam pulvinar augue. Elementum lectus nibh at lacus. Risus
-                      enim vivamus sagittis morbi suscipit. Elit gravida tellus
-                      blandit magna mauris cras nunc in. Venenatis ornare
-                      gravida eu at dolor a nunc.
+                      At START, we believe that meaningful collaboration begins
+                      with shared experiences. Our events are designed to
+                      connect scholars, ignite curiosity, and foster innovation
+                      across all regions of the Philippines. From national
+                      summits and research forums to regional workshops and
+                      community engagements, each gathering is a step toward
+                      transforming the future through technology and research.
+                      Join us as we build a culture of leadership, learning, and
+                      impact.
                     </p>
                     <div>
                       <Link href="/events">
@@ -160,11 +163,15 @@ export default function HomePage() {
                 Officers
               </h2>
               <p className="text-justify mb-6 md:mb-8 text-sm md:text-base">
-                Lorem ipsum dolor sit amet consectetur. Tortor ultrices
-                tristique id at donec id. Molestie est neque ac pharetra diam
-                pulvinar augue. Elementum lectus nibh at lacus. Risus enim
-                vivamus sagittis morbi suscipit. Elit gravida tellus blandit
-                magna mauris cras nunc in.
+                A group of enthusiastic and motivated DOST-SEI scholars
+                committed to service and excellence are the driving force behind
+                each START milestone. From department heads to the C-Suite, our
+                officials uphold our dedication to regional empowerment,
+                innovation, and inclusion. As the backbone of START, they are
+                united by our objective and make sure that every activity is in
+                line with our strategic vision and core values. Get to know the
+                people driving the shift to a more intelligent and cohesive
+                academic community.
               </p>
               <div>
                 <Link href="/officers" className="font-medium">
@@ -190,14 +197,12 @@ export default function HomePage() {
             <div className="md:col-span-2">
               <h2 className="font-orbitron text-3xl mb-8">Contact Us</h2>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Explicabo illo architecto tenetur hic placeat eos praesentium
-                dolorum quam, similique quia maxime harum quaerat? Atque
-                doloremque quod amet, asperiores quidem est. Lorem ipsum dolor
-                sit amet consectetur adipisicing elit. Explicabo illo architecto
-                tenetur hic placeat eos praesentium dolorum quam, similique quia
-                maxime harum quaerat? Atque doloremque quod amet, asperiores
-                quidem est.
+                Have questions, suggestions, or opportunities to collaborate?
+                We’d love to hear from you! Whether you&apos;re a fellow
+                scholar, potential partner, or simply curious about what we do,
+                START is always open to conversation. Reach out to us to learn
+                more about our programs, partnerships, or how you can be part of
+                this transformative journey.
               </p>
               <Link href="/contact-us">
                 <Button className="my-6" variant={"accent"} size={"xl"}>
