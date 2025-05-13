@@ -20,10 +20,12 @@ export default function page() {
               Reach Us!
             </h2>
             <p className="hidden lg:block">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt,
-              provident? Molestias in expedita et. Vero iusto temporibus eum
-              reiciendis molestias quaerat quo obcaecati ad. Ipsam numquam optio
-              reiciendis dignissimos doloremque.
+              At START, we believe in the power of meaningful connections.
+              Whether you&apos;re a scholar with a big idea, a partner
+              interested in collaboration, or a curious visitor wanting to know
+              more, we&apos;re here to listen. Reach out and let’s work together
+              to build a future driven by innovation, leadership, and unity
+              among Filipino tech scholars.
             </p>
           </div>
         </section>
@@ -42,10 +44,10 @@ export default function page() {
             <div className="z-10">
               <h2 className="text-3xl font-bold mb-4">Contact Information</h2>
               <p className="mb-8">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Explicabo illo architecto tenetur hic placeat eos praesentium
-                dolorum quam, similique quia maxime harum quaerat? Atque
-                doloremque quod amet, asperiores quidem est.
+                We&apos;re always one message away! For inquiries, partnerships,
+                or feedback, feel free to connect with us through any of our
+                official channels. Let’s start a conversation and explore new
+                possibilities for growth, leadership, and innovation together!
               </p>
               <ul className="space-y-2">
                 {socialLinks.map(({ icon: Icon, text, link }) => (
