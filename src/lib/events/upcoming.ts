@@ -2,7 +2,8 @@ import Event from "@/types/eventType";
 
 const upcomingEvents: Event[] = [
   {
-    title: "STARTer Workshops: “Equipping Techno-Scholars to Innovate, Pitch, and Lead”",
+    title:
+      "STARTer Workshops: “Equipping Techno-Scholars to Innovate, Pitch, and Lead”",
     slug: "starter-workshops-2025",
     tags: [],
     description:
@@ -11,17 +12,18 @@ const upcomingEvents: Event[] = [
     date: new Date("2025-05-01"),
     startingTime: "",
     endingTime: "",
-    registrationLink: "", 
+    registrationLink: "",
     socialLinks: {
       facebook: "",
       instagram: "",
       website: "",
     },
     hashtags: [],
-    coverImage: "/event-cover-placeholder.png",
+    coverImage: "/event-placeholder.png",
   },
   {
-    title: "KickSTART Mindanao: “Scholars Bridging Vision and Innovation for Technological Transformation.”",
+    title:
+      "KickSTART Mindanao: “Scholars Bridging Vision and Innovation for Technological Transformation.”",
     slug: "kickstart-mindanao-2025",
     tags: [],
     description:
@@ -37,10 +39,10 @@ const upcomingEvents: Event[] = [
       website: "",
     },
     hashtags: [],
-    coverImage: "/event-cover-placeholder.png",
+    coverImage: "/event-placeholder.png",
   },
   {
-    title: "START-Up Hackathon: \"Imagine, Innovate, and Impact the Nation\"",
+    title: 'START-Up Hackathon: "Imagine, Innovate, and Impact the Nation"',
     slug: "start-up-hackathon-2025",
     tags: [],
     description:
@@ -56,10 +58,11 @@ const upcomingEvents: Event[] = [
       website: "",
     },
     hashtags: [],
-    coverImage: "/event-cover-placeholder.png",
+    coverImage: "/event-placeholder.png",
   },
   {
-    title: "National Technovation Summit: “United to Innovate: Empowering Tomorrow’s Technovators”",
+    title:
+      "National Technovation Summit: “United to Innovate: Empowering Tomorrow’s Technovators”",
     slug: "national-technovation-summit-2025",
     tags: [],
     description:
@@ -75,7 +78,7 @@ const upcomingEvents: Event[] = [
       website: "",
     },
     hashtags: [],
-    coverImage: "/event-cover-placeholder.png",
+    coverImage: "/event-placeholder.png",
   },
   {
     title: "START FeBER",
@@ -94,8 +97,8 @@ const upcomingEvents: Event[] = [
       website: "",
     },
     hashtags: [],
-    coverImage: "/event-cover-placeholder.png",
-  }, 
+    coverImage: "/event-placeholder.png",
+  },
   {
     title: "START Monthly Talks",
     slug: "start-monthly-talks-2025",
@@ -113,9 +116,8 @@ const upcomingEvents: Event[] = [
       website: "",
     },
     hashtags: [],
-    coverImage: "/event-cover-placeholder.png",
-  }
-  
+    coverImage: "/event-placeholder.png",
+  },
 ];
 
 export default upcomingEvents;
