@@ -7,6 +7,11 @@ import { Button } from "@/components/ui/button";
 import MaxLayout from "@/components/MaxLayout";
 import officerImage from "../../public/officers.png";
 import { Metadata } from "next";
+import contactImage from "../../public/contact-image.png";
+import logo_s from "../../public/logo-s.png";
+import homeEventsImage1 from "../../public/home-events-image1.png";
+import homeEventsImage2 from "../../public/home-events-image2.png";
+import homeEventsImage3 from "../../public/home-events-image3.png";
 
 export const metadata: Metadata = {
   alternates: {
@@ -20,7 +25,7 @@ export default function HomePage() {
       <section className="relative w-full px-4">
         <div className="relative m-auto w-full h-[40vh] md:h-[55vh] rounded-b-3xl md:rounded-b-[5rem] mx-auto">
           <Image
-            src="/contact-image.png"
+            src={contactImage}
             alt="DOST START group photo"
             fill
             className="object-cover rounded-b-3xl md:rounded-b-[5rem] absolute"
@@ -33,7 +38,7 @@ export default function HomePage() {
           <div className="absolute left-1/2 bottom-0 translate-x-[-50%] translate-y-1/2 w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 bg-white rounded-full flex items-start justify-center overflow-hidden z-10">
             <div className="relative w-3/5 h-3/5 mt-4">
               <Image
-                src="/logo-s.png"
+                src={logo_s}
                 alt="START Logo"
                 fill
                 className="object-contain"
@@ -115,7 +120,7 @@ export default function HomePage() {
                     <div className="grid grid-cols-2 gap-2 md:gap-4">
                       <div className="relative aspect-[4/3]">
                         <Image
-                          src="/home-events-image1.png"
+                          src={homeEventsImage1}
                           alt="Event 1"
                           fill
                           className="object-cover rounded-lg border-4 border-black"
@@ -124,7 +129,7 @@ export default function HomePage() {
                       </div>
                       <div className="relative aspect-[4/3]">
                         <Image
-                          src="/home-events-image2.png"
+                          src={homeEventsImage2}
                           alt="Event 2"
                           fill
                           className="object-cover rounded-lg border-4 border-black"
@@ -133,7 +138,7 @@ export default function HomePage() {
                       </div>
                       <div className="relative aspect-[16/9] col-span-2 mt-2">
                         <Image
-                          src="/home-events-image3.png"
+                          src={homeEventsImage3}
                           alt="Event 3"
                           fill
                           className="object-cover rounded-lg border-4 border-black"
