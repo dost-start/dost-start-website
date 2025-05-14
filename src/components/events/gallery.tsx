@@ -2,7 +2,7 @@ import gallery from "@/lib/events/gallery";
 import Image from "next/image";
 
 function chunkGallery(images: string[]) {
-  const pattern = [2, 3, 2, 3];
+  const pattern = [2];
   const chunks = [];
   let i = 0,
     patternIndex = 0;
@@ -35,10 +35,9 @@ export default function Gallery({
                 key={`gallery-img-${chunkIndex}-${imageIndex}`}
                 src={image}
                 alt={image || `Gallery image ${chunkIndex}-${imageIndex}`}
-                width={300}
-                height={200}
-                className="rounded-lg shadow-lg w-full object-cover"
-                style={{ aspectRatio: "16/9" }}
+                width={500}
+                height={500}
+                className="rounded-lg shadow-lg w-full object-contain max-w-[500px]"
               />
             ))}
           </div>
