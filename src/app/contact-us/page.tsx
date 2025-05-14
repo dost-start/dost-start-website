@@ -9,6 +9,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Contact Us",
+  description: `Get in touch with START for inquiries, feedback, or collaboration. We are eager to hear from you and look forward to building connections that foster innovation, leadership, and growth within the Filipino tech community.`,
   openGraph: {
     description: `Get in touch with START for inquiries, feedback, or collaboration. We are eager to hear from you and look forward to building connections that foster innovation, leadership, and growth within the Filipino tech community.`,
     url: `${process.env.WEBSITE_DOMAIN_URL}/contact`,
