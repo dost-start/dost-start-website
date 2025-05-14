@@ -62,14 +62,10 @@ export default function EventCard({
         )}
       </CardContent>
       <CardFooter className="-ml-2 md:absolute md:bottom-0">
-        <Button asChild>
-          <a
-            href={event.registrationLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+        <Button asChild onClick={() => router.push(`/events/${event.slug}`)}>
+          <span>
             Learn More <ArrowRight />
-          </a>
+          </span>
         </Button>
       </CardFooter>
     </Card>
