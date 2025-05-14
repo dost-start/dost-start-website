@@ -2,6 +2,7 @@ import PageTitle from "@/components/PageTitle";
 import StartDiv from "@/components/StartDiv";
 import { Metadata } from "next";
 import Image from "next/image";
+import contactImage from "../../../public/contact-image.png";
 
 export const metadata: Metadata = {
   title: "About",
@@ -43,11 +44,12 @@ export default function AboutUs() {
           <div className="md:col-span-2 order-2 md:order-1">
             <div className="relative w-full aspect-[16/9]">
               <Image
-                src="/contact-image.png"
+                src={contactImage}
                 alt="DOST START group photo"
                 fill
                 className="object-cover rounded-bl-[3rem] rounded-tr-[3rem] shadow-[0rem_0rem_1rem_rgba(0,0,0,0.8)]"
                 sizes="(max-width: 768px) 100vw, 66vw"
+                placeholder="blur"
                 priority
               />
             </div>
