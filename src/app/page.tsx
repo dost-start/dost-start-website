@@ -6,6 +6,13 @@ import StartDiv from "@/components/StartDiv";
 import { Button } from "@/components/ui/button";
 import MaxLayout from "@/components/MaxLayout";
 import officerImage from "../../public/officers.png";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: process.env.WEBSITE_DOMAIN_URL,
+  },
+};
 
 export default function HomePage() {
   return (

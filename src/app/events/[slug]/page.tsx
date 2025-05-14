@@ -12,6 +12,58 @@ import { Calendar, Clock, Globe, MapPin } from "lucide-react";
 import Image from "next/image";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 import placeholder from "../../../../public/event-placeholder.png";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+
+  // Find the event based on the slug (from either past or upcoming events)
+  const event =
+    eventsData.pastEvents.find((e) => e.slug === slug) ||
+    eventsData.upcomingEvents.find((e) => e.slug === slug);
+
+  if (!event) {
+    return {
+      title: "Event Not Found",
+      description: "The event you are looking for could not be found.",
+      robots: { index: false, follow: false },
+    };
+  }
+
+  const title = `DOST START - ${event.title}`;
+  const description =
+    event.description || `Join us for the event: ${event.title}`;
+
+  const imageUrl =
+    event.coverImage ??
+    "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747205126/KickSTART_Luzon__25_12_x8pc8p.jpg";
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: `${process.env.WEBSITE_DOMAIN_URL}/events/${slug}`,
+      siteName: "DOST START",
+      images: [
+        {
+          url: imageUrl,
+          alt: event.title,
+        },
+      ],
+      locale: "en_US",
+      type: "website",
+    },
+    alternates: {
+      canonical: `${process.env.WEBSITE_DOMAIN_URL}/events/${slug}`,
+    },
+  };
+}
 
 export async function generateStaticParams() {
   const pastEventSlugs: string[] = eventsData.pastEvents.map((value) => {

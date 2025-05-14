@@ -5,7 +5,8 @@ const department: Department = {
   tabName: "Executive",
   description:
     "The Executive Leadership department is responsible for overseeing the strategic direction of the organization, guiding key decisions, and ensuring the alignment of all departments with the organization's goals.",
-  specialOfficers: [
+  specialOfficers: [],
+  officers: [
     {
       name: "Kristoffe Bien Montelibano",
       position: "Chief Executive Officer",
@@ -51,7 +52,8 @@ const department: Department = {
     {
       name: "Mc Genrev P. Egar",
       position: "Chief Community Development Officer",
-      imageSrc: "/profile-placeholder.jpg",
+      imageSrc:
+        "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747228045/EGAR_MC_GENREV_CCDO_a1s4li.jpg",
       socialLinks: {
         facebook: "https://www.facebook.com/profile.php?id=100006891945256",
         linkedin: "https://www.linkedin.com/in/mcgenrevegar/",
@@ -67,7 +69,6 @@ const department: Department = {
       },
     },
   ],
-  officers: [],
 };
 
 export default department;

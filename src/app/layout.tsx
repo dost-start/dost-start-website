@@ -6,9 +6,87 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "START",
-  description:
-    "START (Scholars Transforming Advancement and Research for Technology) is a national organization of DOST-SEI scholars dedicated to bridging the technological gap in the Philippines through collaboration, innovation, and mentorship.",
+  title: {
+    template: "%s | DOST START",
+    default: "DOST START",
+  },
+  description: `START is a national organization of scholars of the Department
+                of Science and Technology - Science Education Institute
+                (DOST-SEI) committed to bridging the technological gap across
+                the Philippines. Representing all 17 regions, the organization
+                unites scholars with diverse expertise in various tech fields,
+                aiming to foster collaboration, innovation, and regional
+                development. By connecting technology-driven scholars, START
+                creates a dynamic network where members can share knowledge,
+                mentor one another, and drive impactful tech solutions that
+                benefit both local communities and the nation.`,
+  metadataBase: new URL(process.env.WEBSITE_DOMAIN_URL ?? ""),
+  referrer: "origin-when-cross-origin",
+  keywords: [
+    "DOST",
+    "START",
+    "scholars",
+    "technology",
+    "innovation",
+    "Philippines",
+  ],
+  authors: [
+    {
+      name: "DOST START Team",
+      url: "",
+    },
+    {
+      name: "John Roice Aldeza",
+      url: "https://roice.xyz",
+    },
+    {
+      name: "Harold James Cruz",
+      url: "https://www.linkedin.com/in/harome/",
+    },
+    {
+      name: "Rai Peladas",
+      url: "https://www.linkedin.com/in/rai-peladas/",
+    },
+    {
+      name: "Edward Jerome Magtoto",
+      url: "https://github.com/KingEddeh",
+    },
+    {
+      name: "John Patrick DP. Ancajas",
+      url: "https://www.linkedin.com/in/john-patrick-ancajas",
+    },
+    {
+      name: "Mark Jayson T. Agao",
+      url: "https://www.linkedin.com/in/mark-jayson-agao/",
+    },
+  ],
+  creator: "DOST START",
+  publisher: "DOST START",
+  openGraph: {
+    title: "DOST START",
+    description: `START is a national organization of scholars of the Department
+                of Science and Technology - Science Education Institute
+                (DOST-SEI) committed to bridging the technological gap across
+                the Philippines. Representing all 17 regions, the organization
+                unites scholars with diverse expertise in various tech fields,
+                aiming to foster collaboration, innovation, and regional
+                development. By connecting technology-driven scholars, START
+                creates a dynamic network where members can share knowledge,
+                mentor one another, and drive impactful tech solutions that
+                benefit both local communities and the nation.`,
+    siteName: "DOST START",
+    url: process.env.WEBSITE_DOMAIN_URL,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1080,
+        height: 1080,
+        alt: "DOST START",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

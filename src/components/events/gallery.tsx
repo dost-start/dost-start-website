@@ -37,7 +37,7 @@ export default function Gallery({
                 alt={image || `Gallery image ${chunkIndex}-${imageIndex}`}
                 width={500}
                 height={500}
-                className="rounded-lg shadow-lg w-full object-contain max-w-[500px]"
+                className="rounded-lg shadow-lg w-full object-contain max-w-[600px]"
               />
             ))}
           </div>

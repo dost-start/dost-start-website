@@ -10,9 +10,56 @@ import {
 } from "@/components/ui/select";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import officerBatchYears from "@/lib/officers";
+import { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string[] }>;
+}): Promise<Metadata> {
+  const [year, department] = (await params).slug;
+
+  const batch = officerBatchYears.batchYears.find((b) => b.year === year);
+  const dept = batch?.departments.find((d) => d.tabName === department);
+
+  if (!batch || !dept) {
+    return {
+      title: "Officers - Not Found",
+      description:
+        "The requested officer batch or department could not be found.",
+      robots: { index: false, follow: false },
+    };
+  }
+
+  const title = `DOST START Officers ${year} - ${dept.name}`;
+  const description = `Meet the officers of the ${dept.name} department for batch ${year}. ${dept.description}`;
+
+  const imageUrl = "/officers.png";
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: `${process.env.WEBSITE_DOMAIN_URL}/officers/${year}/${department}`,
+      siteName: "DOST START",
+      images: [
+        {
+          url: imageUrl,
+          alt: `${dept.name} - Officers ${year}`,
+        },
+      ],
+      locale: "en_US",
+      type: "website",
+    },
+    alternates: {
+      canonical: `${process.env.WEBSITE_DOMAIN_URL}/officers/${year}/${department}`,
+    },
+  };
+}
 export async function generateStaticParams() {
   const years = officerBatchYears;
 
@@ -105,7 +152,7 @@ export default async function page({
 
           {currentDepartment.specialOfficers.length > 0 && (
             <section className="mt-14">
-              <div className="flex flex-wrap justify-center gap-40 w-full max-w-6xl mx-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-8 w-full max-w-6xl mx-auto place-content-center">
                 {currentDepartment.specialOfficers.map((officer) => (
                   <OfficerCard key={officer.name} officer={officer} />
                 ))}
@@ -114,7 +161,7 @@ export default async function page({
           )}
 
           <section className="mt-14">
-            <div className="flex flex-wrap justify-center gap-30 w-full max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-8 w-full max-w-6xl mx-auto place-content-center">
               {currentDepartment.officers.map((officer) => (
                 <OfficerCard key={officer.name} officer={officer} />
               ))}
@@ -126,9 +173,11 @@ export default async function page({
               <section className="mt-14">
                 {currentDepartment.subDepartment.map((subDept) => (
                   <div key={subDept.name} className="mt-8">
-                    <h4 className="text-lg font-semibold">{subDept.name}</h4>
-                    <p className="mt-2">{subDept.description}</p>
-                    <div className="flex flex-wrap justify-center gap-30 w-full max-w-6xl mx-auto mt-4">
+                    <h4 className="text-lg font-semibold text-center">
+                      {subDept.name}
+                    </h4>
+                    <p className="mt-2 text-center">{subDept.description}</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-8 w-full max-w-6xl mx-auto mt-4 place-content-center">
                       {subDept.officers.map((officer) => (
                         <OfficerCard key={officer.name} officer={officer} />
                       ))}
