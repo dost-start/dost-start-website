@@ -63,7 +63,9 @@ export default function EventCard({
       </CardContent>
       <CardFooter className="-ml-2 md:absolute md:bottom-0">
         <Button asChild onClick={() => router.push(`/events/${event.slug}`)}>
-          Learn More <ArrowRight />
+          <span>
+            Learn More <ArrowRight />
+          </span>
         </Button>
       </CardFooter>
     </Card>
