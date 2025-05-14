@@ -8,6 +8,7 @@ const gallery: string[] = [
   "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747205123/KickSTART_Luzon__25_06B_n9kl8d.jpg",
   "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747205123/KickSTART_Luzon__25_07_zvyqoy.jpg",
   "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747205123/KickSTART_Luzon__25_01_muemsb.jpg",
+  "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747205126/KickSTART_Luzon__25_12_x8pc8p.jpg",
 ];
 
 export default gallery;
