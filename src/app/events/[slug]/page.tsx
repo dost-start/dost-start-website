@@ -147,17 +147,23 @@ export default async function page({
           )}
         </section>
 
-        <section className="mt-16">
-          <div className="flex gap-2 items-center mb-4">
-            <h2 className="text-xl font-extrabold shrink-0 ">Event Gallery</h2>
-            <StartDivider variant="accent" width="20%" />
-            <StartDivider variant="accent" />
-            <StartDivider variant="accent" />
-            <StartDivider variant="accent" width="10%" />
-          </div>
-        </section>
+        {eventData.images && (
+          <>
+            <section className="mt-16">
+              <div className="flex gap-2 items-center mb-4">
+                <h2 className="text-xl font-extrabold shrink-0 ">
+                  Event Gallery
+                </h2>
+                <StartDivider variant="accent" width="20%" />
+                <StartDivider variant="accent" />
+                <StartDivider variant="accent" />
+                <StartDivider variant="accent" width="10%" />
+              </div>
+            </section>
 
-        {eventData.images && <Gallery images={eventData.images} />}
+            <Gallery images={eventData.images} />
+          </>
+        )}
       </div>
     </MaxLayout>
   );
