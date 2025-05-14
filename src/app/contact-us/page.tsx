@@ -5,6 +5,29 @@ import StartDiv from "@/components/StartDiv";
 import socialLinks from "@/components/SocialLinks";
 import ContactForm from "@/components/contact/ContactForm";
 import MaxLayout from "@/components/MaxLayout";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact Us",
+  openGraph: {
+    description: `Get in touch with START for inquiries, feedback, or collaboration. We are eager to hear from you and look forward to building connections that foster innovation, leadership, and growth within the Filipino tech community.`,
+    url: `${process.env.WEBSITE_DOMAIN_URL}/contact`,
+    siteName: "DOST START",
+    images: [
+      {
+        url: "/contact-image.png",
+        width: 1287,
+        height: 574,
+        alt: "DOST START Contact Us",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  alternates: {
+    canonical: `${process.env.WEBSITE_DOMAIN_URL}/contact`,
+  },
+};
 
 export default function page() {
   return (

@@ -5,6 +5,31 @@ import MaxLayout from "@/components/MaxLayout";
 import PageTitle from "@/components/PageTitle";
 import StartDivider from "@/components/StartDivider";
 import gallery from "@/lib/events/gallery";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Event",
+  description: `Stay updated with the latest DOST START events across the Philippines, uniting scholars in collaboration, innovation, and regional development.`,
+  openGraph: {
+    title: "DOST START Events",
+    description: `Discover upcoming events hosted or supported by DOST START. Engage with scholars, technologists, and innovators working toward sustainable regional growth.`,
+    url: `${process.env.WEBSITE_DOMAIN_URL}/event`,
+    siteName: "DOST START",
+    images: [
+      {
+        url: "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747205126/KickSTART_Luzon__25_12_x8pc8p.jpg,",
+        width: 1063,
+        height: 736,
+        alt: "DOST START Event",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  alternates: {
+    canonical: `${process.env.WEBSITE_DOMAIN_URL}/event`,
+  },
+};
 
 export default function Page() {
   return (

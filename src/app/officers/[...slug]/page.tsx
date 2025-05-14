@@ -10,9 +10,56 @@ import {
 } from "@/components/ui/select";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import officerBatchYears from "@/lib/officers";
+import { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string[] };
+}): Promise<Metadata> {
+  const [year, department] = params.slug;
+
+  const batch = officerBatchYears.batchYears.find((b) => b.year === year);
+  const dept = batch?.departments.find((d) => d.tabName === department);
+
+  if (!batch || !dept) {
+    return {
+      title: "Officers - Not Found",
+      description:
+        "The requested officer batch or department could not be found.",
+      robots: { index: false, follow: false },
+    };
+  }
+
+  const title = `DOST START Officers ${year} - ${dept.name}`;
+  const description = `Meet the officers of the ${dept.name} department for batch ${year}. ${dept.description}`;
+
+  const imageUrl = "/officers.png";
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: `${process.env.WEBSITE_DOMAIN_URL}/officers/${year}/${department}`,
+      siteName: "DOST START",
+      images: [
+        {
+          url: imageUrl,
+          alt: `${dept.name} - Officers ${year}`,
+        },
+      ],
+      locale: "en_US",
+      type: "website",
+    },
+    alternates: {
+      canonical: `${process.env.WEBSITE_DOMAIN_URL}/officers/${year}/${department}`,
+    },
+  };
+}
 export async function generateStaticParams() {
   const years = officerBatchYears;
 
