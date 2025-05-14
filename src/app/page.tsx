@@ -26,6 +26,7 @@ export default function HomePage() {
             className="object-cover rounded-b-3xl md:rounded-b-[5rem] absolute"
             priority
             sizes="100vw"
+            placeholder="blur"
           />
           <div className="absolute bottom-0 left-0 right-0 h-32 md:h-36 bg-gradient-to-t from-blue-500 to-transparent opacity-90 rounded-b-3xl md:rounded-b-[5rem]"></div>
 
@@ -36,6 +37,7 @@ export default function HomePage() {
                 alt="START Logo"
                 fill
                 className="object-contain"
+                placeholder="blur"
               />
             </div>
           </div>
@@ -117,6 +119,7 @@ export default function HomePage() {
                           alt="Event 1"
                           fill
                           className="object-cover rounded-lg border-4 border-black"
+                          placeholder="blur"
                         />
                       </div>
                       <div className="relative aspect-[4/3]">
@@ -125,6 +128,7 @@ export default function HomePage() {
                           alt="Event 2"
                           fill
                           className="object-cover rounded-lg border-4 border-black"
+                          placeholder="blur"
                         />
                       </div>
                       <div className="relative aspect-[16/9] col-span-2 mt-2">
@@ -133,6 +137,7 @@ export default function HomePage() {
                           alt="Event 3"
                           fill
                           className="object-cover rounded-lg border-4 border-black"
+                          placeholder="blur"
                         />
                       </div>
                     </div>
@@ -162,6 +167,7 @@ export default function HomePage() {
                 src={officerImage}
                 alt="Officers"
                 className="object-cover w-full h-full rounded-tl-4xl rounded-br-4xl shadow-2xl"
+                placeholder="blur"
               />
             </div>
 
