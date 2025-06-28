@@ -9,7 +9,8 @@ const department: Department = {
     {
       name: "Andrei Rouiz Pascual",
       position: "Chief Communications Officer",
-      imageSrc: "/profile-placeholder.jpg",
+      imageSrc:
+        "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1751105553/andrei_nisujk.png",
       socialLinks: {
         facebook: "https://www.facebook.com/pscl.ndr",
       },
@@ -46,14 +47,6 @@ const department: Department = {
         facebook: "https://www.facebook.com/akmrndd",
         linkedin: "https://www.linkedin.com/in/akmrnd/",
         instagram: "https://www.instagram.com/akmrnd_/",
-      },
-    },
-    {
-      name: "Andrei Rouiz Pascual",
-      position: "Chief Communications Officer",
-      imageSrc: "/profile-placeholder.jpg",
-      socialLinks: {
-        twitter: "https://www.facebook.com/pscl.ndr",
       },
     },
   ],
