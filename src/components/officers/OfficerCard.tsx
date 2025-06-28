@@ -2,25 +2,25 @@ import { Officer } from "@/types/officerType";
 import Image from "next/image";
 import { createElement } from "react";
 import {
-  FaBehance,
+  FaBehanceSquare,
   FaFacebookSquare,
-  FaGithub,
+  FaGithubSquare,
   FaGlobe,
   FaInstagram,
   FaLinkedin,
-  FaTwitter,
-  FaYoutube,
+  FaTwitterSquare,
+  FaYoutubeSquare,
 } from "react-icons/fa";
 
 const socialIcons = {
   facebook: FaFacebookSquare,
   instagram: FaInstagram,
   linkedin: FaLinkedin,
-  github: FaGithub,
+  github: FaGithubSquare,
   website: FaGlobe,
-  behance: FaBehance,
-  youtube: FaYoutube,
-  twitter: FaTwitter,
+  behance: FaBehanceSquare,
+  youtube: FaYoutubeSquare,
+  twitter: FaTwitterSquare,
 };
 import { getPlaiceholder } from "plaiceholder";
 
