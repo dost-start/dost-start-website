@@ -21,7 +21,8 @@ const department: Department = {
     {
       name: "Winmark Chan",
       position: "Chief Operations Officer",
-      imageSrc: "/profile-placeholder.jpg",
+      imageSrc:
+        "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1751105556/COO_CHAN-WINMARK_oh5dwy.jpg",
       socialLinks: {},
     },
     {
@@ -36,7 +37,8 @@ const department: Department = {
     {
       name: "Mark Gelson Panganoron",
       position: "Chief Finance Officer",
-      imageSrc: "/profile-placeholder.jpg",
+      imageSrc:
+        "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1751105559/gelson_cy52db.jpg",
       socialLinks: {
         facebook: "https://www.facebook.com/markgelson.panganoron.1",
       },
@@ -44,7 +46,8 @@ const department: Department = {
     {
       name: "Andrei Rouiz Pascual",
       position: "Chief Communications Officer",
-      imageSrc: "/profile-placeholder.jpg",
+      imageSrc:
+        "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1751105553/andrei_nisujk.png",
       socialLinks: {
         facebook: "https://www.facebook.com/pscl.ndr",
       },
@@ -66,6 +69,18 @@ const department: Department = {
         "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747125639/NmOFL6j_dngx3d.jpg",
       socialLinks: {
         facebook: "https://www.facebook.com/jesscor.palmafulay",
+      },
+    },
+    {
+      name: "Erica Cago",
+      position: "Chief Marketing Officer",
+      imageSrc:
+        "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747126384/UavbTEO_qhhlbr.png",
+      socialLinks: {
+        facebook: "https://www.facebook.com/erica.ito.cago/",
+        linkedin: "www.linkedin.com/in/erica-cago",
+        instagram: "https://www.instagram.com/ecaanngg_/",
+        behance: "https://www.behance.net/ericacago1",
       },
     },
   ],

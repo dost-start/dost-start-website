@@ -8,7 +8,7 @@ const department: Department = {
   specialOfficers: [
     {
       name: "Jesscor P. Fulay",
-      position: "Chief Events Officer",
+      position: "OIC - Chief Events Officer",
       imageSrc:
         "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747126128/NmOFL6j_ur3q3x.jpg",
       socialLinks: {
@@ -53,7 +53,7 @@ const department: Department = {
     },
     {
       name: "Alexandra Princess Panela",
-      position: "Technical Lead",
+      position: "OIC - Technical Lead",
       imageSrc:
         "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747126207/yqa8G2t_dhuuzc.png",
       socialLinks: {
