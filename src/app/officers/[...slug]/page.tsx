@@ -176,10 +176,10 @@ export default async function page({
               <section className="mt-14">
                 {currentDepartment.subDepartment.map((subDept) => (
                   <div key={subDept.name} className="mt-8">
-                    <h4 className="text-lg font-semibold text-center">
+                    <h4 className="text-xl font-semibold text-center">
                       {subDept.name}
                     </h4>
-                    <p className="mt-2 text-center">{subDept.description}</p>
+                    <p className="mt-6 text-center">{subDept.description}</p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-8 w-full max-w-6xl mx-auto mt-4 place-content-center">
                       {subDept.officers.map((officer) => (
                         <OfficerCard key={officer.name} officer={officer} />
