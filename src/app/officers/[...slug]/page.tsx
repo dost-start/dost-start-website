@@ -105,8 +105,11 @@ export default async function page({
       <div className="text-center">
         <PageTitle text="Officers" />
         <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius earum
-          quis ab itaque accusamus!
+          DOST START officers are dedicated individuals who lead and manage
+          various departments within the organization. Each officer plays a
+          crucial role in ensuring the smooth operation and success of their
+          respective departments, contributing to the overall mission of DOST
+          START.
         </div>
         <section>
           <Tabs defaultValue={currentDepartment.tabName} className="my-8">

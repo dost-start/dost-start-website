@@ -3,7 +3,7 @@ import Image from "next/image";
 import { createElement } from "react";
 import {
   FaBehance,
-  FaFacebook,
+  FaFacebookSquare,
   FaGithub,
   FaGlobe,
   FaInstagram,
@@ -13,7 +13,7 @@ import {
 } from "react-icons/fa";
 
 const socialIcons = {
-  facebook: FaFacebook, // Should be FaFacebook if you're using Facebook
+  facebook: FaFacebookSquare,
   instagram: FaInstagram,
   linkedin: FaLinkedin,
   github: FaGithub,

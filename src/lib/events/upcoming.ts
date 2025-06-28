@@ -9,7 +9,7 @@ const upcomingEvents: Event[] = [
     description:
       "STARTer Workshops revolve around two core aspects—Tech Skills and Pitching—with integrated mentorship at every stage. Designed to enhance hands-on learning, provide expert guidance, and cultivate innovation, STARTer Workshops empower participants with the skills and insights needed to turn ideas into impactful solutions.",
     location: "Online",
-    date: new Date("2025-05-01"),
+    date: new Date("2025-06-14"),
     startingTime: "",
     endingTime: "",
     registrationLink: "",
@@ -29,7 +29,7 @@ const upcomingEvents: Event[] = [
     description:
       "KickSTART Mindanao will convene DOST-SEI techno-scholars from across the island in a high-impact, face-to-face general assembly. Designed to inspire collaboration and innovation, this event will provide scholars with opportunities to exchange ideas, gain industry insights, and align with the country’s evolving technological landscape. At the heart of this gathering is the formal introduction of Scholars Transforming Advancement and Research for Technology (START), an organization dedicated to leveraging technology as a tool for community empowerment and sustainable progress.",
     location: "Davao, Philippines",
-    date: new Date("2025-07-13"),
+    date: new Date("2025-07-05"),
     startingTime: "",
     endingTime: "",
     registrationLink: "",
@@ -87,7 +87,7 @@ const upcomingEvents: Event[] = [
     description:
       "START-FeBER is a virtual series of talks, with each episode dedicated to featuring one partner company, group, or tech industry. Launching from October to November, the series aims to explore their stories, values, and career opportunities while fostering meaningful engagement between techno-scholars and enthusiasts and industry professionals.",
     location: "Online / Face-to-face (varies)",
-    date: new Date("2025-10-01"),
+    // date: new Date("2025-10-01"),
     startingTime: "",
     endingTime: "",
     registrationLink: "",
@@ -106,7 +106,7 @@ const upcomingEvents: Event[] = [
     description:
       "START Monthly Talks invites notable Filipino tech-figures. Each session brings together techno-scholars and enthusiasts and professionals for insightful discussions, expert-led conversations, and opportunities for collaboration and growth.",
     location: "Online",
-    date: new Date("2025-05-01"),
+    // date: new Date("2025-05-01"),
     startingTime: "",
     endingTime: "",
     registrationLink: "",
