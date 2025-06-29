@@ -50,7 +50,6 @@ export default async function OfficerCard({ officer }: { officer: Officer }) {
         height={200}
         placeholder={officer.imageSrc.startsWith("https") ? "blur" : undefined}
         blurDataURL={blurUrl}
-        loading="lazy"
       />
       <h3 className="text-lg font-semibold mt-4">{officer.name}</h3>
       <p className="text-sm text-gray-500">{officer.position}</p>
