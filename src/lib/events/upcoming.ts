@@ -20,6 +20,7 @@ const upcomingEvents: Event[] = [
     },
     hashtags: [],
     coverImage: "/event-placeholder.png",
+    eventDisplayImage: "/event-placeholder.png",
   },
   {
     title:
@@ -40,6 +41,7 @@ const upcomingEvents: Event[] = [
     },
     hashtags: [],
     coverImage: "/event-placeholder.png",
+    eventDisplayImage: "/event-placeholder.png",
   },
   {
     title: 'START-Up Hackathon: "Imagine, Innovate, and Impact the Nation"',
@@ -59,6 +61,7 @@ const upcomingEvents: Event[] = [
     },
     hashtags: [],
     coverImage: "/event-placeholder.png",
+    eventDisplayImage: "/event-placeholder.png",
   },
   {
     title:
@@ -79,6 +82,7 @@ const upcomingEvents: Event[] = [
     },
     hashtags: [],
     coverImage: "/event-placeholder.png",
+    eventDisplayImage: "/event-placeholder.png",
   },
   {
     title: "START FeBER",
@@ -117,6 +121,7 @@ const upcomingEvents: Event[] = [
     },
     hashtags: [],
     coverImage: "/event-placeholder.png",
+    eventDisplayImage: "/event-placeholder.png",
   },
 ];
 

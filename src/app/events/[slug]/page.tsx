@@ -32,17 +32,26 @@ export async function generateMetadata({
     };
   }
 
-  const title = `DOST START - ${event.title}`;
-  const description =
-    event.description || `Join us for the event: ${event.title}`;
+  const title = `${event.title} - DOST START`;
+  const description = event.description || `Join us for the event: ${event.title}`;
 
   const imageUrl =
+    event.eventDisplayImage ??
     event.coverImage ??
     "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747205126/KickSTART_Luzon__25_12_x8pc8p.jpg";
 
   return {
     title,
     description,
+    keywords: [
+      "DOST START",
+      event.title,
+      "tech event",
+      "scholars",
+      "innovation",
+      "Philippines",
+      ...(event.hashtags || [])
+    ],
     openGraph: {
       title,
       description,
@@ -51,14 +60,26 @@ export async function generateMetadata({
       images: [
         {
           url: imageUrl,
+          width: 1200,
+          height: 630,
           alt: event.title,
         },
       ],
       locale: "en_US",
       type: "website",
     },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [imageUrl],
+    },
     alternates: {
       canonical: `${process.env.WEBSITE_DOMAIN_URL}/events/${slug}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
     },
   };
 }

@@ -8,26 +8,46 @@ import gallery from "@/lib/events/gallery";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Event",
-  description: `Stay updated with the latest DOST START events across the Philippines, uniting scholars in collaboration, innovation, and regional development.`,
+  title: "Events - DOST START",
+  description: "Stay updated with the latest DOST START events across the Philippines, uniting scholars in collaboration, innovation, and regional development. Discover upcoming workshops, summits, and conferences.",
+  keywords: [
+    "DOST START events",
+    "tech events Philippines",
+    "scholar events",
+    "DOST-SEI events",
+    "innovation summit",
+    "tech workshops",
+    "KickSTART",
+    "technovation"
+  ],
   openGraph: {
     title: "DOST START Events",
-    description: `Discover upcoming events hosted or supported by DOST START. Engage with scholars, technologists, and innovators working toward sustainable regional growth.`,
-    url: `${process.env.WEBSITE_DOMAIN_URL}/event`,
+    description: "Discover upcoming events hosted or supported by DOST START. Engage with scholars, technologists, and innovators working toward sustainable regional growth.",
+    url: `${process.env.WEBSITE_DOMAIN_URL}/events`,
     siteName: "DOST START",
     images: [
       {
-        url: "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747205126/KickSTART_Luzon__25_12_x8pc8p.jpg,",
+        url: "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747205126/KickSTART_Luzon__25_12_x8pc8p.jpg",
         width: 1063,
         height: 736,
-        alt: "DOST START Event",
+        alt: "DOST START Events",
       },
     ],
     locale: "en_US",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "DOST START Events",
+    description: "Stay updated with tech events across the Philippines. Join scholars in collaboration, innovation, and regional development.",
+    images: ["https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747205126/KickSTART_Luzon__25_12_x8pc8p.jpg"],
+  },
   alternates: {
-    canonical: `${process.env.WEBSITE_DOMAIN_URL}/event`,
+    canonical: `${process.env.WEBSITE_DOMAIN_URL}/events`,
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

@@ -8,15 +8,24 @@ import MaxLayout from "@/components/MaxLayout";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
-  description: `Get in touch with START for inquiries, feedback, or collaboration. We are eager to hear from you and look forward to building connections that foster innovation, leadership, and growth within the Filipino tech community.`,
+  title: "Contact Us - DOST START",
+  description: "Get in touch with START for inquiries, feedback, or collaboration. We are eager to hear from you and look forward to building connections that foster innovation, leadership, and growth within the Filipino tech community.",
+  keywords: [
+    "DOST START contact",
+    "contact DOST",
+    "START inquiries",
+    "collaboration",
+    "Filipino tech community",
+    "DOST-SEI contact"
+  ],
   openGraph: {
-    description: `Get in touch with START for inquiries, feedback, or collaboration. We are eager to hear from you and look forward to building connections that foster innovation, leadership, and growth within the Filipino tech community.`,
-    url: `${process.env.WEBSITE_DOMAIN_URL}/contact`,
+    title: "Contact DOST START",
+    description: "Get in touch with START for inquiries, feedback, or collaboration. We are eager to hear from you and look forward to building connections that foster innovation, leadership, and growth within the Filipino tech community.",
+    url: `${process.env.WEBSITE_DOMAIN_URL}/contact-us`,
     siteName: "DOST START",
     images: [
       {
-        url: "/contact-image.png",
+        url: `${process.env.WEBSITE_DOMAIN_URL}/contact-image.png`,
         width: 1287,
         height: 574,
         alt: "DOST START Contact Us",
@@ -25,8 +34,18 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact DOST START",
+    description: "Get in touch with START for inquiries, feedback, or collaboration opportunities in the Filipino tech community.",
+    images: [`${process.env.WEBSITE_DOMAIN_URL}/contact-image.png`],
+  },
   alternates: {
-    canonical: `${process.env.WEBSITE_DOMAIN_URL}/contact`,
+    canonical: `${process.env.WEBSITE_DOMAIN_URL}/contact-us`,
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

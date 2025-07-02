@@ -33,14 +33,23 @@ export async function generateMetadata({
     };
   }
 
-  const title = `DOST START Officers ${year} - ${dept.name}`;
-  const description = `Meet the officers of the ${dept.name} department for batch ${year}. ${dept.description}`;
+  const title = `${dept.name} Officers ${year} - DOST START`;
+  const description = `Meet the officers of the ${dept.name} department for batch ${year}. ${dept.description || 'Leading innovation and collaboration in technology advancement.'}`;
 
-  const imageUrl = "/officers.png";
+  const imageUrl = `${process.env.WEBSITE_DOMAIN_URL}/officers.png`;
 
   return {
     title,
     description,
+    keywords: [
+      "DOST START officers",
+      dept.name,
+      `officers ${year}`,
+      "DOST-SEI",
+      "scholar leaders",
+      "tech leadership",
+      "Philippines"
+    ],
     openGraph: {
       title,
       description,
@@ -49,14 +58,26 @@ export async function generateMetadata({
       images: [
         {
           url: imageUrl,
+          width: 1200,
+          height: 630,
           alt: `${dept.name} - Officers ${year}`,
         },
       ],
       locale: "en_US",
       type: "website",
     },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [imageUrl],
+    },
     alternates: {
       canonical: `${process.env.WEBSITE_DOMAIN_URL}/officers/${year}/${department}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
     },
   };
 }

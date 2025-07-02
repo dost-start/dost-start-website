@@ -14,8 +14,54 @@ import homeEventsImage2 from "../../public/home-events-image2.png";
 import homeEventsImage3 from "../../public/home-events-image3.png";
 
 export const metadata: Metadata = {
+  title: "DOST START - Scholars Transforming Advancement and Research for Technology",
+  description: "United, We Innovate. DOST START brings together techno-scholars across the Philippines to drive innovation, collaboration, and technological advancement for sustainable regional development.",
+  keywords: [
+    "DOST",
+    "START",
+    "scholars",
+    "technology",
+    "innovation",
+    "research",
+    "Philippines",
+    "DOST-SEI",
+    "techno-scholars",
+    "regional development",
+    "collaboration"
+  ],
+  authors: [{ name: "DOST START" }],
+  openGraph: {
+    title: "DOST START - United, We Innovate",
+    description: "Scholars Transforming Advancement and Research for Technology. Connecting techno-scholars across the Philippines for innovation and regional development.",
+    url: process.env.WEBSITE_DOMAIN_URL,
+    siteName: "DOST START",
+    images: [
+      {
+        url: `${process.env.WEBSITE_DOMAIN_URL}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: "DOST START - United, We Innovate",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "DOST START - United, We Innovate",
+    description: "Scholars Transforming Advancement and Research for Technology. Connecting techno-scholars across the Philippines.",
+    images: [`${process.env.WEBSITE_DOMAIN_URL}/og-image.png`],
+  },
   alternates: {
     canonical: process.env.WEBSITE_DOMAIN_URL,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
 };
 
