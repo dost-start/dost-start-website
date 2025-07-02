@@ -2,17 +2,15 @@ import BackButton from "@/components/BackButton";
 import Gallery from "@/components/events/gallery";
 import ShareButton from "@/components/events/ShareButton";
 import MaxLayout from "@/components/MaxLayout";
-import StartDiv from "@/components/StartDiv";
 import StartDivider from "@/components/StartDivider";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import eventsData from "@/lib/events";
 import { formatDate } from "@/lib/utils";
 import { Calendar, Clock, Globe, MapPin } from "lucide-react";
+import { Metadata } from "next";
 import Image from "next/image";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
-import placeholder from "../../../../public/event-placeholder.png";
-import { Metadata } from "next";
 
 export async function generateMetadata({
   params,
@@ -103,7 +101,7 @@ export default async function page({
     <MaxLayout>
       <div className="px-1 mt-8">
         <BackButton className="mb-4" />
-        <StartDiv className="p-0 overflow-hidden border-4 w-full">
+        {/* <StartDiv className="p-0 overflow-hidden border-4 w-full hidden lg:block">
           <Image
             src={eventData.coverImage ?? placeholder}
             alt="Event Image"
@@ -111,75 +109,93 @@ export default async function page({
             width={2000}
             className="w-full h-[200px] sm:h-[300px] md:h-[400px] object-cover"
           />
-        </StartDiv>
+        </StartDiv> */}
 
-        <section className="my-4">
-          <h1 className="font-bold text-2xl">{eventData.title}</h1>
-          {eventData.tags && (
-            <div className="flex flex-wrap items-center gap-2 mt-2">
-              {eventData.tags.map((tag, index) => {
-                return (
-                  <Badge variant={"outline"} key={index}>
-                    {tag}
-                  </Badge>
-                );
-              })}
-            </div>
+        <section className="my-4 flex flex-col lg:flex-row gap-6 items-start">
+          {eventData.eventDisplayImage && (
+            <section>
+              <div className="w-full max-w-lg mx-auto">
+                <div className="aspect-square overflow-hidden rounded-lg border-4">
+                  <Image
+                    src={eventData.eventDisplayImage}
+                    alt={`${eventData.title} display image`}
+                    height={500}
+                    width={500}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </section>
           )}
-        </section>
-
-        <section className="space-y-3 mt-6 font-light">
-          <div className="flex">
-            <MapPin className="mr-2 shrink-0 " strokeWidth={1.5} />{" "}
-            <span>{eventData.location}</span>
-          </div>
-          <div className="flex">
-            <Calendar className="mr-2 shrink-0" strokeWidth={1.5} />{" "}
-            <span>{eventData.date ? formatDate(eventData.date) : "TBA"}</span>
-          </div>
-          <div className="flex">
-            <Clock className="mr-2 shrink-0" strokeWidth={1.5} />{" "}
-            {eventData.startingTime && eventData.endingTime ? (
-              <span>
-                {eventData.startingTime.toUpperCase() +
-                  " - " +
-                  eventData.endingTime.toUpperCase()}
-              </span>
-            ) : (
-              <span>TBA</span>
+          <div>
+            <h1 className="font-bold text-2xl">{eventData.title}</h1>
+            {eventData.tags && (
+              <div className="flex flex-wrap items-center gap-2 mt-2">
+                {eventData.tags.map((tag, index) => {
+                  return (
+                    <Badge variant={"outline"} key={index}>
+                      {tag}
+                    </Badge>
+                  );
+                })}
+              </div>
             )}
-          </div>
-        </section>
+            <section className="space-y-3 mt-6 font-light">
+              <div className="flex">
+                <MapPin className="mr-2 shrink-0 " strokeWidth={1.5} />{" "}
+                <span>{eventData.location}</span>
+              </div>
+              <div className="flex">
+                <Calendar className="mr-2 shrink-0" strokeWidth={1.5} />{" "}
+                <span>
+                  {eventData.date ? formatDate(eventData.date) : "TBA"}
+                </span>
+              </div>
+              <div className="flex">
+                <Clock className="mr-2 shrink-0" strokeWidth={1.5} />{" "}
+                {eventData.startingTime && eventData.endingTime ? (
+                  <span>
+                    {eventData.startingTime.toUpperCase() +
+                      " - " +
+                      eventData.endingTime.toUpperCase()}
+                  </span>
+                ) : (
+                  <span>TBA</span>
+                )}
+              </div>
+            </section>
 
-        <section className="mt-6 px-1">
-          <div className="space-x-4">
-            {eventData.registrationLink && (
-              <Button variant={"accent"} size={"lg"} className="px-10">
-                Register
-              </Button>
-            )}
-            <ShareButton />
-          </div>
-          {eventData.socialLinks && (
-            <div className="flex mt-4 gap-3 px-1">
-              {eventData.socialLinks.facebook && (
-                <a href={eventData.socialLinks.facebook}>
-                  <FaFacebook size={30} />
-                </a>
-              )}
+            <section className="mt-6 px-1">
+              <div className="space-x-4">
+                {eventData.registrationLink && (
+                  <Button variant={"accent"} size={"lg"} className="px-10">
+                    Register
+                  </Button>
+                )}
+                <ShareButton />
+              </div>
+              {eventData.socialLinks && (
+                <div className="flex mt-4 gap-3 px-1">
+                  {eventData.socialLinks.facebook && (
+                    <a href={eventData.socialLinks.facebook}>
+                      <FaFacebook size={30} />
+                    </a>
+                  )}
 
-              {eventData.socialLinks.instagram && (
-                <a href={eventData.socialLinks.instagram}>
-                  <FaInstagram size={30} />
-                </a>
+                  {eventData.socialLinks.instagram && (
+                    <a href={eventData.socialLinks.instagram}>
+                      <FaInstagram size={30} />
+                    </a>
+                  )}
+                  {eventData.socialLinks.website && (
+                    <a href={eventData.socialLinks.website}>
+                      <Globe size={30} />
+                    </a>
+                  )}
+                </div>
               )}
-              {eventData.socialLinks.website && (
-                <a href={eventData.socialLinks.website}>
-                  <Globe size={30} />
-                </a>
-              )}
-            </div>
-          )}
+            </section>
+          </div>
         </section>
 
         <section>

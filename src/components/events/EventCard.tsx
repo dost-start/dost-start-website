@@ -27,13 +27,15 @@ export default function EventCard({
       )}
       onClick={() => router.push(`/events/${event.slug}`)}
     >
-      <Image
-        src={event.coverImage ?? placeholder}
-        alt={event.title}
-        className="w-full h-[300px] object-cover"
-        height={300}
-        width={200}
-      />
+      <div className="w-full aspect-square overflow-hidden">
+        <Image
+          src={event.eventDisplayImage ?? event.coverImage ?? placeholder}
+          alt={event.title}
+          className="w-full h-full object-cover"
+          height={300}
+          width={300}
+        />
+      </div>
       <CardContent className="px-4 py-2 space-y-2 flex-grow flex flex-col justify-between">
         <div className="space-y-2">
           <h3 className="text-lg font-semibold line-clamp-2">{event.title}</h3>

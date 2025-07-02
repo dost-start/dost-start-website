@@ -14,6 +14,7 @@ interface Event {
   };
   hashtags?: string[];
   coverImage?: string;
+  eventDisplayImage?: string;
   images?: string[];
   slug: string;
 }
