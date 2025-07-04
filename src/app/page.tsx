@@ -1,21 +1,23 @@
-import Image from "next/image";
-import Link from "next/link";
 import UpcomingEventsSection from "@/components/events/UpcomingEventsSection";
+import MaxLayout from "@/components/MaxLayout";
 import SocialLinks from "@/components/SocialLinks";
 import StartDiv from "@/components/StartDiv";
 import { Button } from "@/components/ui/button";
-import MaxLayout from "@/components/MaxLayout";
-import officerImage from "../../public/officers.png";
 import { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import contactImage from "../../public/contact-image.png";
-import logo_s from "../../public/logo-s.png";
 import homeEventsImage1 from "../../public/home-events-image1.png";
 import homeEventsImage2 from "../../public/home-events-image2.png";
 import homeEventsImage3 from "../../public/home-events-image3.png";
+import logo_s from "../../public/logo-s.png";
+import officerImage from "../../public/officers.png";
 
 export const metadata: Metadata = {
-  title: "DOST START - Scholars Transforming Advancement and Research for Technology",
-  description: "United, We Innovate. DOST START brings together techno-scholars across the Philippines to drive innovation, collaboration, and technological advancement for sustainable regional development.",
+  title:
+    "DOST START - Scholars Transforming Advancement and Research for Technology",
+  description:
+    "United, We Innovate. DOST START brings together techno-scholars across the Philippines to drive innovation, collaboration, and technological advancement for sustainable regional development.",
   keywords: [
     "DOST",
     "START",
@@ -27,12 +29,13 @@ export const metadata: Metadata = {
     "DOST-SEI",
     "techno-scholars",
     "regional development",
-    "collaboration"
+    "collaboration",
   ],
   authors: [{ name: "DOST START" }],
   openGraph: {
     title: "DOST START - United, We Innovate",
-    description: "Scholars Transforming Advancement and Research for Technology. Connecting techno-scholars across the Philippines for innovation and regional development.",
+    description:
+      "Scholars Transforming Advancement and Research for Technology. Connecting techno-scholars across the Philippines for innovation and regional development.",
     url: process.env.WEBSITE_DOMAIN_URL,
     siteName: "DOST START",
     images: [
@@ -49,7 +52,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "DOST START - United, We Innovate",
-    description: "Scholars Transforming Advancement and Research for Technology. Connecting techno-scholars across the Philippines.",
+    description:
+      "Scholars Transforming Advancement and Research for Technology. Connecting techno-scholars across the Philippines.",
     images: [`${process.env.WEBSITE_DOMAIN_URL}/og-image.png`],
   },
   alternates: {
@@ -74,10 +78,11 @@ export default function HomePage() {
             src={contactImage}
             alt="DOST START group photo"
             fill
-            className="object-cover rounded-b-3xl md:rounded-b-[5rem] absolute"
+            className="object-cover object-bottom rounded-b-3xl md:rounded-b-[5rem] absolute"
             priority
             sizes="100vw"
             placeholder="blur"
+            quality={100}
           />
           <div className="absolute bottom-0 left-0 right-0 h-32 md:h-36 bg-gradient-to-t from-blue-500 to-transparent opacity-90 rounded-b-3xl md:rounded-b-[5rem]"></div>
 
