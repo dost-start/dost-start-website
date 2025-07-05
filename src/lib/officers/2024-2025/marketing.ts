@@ -15,18 +15,17 @@ const department: Department = {
         facebook: "https://www.facebook.com/erica.ito.cago/",
         linkedin: "www.linkedin.com/in/erica-cago",
         instagram: "https://www.instagram.com/ecaanngg_/",
-        behance: "https://www.behance.net/ericacago1",
       },
     },
     {
       name: "Dynise Manuelle R. Lira",
       position: "Deputy Chief Marketing Officer",
-      imageSrc: "/profile-placeholder.jpg",
+      imageSrc:
+        "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1751724407/R08-_LiraDynise-min_u0zjft.png",
       socialLinks: {
         facebook: "https://www.facebook.com/dynise.lira",
         github: "https://github.com/theniecelira",
         linkedin: "https://www.linkedin.com/in/dynise-lira-561997270/",
-        instagram: "https://www.instagram.com/theniece_lira/",
       },
     },
   ],
@@ -51,9 +50,6 @@ const department: Department = {
         facebook: "https://www.facebook.com/SushiNiV/",
         github: "https://github.com/SushiNiV",
         linkedin: "https://www.linkedin.com/in/sushane-vendiola-025snv/",
-        instagram: "https://www.instagram.com/sushiniv/",
-        youtube: "https://www.youtube.com/@SushiNiV",
-        twitter: "https://x.com/SushiNiV",
       },
     },
     {

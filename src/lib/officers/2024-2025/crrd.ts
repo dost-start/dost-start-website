@@ -96,7 +96,6 @@ const department: Department = {
         facebook: "Ford FB Link",
         github: "Ford GitHub Link",
         linkedin: "Ford LinkedIn Link",
-        instagram: "Ford IG Link",
       },
     },
   ],
@@ -125,7 +124,6 @@ const department: Department = {
             facebook: "facebook.com/janerikoamora",
             github: "github.com/janthetrashcan",
             instagram: "instagram.com/jandalandan",
-            website: "janthetrashcan.github.io",
           },
         },
         {
@@ -137,7 +135,6 @@ const department: Department = {
             facebook: "facebook.com/johnry.espiritu.9",
             github: "github.com/JohnryEspiritu03",
             linkedin: "linkedin.com/in/johnryespiritu1201/",
-            instagram: "instagram.com/johnryespiritu/",
           },
         },
         {
@@ -154,7 +151,8 @@ const department: Department = {
         {
           name: "Sean Kyron Z. Briones",
           position: "Region 4A Representative",
-          imageSrc: "/profile-placeholder.jpg",
+          imageSrc:
+            "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1751725275/Screenshot_from_2025-07-05_22-21-00_cwuoxd.png",
           socialLinks: {
             facebook: "facebook.com/seankyronbriones",
             github: "github.com/Seankyron",
@@ -169,7 +167,6 @@ const department: Department = {
             facebook: "https://www.facebook.com/IanMoran0/",
             github: "https://github.com/MoranoIan",
             linkedin: "https://www.linkedin.com/in/joneil-ian-morano/",
-            instagram: "https://www.instagram.com/i.a_nnn/",
           },
         },
         {
@@ -200,8 +197,6 @@ const department: Department = {
             facebook: "https://www.facebook.com/share/1ArFraEjpf/",
             instagram:
               "https://www.instagram.com/hindiyunsidion?igsh=Y3htNGF2Y2w0d2R4",
-            twitter:
-              "https://x.com/Dominio52955025?t=HoOlLnkt_micWlZMZYXAGA&s=09",
           },
         },
       ],

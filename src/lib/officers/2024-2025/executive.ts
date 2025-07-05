@@ -80,7 +80,6 @@ const department: Department = {
         facebook: "https://www.facebook.com/erica.ito.cago/",
         linkedin: "www.linkedin.com/in/erica-cago",
         instagram: "https://www.instagram.com/ecaanngg_/",
-        behance: "https://www.behance.net/ericacago1",
       },
     },
   ],
