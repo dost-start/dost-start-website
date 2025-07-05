@@ -122,13 +122,13 @@ export default async function page({
     <MaxLayout>
       <div className="px-1 mt-8">
         <BackButton className="mb-4" />
-        <StartDiv className="p-0 overflow-hidden border-4 w-full hidden lg:block">
+        <StartDiv className="p-0 overflow-hidden border-4 w-full">
           <Image
             src={eventData.coverImage}
             alt="Event Image"
             height={2000}
             width={2000}
-            className="w-full h-[200px] sm:h-[300px] md:h-[400px] object-cover"
+            className="w-full h-[200px] sm:h-[300px] md:h-[400px] object-cover object-left"
           />
         </StartDiv>
 
