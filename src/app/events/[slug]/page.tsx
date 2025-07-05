@@ -2,6 +2,7 @@ import BackButton from "@/components/BackButton";
 import Gallery from "@/components/events/gallery";
 import ShareButton from "@/components/events/ShareButton";
 import MaxLayout from "@/components/MaxLayout";
+import StartDiv from "@/components/StartDiv";
 import StartDivider from "@/components/StartDivider";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -11,6 +12,13 @@ import { Calendar, Clock, Globe, MapPin } from "lucide-react";
 import { Metadata } from "next";
 import Image from "next/image";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
+import { notFound } from "next/navigation";
+
+const eventsArray = [
+  ...eventsData.pastEvents,
+  ...eventsData.upcomingEvents,
+  ...(eventsData.currentEvents || []),
+];
 
 export async function generateMetadata({
   params,
@@ -19,10 +27,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
 
-  // Find the event based on the slug (from either past or upcoming events)
-  const event =
-    eventsData.pastEvents.find((e) => e.slug === slug) ||
-    eventsData.upcomingEvents.find((e) => e.slug === slug);
+  // Find the event based on the slug
+  const event = eventsArray.find((e) => e.slug === slug);
 
   if (!event) {
     return {
@@ -33,12 +39,11 @@ export async function generateMetadata({
   }
 
   const title = `${event.title} - DOST START`;
-  const description = event.description || `Join us for the event: ${event.title}`;
+  const description =
+    event.description || `Join us for the event: ${event.title}`;
 
   const imageUrl =
-    event.eventDisplayImage ??
-    event.coverImage ??
-    "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747205126/KickSTART_Luzon__25_12_x8pc8p.jpg";
+    event.eventDisplayImage ?? event.coverImage ?? "/event-placeholder.png";
 
   return {
     title,
@@ -50,7 +55,7 @@ export async function generateMetadata({
       "scholars",
       "innovation",
       "Philippines",
-      ...(event.hashtags || [])
+      ...(event.hashtags || []),
     ],
     openGraph: {
       title,
@@ -85,18 +90,19 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  const pastEventSlugs: string[] = eventsData.pastEvents.map((value) => {
-    return value.slug;
-  });
-  const upcomingEventSlugs: string[] = eventsData.upcomingEvents.map(
-    (value) => {
-      return value.slug;
-    }
+  const pastEventSlugs = eventsData.pastEvents.map((event) => event.slug);
+  const upcomingEventSlugs = eventsData.upcomingEvents.map(
+    (event) => event.slug
+  );
+  const currentEventSlugs = (eventsData.currentEvents || []).map(
+    (event) => event.slug
   );
 
-  return [...pastEventSlugs, ...upcomingEventSlugs].map((value) => {
-    return { slug: value };
-  });
+  return [...pastEventSlugs, ...upcomingEventSlugs, ...currentEventSlugs].map(
+    (slug) => ({
+      slug: slug,
+    })
+  );
 }
 
 export default async function page({
@@ -106,48 +112,27 @@ export default async function page({
 }) {
   const { slug } = await params;
 
-  const event = eventsData.pastEvents.find((event) => event.slug === slug);
-
-  const event2 = eventsData.upcomingEvents.find((event) => event.slug === slug);
-
-  const eventData = event || event2;
+  const eventData = eventsArray.find((e) => e.slug === slug);
 
   if (!eventData) {
-    return {
-      notFound: true,
-    };
+    notFound();
   }
 
   return (
     <MaxLayout>
       <div className="px-1 mt-8">
         <BackButton className="mb-4" />
-        {/* <StartDiv className="p-0 overflow-hidden border-4 w-full hidden lg:block">
+        <StartDiv className="p-0 overflow-hidden border-4 w-full hidden lg:block">
           <Image
-            src={eventData.coverImage ?? placeholder}
+            src={eventData.coverImage}
             alt="Event Image"
             height={2000}
             width={2000}
             className="w-full h-[200px] sm:h-[300px] md:h-[400px] object-cover"
           />
-        </StartDiv> */}
+        </StartDiv>
 
         <section className="my-4 flex flex-col lg:flex-row gap-6 items-start">
-          {eventData.eventDisplayImage && (
-            <section>
-              <div className="w-full max-w-lg mx-auto">
-                <div className="aspect-square overflow-hidden rounded-lg border-4">
-                  <Image
-                    src={eventData.eventDisplayImage}
-                    alt={`${eventData.title} display image`}
-                    height={500}
-                    width={500}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            </section>
-          )}
           <div>
             <h1 className="font-bold text-2xl">{eventData.title}</h1>
             {eventData.tags && (

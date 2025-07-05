@@ -34,7 +34,12 @@ export async function generateMetadata({
   }
 
   const title = `${dept.name} Officers ${year} - DOST START`;
-  const description = `Meet the officers of the ${dept.name} department for batch ${year}. ${dept.description || 'Leading innovation and collaboration in technology advancement.'}`;
+  const description = `Meet the officers of the ${
+    dept.name
+  } department for batch ${year}. ${
+    dept.description ||
+    "Leading innovation and collaboration in technology advancement."
+  }`;
 
   const imageUrl = `${process.env.WEBSITE_DOMAIN_URL}/officers.png`;
 
@@ -48,7 +53,7 @@ export async function generateMetadata({
       "DOST-SEI",
       "scholar leaders",
       "tech leadership",
-      "Philippines"
+      "Philippines",
     ],
     openGraph: {
       title,
@@ -123,7 +128,7 @@ export default async function page({
 
   return (
     <MaxLayout>
-      <div className="text-center">
+      <div className="text-center px-2">
         <PageTitle text="Officers" />
         <div>
           DOST START officers are dedicated individuals who lead and manage

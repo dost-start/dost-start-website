@@ -1,36 +1,66 @@
-import upcomingEvents from "@/lib/events/upcoming";
-import StartDiv from "../StartDiv";
-import StartDivider from "../StartDivider";
-import EventCard from "./EventCard";
+"use client";
 
-export default function UpcomingEventsSection() {
+import upcomingEvents from "@/lib/events/upcoming";
+import { useState } from "react";
+import EventCard from "./EventCard";
+import { Button } from "../ui/button";
+import StartDivider from "../StartDivider";
+
+export default function UpcomingEventsSection({
+  className,
+}: {
+  className?: string;
+}) {
+  const [showAllUpcomingEvents, setShowAllUpcomingEvents] = useState(false);
+
+  const upcomingEventsPreview = upcomingEvents.slice(0, 6);
+  const upcomingEventsFull = upcomingEvents.slice(6);
+
   return (
-    <StartDiv className="relative border md:border-4 p-2 py-8 sm:mx-2 md:p-8 shadow-xl bg-gradient-to-br from-primary/70 from-20% to-accent/70 z-30 overflow-hidden">
-      <div
-        className="h-full w-full absolute start-0 top-0 object-cover z-0"
-        style={{
-          backgroundImage: "url(/texture.png)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          opacity: 0.2,
-        }}
-      ></div>
-      <h2 className="text-4xl font-bold relative z-10">Upcoming Events</h2>
-      <div className="flex gap-2 my-4">
-        <StartDivider variant="accent" width="170px" />
-        <StartDivider variant="accent" width="20px" />
-        <StartDivider variant="accent" width="80px" />
+    <section className={className}>
+      <div className="flex items-center mb-6 gap-2">
+        <h2 className="text-3xl font-bold shrink-0 mr-4">Upcoming Events</h2>
+        <StartDivider variant="accent" width="10%" />
+        <StartDivider variant="accent" width="20%" />
+        <StartDivider variant="accent" width="50%" />
+        <StartDivider variant="accent" width="20%" />
+        <StartDivider variant="accent" />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 relative z-10">
-        {upcomingEvents.map((event, index) => (
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 w-fit mx-auto">
+        {upcomingEventsPreview.map((event, index) => (
           <EventCard
             key={`upcoming-event-${event.title}-${index}`}
             event={event}
             eventType="upcoming"
-            className="shrink-0 mx-auto"
           />
         ))}
       </div>
-    </StartDiv>
+
+      {!showAllUpcomingEvents && upcomingEventsFull.length > 0 && (
+        <div
+          className="flex items-center justify-center mt-10 cursor-pointer"
+          onClick={() => setShowAllUpcomingEvents(true)}
+        >
+          <div className="w-full h-px bg-gray-400"></div>
+          <Button variant="outline" size={"lg"} className="mx-4 cursor-pointer">
+            See More
+          </Button>
+          <div className="w-full h-px bg-gray-400"></div>
+        </div>
+      )}
+
+      {showAllUpcomingEvents && (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 w-fit mx-auto mt-6">
+          {upcomingEventsFull.map((event, index) => (
+            <EventCard
+              key={`upcoming-event-extra-${event.title}-${index}`}
+              event={event}
+              eventType="upcoming"
+            />
+          ))}
+        </div>
+      )}
+    </section>
   );
 }

@@ -1,4 +1,3 @@
-import UpcomingEventsSection from "@/components/events/UpcomingEventsSection";
 import MaxLayout from "@/components/MaxLayout";
 import SocialLinks from "@/components/SocialLinks";
 import StartDiv from "@/components/StartDiv";
@@ -12,6 +11,7 @@ import homeEventsImage2 from "../../public/home-events-image2.png";
 import homeEventsImage3 from "../../public/home-events-image3.png";
 import logo_s from "../../public/logo-s.png";
 import officerImage from "../../public/officers.png";
+import CurrentEventsSection from "@/components/events/CurrentEventsSection";
 
 export const metadata: Metadata = {
   title:
@@ -205,7 +205,7 @@ export default function HomePage() {
         </section>
 
         <div className="px-2">
-          <UpcomingEventsSection />
+          <CurrentEventsSection />
         </div>
 
         <div className="w-full max-w-7xl mx-auto flex justify-center items-center gap-1 md:gap-2 my-12">
