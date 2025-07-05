@@ -19,8 +19,10 @@ const upcomingEvents: Event[] = [
       website: "",
     },
     hashtags: [],
-    coverImage: "/event-placeholder.png",
-    eventDisplayImage: "/event-placeholder.png",
+    coverImage:
+      "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1751719217/STARTer_Form_Header_nytxmi.png",
+    eventDisplayImage:
+      "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1751719220/STARTer_PosterReg_1_jgpfyg.png",
   },
   {
     title:
@@ -40,8 +42,10 @@ const upcomingEvents: Event[] = [
       website: "",
     },
     hashtags: [],
-    coverImage: "/event-placeholder.png",
-    eventDisplayImage: "/event-placeholder.png",
+    coverImage:
+      "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1751719215/Kickstart_Mindanao_Banner_nblk6o.png",
+    eventDisplayImage:
+      "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1751719218/Event_Poster_1x1_mqy6fc.png",
   },
   {
     title: 'START-Up Hackathon: "Imagine, Innovate, and Impact the Nation"',
@@ -60,8 +64,10 @@ const upcomingEvents: Event[] = [
       website: "",
     },
     hashtags: [],
-    coverImage: "/event-placeholder.png",
-    eventDisplayImage: "/event-placeholder.png",
+    coverImage:
+      "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1751719221/START_UP_cqskd6.png",
+    eventDisplayImage:
+      "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1751720060/POSTER_1_akbygj.png",
   },
   {
     title:
@@ -81,8 +87,10 @@ const upcomingEvents: Event[] = [
       website: "",
     },
     hashtags: [],
-    coverImage: "/event-placeholder.png",
-    eventDisplayImage: "/event-placeholder.png",
+    coverImage:
+      "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1751719220/SUMMIT_cbyrru.png",
+    eventDisplayImage:
+      "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1751719692/POSTER_nrwjto.png",
   },
   {
     title: "START FeBER",
@@ -101,6 +109,7 @@ const upcomingEvents: Event[] = [
       website: "",
     },
     hashtags: [],
+    eventDisplayImage: "/event-placeholder.png",
     coverImage: "/event-placeholder.png",
   },
   {
