@@ -8,7 +8,7 @@ const upcomingEvents: Event[] = [
     description:
       "The START-Up Hackathon challenges advancing participants to move beyond ideation, focusing on enhancing the sustainability and scalability of their STARTer Projects. In this advanced stage, teams will refine their concepts into practical, solution-driven models with measurable impact. They will explore ways to expand their innovations, uphold sustainable practices, and address real-world challenges through technology-driven solutions that create enduring value.",
     location: "Cebu, Philippines",
-    date: new Date("2025-09-02"),
+    date: new Date("2025-08-30"),
     startingTime: "",
     endingTime: "",
     registrationLink: "",
