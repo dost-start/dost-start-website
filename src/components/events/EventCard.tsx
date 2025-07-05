@@ -43,12 +43,30 @@ export default function EventCard({
             <Calendar className="w-4 h-4 mr-2 shrink-0" />
             <p className="line-clamp-1">
               {event.date
-                ? event.date.toLocaleDateString("en-US", {
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric",
-                    weekday: "long",
-                  })
+                ? Array.isArray(event.date)
+                  ? (() => {
+                      const today = new Date();
+                      today.setHours(0, 0, 0, 0);
+                      const upcomingDate = event.date.find((date) => {
+                        const eventDate = new Date(date);
+                        eventDate.setHours(0, 0, 0, 0);
+                        return eventDate >= today;
+                      });
+                      const dateToShow =
+                        upcomingDate || event.date[event.date.length - 1];
+                      return dateToShow.toLocaleDateString("en-US", {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                        weekday: "long",
+                      });
+                    })()
+                  : event.date.toLocaleDateString("en-US", {
+                      day: "numeric",
+                      month: "long",
+                      year: "numeric",
+                      weekday: "long",
+                    })
                 : "TBA"}
             </p>
           </div>

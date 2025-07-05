@@ -8,7 +8,7 @@ const upcomingEvents: Event[] = [
     description:
       "The START-Up Hackathon challenges advancing participants to move beyond ideation, focusing on enhancing the sustainability and scalability of their STARTer Projects. In this advanced stage, teams will refine their concepts into practical, solution-driven models with measurable impact. They will explore ways to expand their innovations, uphold sustainable practices, and address real-world challenges through technology-driven solutions that create enduring value.",
     location: "Cebu, Philippines",
-    date: new Date("2025-08-30"),
+    date: [new Date("2025-08-30")],
     startingTime: "",
     endingTime: "",
     registrationLink: "",
@@ -31,7 +31,7 @@ const upcomingEvents: Event[] = [
     description:
       "The National Technovation Summit will unite scholars, industry experts, and thought leaders under the theme “United to Innovate: Empowering Tomorrow's Technovators.” This transformative gathering will inspire a shared vision of progress and equip participants with the tools and knowledge to drive the future of technology. This two-day summit will feature engaging tech talks, interactive sessions, and dynamic networking opportunities — all designed to spark innovation and foster collaboration. Attendees will gain valuable insights into emerging technologies, digital transformation, and strategic approaches to leveraging technology for meaningful societal impact. The summit will also serve as the platform to recognize and conclude key sub-events activities (Elevate-It: 3D START Logo Animation Challenge, Himig-Inobasyon: START Music-Making Challenge, and CodeLex: AI & Tech Legislation Challenge), celebrating the breakthroughs and achievements that shape the next wave of technological advancement.",
     location: "Cebu, Philippines",
-    date: new Date("2025-08-31"),
+    date: [new Date("2025-08-31")],
     startingTime: "",
     endingTime: "",
     registrationLink: "",

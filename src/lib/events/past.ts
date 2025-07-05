@@ -8,7 +8,7 @@ const pastEvents: Event[] = [
     description:
       "The START Onboarding Session 2025 is a virtual orientation program designed to welcome, equip, and empower the first batch of techno-scholars with the organization’s visions, missions, core initiatives, and internal structures while fostering early engagement through interactive and meaningful connections and community platform.",
     location: "",
-    date: new Date("2025-04-09"),
+    date: [new Date("2025-04-09")],
     startingTime: "10:00 AM",
     endingTime: "12:00 PM",
     registrationLink: "",
@@ -47,7 +47,7 @@ const pastEvents: Event[] = [
       "KickSTART Luzon was a groundbreaking tech gathering, bringing together 100 techno-scholars from the island. This face-to-face general assembly served as a platform for collaboration, knowledge exchange, and alignment with national technological initiatives.\n\nAs the first event of its kind, KickSTART Luzon introduced scholars to Scholars Transforming Advancement and Research for Technology (START), emphasizing its mission to drive innovation and tech empowerment. This assembly served as a pivotal moment for scholars to connect, exchange ideas, and contribute to the future of technology-driven advancements for the nation’s progress.",
     location:
       "Arthaland Century Pacific Tower, 5th Avenue corner 30th Street, Bonifacio Global City, Taguig 1634, Philippines",
-    date: new Date("2025-02-10"),
+    date: [new Date("2025-02-10")],
     startingTime: "09:00 AM",
     endingTime: "06:00 PM",
     registrationLink: "",
@@ -96,7 +96,7 @@ const pastEvents: Event[] = [
     description:
       "The START Pre-Event Series brought together DOST-SEI scholars, tech enthusiasts, and industry leaders for two engaging and insightful virtual sessions leading up to KickSTART 2025, the START General Assembly. Centered on the theme “Scholars Bridging Vision and Innovation for Technological Transformation,” the series served as a platform for learning, mentorship, and collaboration, equipping scholars with industry knowledge and forward-thinking perspectives from esteemed tech leaders.\n\nThe first session, held on January 25, 2025, featured Mr. Raphael Francis Quisumbing, an AWS Hero, technopreneur, and cloud enthusiast, who shared his expertise on leveraging technology for innovation and impact. The second session, on February 1, 2025, welcomed Mr. Rem Lampa, widely known as “Kuya Dev”, a tech content creator, TEDx speaker, Prosple’s Lead, and tech community leader and founder, who inspired with insights on career growth, skill development, and the power of tech communities.\n\nThe START Pre-Event Series set the stage for the groundbreaking opportunities of KickSTART 2025.",
     location: "",
-    date: new Date("2025-01-25"),
+    date: [new Date("2025-01-25")],
     startingTime: "06:00 PM",
     endingTime: "08:00 PM",
     registrationLink: "",

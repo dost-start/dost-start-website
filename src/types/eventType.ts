@@ -3,7 +3,7 @@ interface Event {
   tags?: string[];
   description: string;
   location?: string;
-  date?: Date;
+  date?: Date | Date[];
   startingTime?: string;
   endingTime?: string;
   registrationLink?: string;

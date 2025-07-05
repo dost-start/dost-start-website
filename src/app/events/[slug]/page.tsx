@@ -7,7 +7,7 @@ import StartDivider from "@/components/StartDivider";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import eventsData from "@/lib/events";
-import { formatDate } from "@/lib/utils";
+import { formatDateForDiv } from "@/lib/utils";
 import { Calendar, Clock, Globe, MapPin } from "lucide-react";
 import { Metadata } from "next";
 import Image from "next/image";
@@ -153,9 +153,65 @@ export default async function page({
               </div>
               <div className="flex">
                 <Calendar className="mr-2 shrink-0" strokeWidth={1.5} />{" "}
-                <span>
-                  {eventData.date ? formatDate(eventData.date) : "TBA"}
-                </span>
+                <div>
+                  {eventData.date
+                    ? (() => {
+                        const dateFormat = formatDateForDiv(eventData.date);
+
+                        if (dateFormat.type === "single") {
+                          return <span>{dateFormat.content as string}</span>;
+                        }
+
+                        // Multiple dates - structured format
+                        const groupedDates = dateFormat.content as Record<
+                          string,
+                          Record<
+                            string,
+                            Array<{ day: string; isUpcoming: boolean }>
+                          >
+                        >;
+
+                        return (
+                          <div className="space-y-2">
+                            {Object.entries(groupedDates).map(
+                              ([year, months]) => (
+                                <div key={year}>
+                                  <div className="font-semibold text-lg">
+                                    {year}
+                                  </div>
+                                  {Object.entries(months).map(
+                                    ([month, days]) => (
+                                      <div key={month} className="ml-2">
+                                        <span className="font-medium">
+                                          {month}:{" "}
+                                        </span>
+                                        <span>
+                                          {days.map((dayObj, index) => (
+                                            <span key={index}>
+                                              {dayObj.isUpcoming ? (
+                                                <strong className="font-bold text-primary">
+                                                  {dayObj.day}
+                                                </strong>
+                                              ) : (
+                                                dayObj.day
+                                              )}
+                                              {index < days.length - 1
+                                                ? ", "
+                                                : ""}
+                                            </span>
+                                          ))}
+                                        </span>
+                                      </div>
+                                    )
+                                  )}
+                                </div>
+                              )
+                            )}
+                          </div>
+                        );
+                      })()
+                    : "TBA"}
+                </div>
               </div>
               <div className="flex">
                 <Clock className="mr-2 shrink-0" strokeWidth={1.5} />{" "}
