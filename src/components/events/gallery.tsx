@@ -1,4 +1,3 @@
-import gallery from "@/lib/events/gallery";
 import Image from "next/image";
 
 function chunkGallery(images: string[]) {
@@ -44,7 +43,7 @@ export default function Gallery({
         ))}
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:hidden gap-4">
-        {gallery.map((image, index) => (
+        {images.map((image, index) => (
           <Image
             key={`gallery-img-${index}`}
             src={image}

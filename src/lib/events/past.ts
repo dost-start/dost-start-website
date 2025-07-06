@@ -67,7 +67,7 @@ const pastEvents: Event[] = [
       "ScholarsForInnovation",
     ],
     coverImage:
-      "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747205116/kickstart_luzon_cover_jasbkn.jpg",
+      "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1751719215/kickSart_Facebook_Cover_su14to.png",
     eventDisplayImage:
       "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1751428347/kickstart-luzon_wnbkmn.jpg",
     images: [

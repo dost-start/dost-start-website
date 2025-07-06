@@ -118,6 +118,8 @@ export default async function page({
     notFound();
   }
 
+  console.log(eventData.images);
+
   return (
     <MaxLayout>
       <div className="px-1 mt-8">
@@ -264,7 +266,7 @@ export default async function page({
           <h2 className="mt-12 text-xl font-extrabold">About this Event</h2>
           <p className="my-4">{eventData.description}</p>
           {eventData.hashtags && (
-            <div className="flex gap-2">
+            <div className="flex gap-2 flex-wrap">
               {eventData.hashtags.map((value, index) => {
                 return (
                   <span key={value + " " + index} className="font-semibold">
