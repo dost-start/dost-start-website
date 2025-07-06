@@ -118,8 +118,6 @@ export default async function page({
     notFound();
   }
 
-  console.log(eventData.images);
-
   return (
     <MaxLayout>
       <div className="px-1 mt-8">
