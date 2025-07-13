@@ -1,4 +1,4 @@
-import currentEvents from "@/lib/events/current";
+import { currentEvents } from "@/lib/events/events";
 import StartDiv from "../StartDiv";
 import StartDivider from "../StartDivider";
 import EventCard from "./EventCard";

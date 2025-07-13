@@ -1,10 +1,10 @@
 "use client";
 
-import upcomingEvents from "@/lib/events/upcoming";
 import { useState } from "react";
 import EventCard from "./EventCard";
 import { Button } from "../ui/button";
 import StartDivider from "../StartDivider";
+import { upcomingEvents } from "@/lib/events/events";
 
 export default function UpcomingEventsSection({
   className,

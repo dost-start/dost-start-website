@@ -1,10 +1,10 @@
 "use client";
 
-import pastEvents from "@/lib/events/past";
 import { useState } from "react";
 import EventCard from "./EventCard";
 import { Button } from "../ui/button";
 import StartDivider from "../StartDivider";
+import { pastEvents } from "@/lib/events/events";
 
 export default function PastEventsSection({
   className,
@@ -20,10 +20,10 @@ export default function PastEventsSection({
       <div className="flex items-center mb-6 gap-2">
         <h2 className="text-3xl font-bold shrink-0 mr-4">Past Events</h2>
         <StartDivider variant="accent" width="10%" />
-        <StartDivider variant="accent" width="20%"/>
-        <StartDivider variant="accent" width="50%"/>
-        <StartDivider variant="accent" width="20%"/>
-        <StartDivider variant="accent"/>
+        <StartDivider variant="accent" width="20%" />
+        <StartDivider variant="accent" width="50%" />
+        <StartDivider variant="accent" width="20%" />
+        <StartDivider variant="accent" />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 w-fit mx-auto">

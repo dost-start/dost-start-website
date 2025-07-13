@@ -6,7 +6,7 @@ import StartDiv from "@/components/StartDiv";
 import StartDivider from "@/components/StartDivider";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import eventsData from "@/lib/events";
+import { events } from "@/lib/events/events";
 import { formatDateForDiv } from "@/lib/utils";
 import { Calendar, Clock, Globe, MapPin } from "lucide-react";
 import { Metadata } from "next";
@@ -14,11 +14,8 @@ import Image from "next/image";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 import { notFound } from "next/navigation";
 
-const eventsArray = [
-  ...eventsData.pastEvents,
-  ...eventsData.upcomingEvents,
-  ...(eventsData.currentEvents || []),
-];
+// Use all events from the single source
+const eventsArray = events;
 
 export async function generateMetadata({
   params,
@@ -90,19 +87,10 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  const pastEventSlugs = eventsData.pastEvents.map((event) => event.slug);
-  const upcomingEventSlugs = eventsData.upcomingEvents.map(
-    (event) => event.slug
-  );
-  const currentEventSlugs = (eventsData.currentEvents || []).map(
-    (event) => event.slug
-  );
-
-  return [...pastEventSlugs, ...upcomingEventSlugs, ...currentEventSlugs].map(
-    (slug) => ({
-      slug: slug,
-    })
-  );
+  // Use all events from the single source
+  return events.map((event) => ({
+    slug: event.slug,
+  }));
 }
 
 export default async function page({
