@@ -48,6 +48,7 @@ const department: Department = {
         "https://res.cloudinary.com/dsz9ok0yq/image/upload/v1747126527/WhsL8Nw_fvcxn5.jpg",
       socialLinks: {
         facebook: "https://www.facebook.com/edwardjeromemagtoto/",
+        linkedin: "https://www.linkedin.com/in/edwardmagtoto",
         github: "https://github.com/KingEddeh",
       },
     },
