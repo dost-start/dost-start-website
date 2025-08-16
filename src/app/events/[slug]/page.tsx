@@ -11,8 +11,8 @@ import { formatDateForDiv } from "@/lib/utils";
 import { Calendar, Clock, Globe, MapPin } from "lucide-react";
 import { Metadata } from "next";
 import Image from "next/image";
-import { FaFacebook, FaInstagram } from "react-icons/fa";
 import { notFound } from "next/navigation";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
 
 // Use all events from the single source
 const eventsArray = events;
@@ -218,9 +218,15 @@ export default async function page({
             <section className="mt-6 px-1">
               <div className="space-x-4">
                 {eventData.registrationLink && (
-                  <Button variant={"accent"} size={"lg"} className="px-10">
-                    Register
-                  </Button>
+                  <a
+                    href={eventData.registrationLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button variant={"accent"} size={"lg"} className="px-10">
+                      Register
+                    </Button>
+                  </a>
                 )}
                 <ShareButton />
               </div>
