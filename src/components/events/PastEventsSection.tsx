@@ -4,17 +4,27 @@ import { useState } from "react";
 import EventCard from "./EventCard";
 import { Button } from "../ui/button";
 import StartDivider from "../StartDivider";
-import { pastEvents } from "@/lib/events/events";
+import Event from "@/types/eventType";
+
+interface PastEventsSectionProps {
+  pastEvents: Event[];
+  className?: string;
+}
 
 export default function PastEventsSection({
+  pastEvents,
   className,
-}: {
-  className?: string;
-}) {
+}: PastEventsSectionProps) {
   const [showAllPastEvents, setShowAllPastEvents] = useState(false);
 
   const pastEventsPreview = pastEvents.slice(0, 6);
   const pastEventsFull = pastEvents.slice(6);
+
+  // Don't render the section if there are no past events
+  if (pastEvents.length === 0) {
+    return null;
+  }
+
   return (
     <section className={className}>
       <div className="flex items-center mb-6 gap-2">

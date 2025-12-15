@@ -1,8 +1,7 @@
 import { redirect } from "next/navigation";
-import officerBatchYears from "@/lib/officers";
+import { getDefaultOfficerPath } from "@/lib/data";
 
-export default function page() {
-  return redirect(
-    `/officers/${officerBatchYears.batchYears[0].year}/${officerBatchYears.batchYears[0].departments[0].tabName}`
-  );
+export default async function page() {
+  const defaultPath = await getDefaultOfficerPath();
+  return redirect(defaultPath);
 }

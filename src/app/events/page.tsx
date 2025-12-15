@@ -6,7 +6,9 @@ import MaxLayout from "@/components/MaxLayout";
 import PageTitle from "@/components/PageTitle";
 import StartDivider from "@/components/StartDivider";
 import gallery from "@/lib/events/gallery";
+import { getCategorizedEventsData, getEventTerms } from "@/lib/data";
 import type { Metadata } from "next";
+import TermFilter from "@/components/events/TermFilter";
 
 export const metadata: Metadata = {
   title: "Events - DOST START",
@@ -57,15 +59,44 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
+interface EventsPageProps {
+  searchParams: Promise<{ term?: string }>;
+}
+
+export default async function Page({ searchParams }: EventsPageProps) {
+  const { term } = await searchParams;
+  
+  // Fetch events data (from Contentful or local fallback)
+  const [eventsData, terms] = await Promise.all([
+    getCategorizedEventsData(term),
+    getEventTerms(),
+  ]);
+
+  const { currentEvents, upcomingEvents, pastEvents } = eventsData;
+
   return (
     <MaxLayout>
       <PageTitle text="Events" />
-      <CurrentEventsSection />
+      
+      {/* Term Filter - only show if there are multiple terms */}
+      {terms.length > 1 && (
+        <div className="flex justify-end px-2 sm:px-10 mb-4">
+          <TermFilter terms={terms} currentTerm={term} />
+        </div>
+      )}
+      
+      <CurrentEventsSection
+        currentEvents={currentEvents}
+        upcomingEvents={upcomingEvents}
+      />
 
       <section className="m-2 mt-14 sm:px-10">
-        <UpcomingEventsSection className="mb-14" />
-        <PastEventsSection />
+        <UpcomingEventsSection
+          upcomingEvents={upcomingEvents}
+          currentEventsCount={currentEvents.length}
+          className="mb-14"
+        />
+        <PastEventsSection pastEvents={pastEvents} />
 
         <div className="mt-14">
           <div className="flex items-center mb-4 gap-2">

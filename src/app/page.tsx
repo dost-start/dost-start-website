@@ -12,6 +12,7 @@ import homeEventsImage3 from "../../public/home-events-image3.png";
 import logo_s from "../../public/logo-s.png";
 import officerImage from "../../public/officers.png";
 import CurrentEventsSection from "@/components/events/CurrentEventsSection";
+import { getCategorizedEventsData } from "@/lib/data";
 
 export const metadata: Metadata = {
   title:
@@ -69,7 +70,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HomePage() {
+export default async function HomePage() {
+  // Fetch events data (from Contentful or local fallback)
+  const { currentEvents, upcomingEvents } = await getCategorizedEventsData();
+
   return (
     <div className="flex flex-col w-full">
       <section className="relative w-full px-4">
@@ -205,7 +209,10 @@ export default function HomePage() {
         </section>
 
         <div className="px-2">
-          <CurrentEventsSection />
+          <CurrentEventsSection
+            currentEvents={currentEvents}
+            upcomingEvents={upcomingEvents}
+          />
         </div>
 
         <div className="w-full max-w-7xl mx-auto flex justify-center items-center gap-1 md:gap-2 my-12">

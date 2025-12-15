@@ -1,10 +1,18 @@
 "use client";
-import { currentEvents, upcomingEvents } from "@/lib/events/events";
+import Event from "@/types/eventType";
 import StartDiv from "../StartDiv";
 import StartDivider from "../StartDivider";
 import EventCard from "./EventCard";
 
-export default function CurrentEventsSection() {
+interface CurrentEventsSectionProps {
+  currentEvents: Event[];
+  upcomingEvents: Event[];
+}
+
+export default function CurrentEventsSection({
+  currentEvents,
+  upcomingEvents,
+}: CurrentEventsSectionProps) {
   // When there are no current events, show upcoming events instead
   const eventsToShow =
     currentEvents.length > 0 ? currentEvents : upcomingEvents.slice(0, 3);

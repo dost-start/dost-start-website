@@ -6,16 +6,13 @@ import StartDiv from "@/components/StartDiv";
 import StartDivider from "@/components/StartDivider";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { events } from "@/lib/events/events";
+import { getEventBySlug, getAllEventSlugs } from "@/lib/data";
 import { formatDateForDiv } from "@/lib/utils";
 import { Calendar, Clock, Globe, MapPin } from "lucide-react";
 import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
-
-// Use all events from the single source
-const eventsArray = events;
 
 export async function generateMetadata({
   params,
@@ -25,7 +22,7 @@ export async function generateMetadata({
   const { slug } = await params;
 
   // Find the event based on the slug
-  const event = eventsArray.find((e) => e.slug === slug);
+  const event = await getEventBySlug(slug);
 
   if (!event) {
     return {
@@ -87,10 +84,9 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  // Use all events from the single source
-  return events.map((event) => ({
-    slug: event.slug,
-  }));
+  // Get all event slugs for static generation
+  const slugs = await getAllEventSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export default async function page({
@@ -100,7 +96,7 @@ export default async function page({
 }) {
   const { slug } = await params;
 
-  const eventData = eventsArray.find((e) => e.slug === slug);
+  const eventData = await getEventBySlug(slug);
 
   if (!eventData) {
     notFound();

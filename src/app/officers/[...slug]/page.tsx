@@ -1,18 +1,16 @@
 import MaxLayout from "@/components/MaxLayout";
 import OfficerCard from "@/components/officers/OfficerCard";
 import PageTitle from "@/components/PageTitle";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import officerBatchYears from "@/lib/officers";
+import {
+  getAllBatchYears,
+  getOfficersByTerm,
+  getAllOfficerParams,
+} from "@/lib/data";
 import { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import OfficerTermSelect from "@/components/officers/OfficerTermSelect";
 
 export async function generateMetadata({
   params,
@@ -21,10 +19,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const [year, department] = (await params).slug;
 
-  const batch = officerBatchYears.batchYears.find((b) => b.year === year);
-  const dept = batch?.departments.find((d) => d.tabName === department);
+  const batchYear = await getOfficersByTerm(year);
+  const dept = batchYear?.departments.find((d) => d.tabName === department);
 
-  if (!batch || !dept) {
+  if (!batchYear || !dept) {
     return {
       title: "Officers - Not Found",
       description:
@@ -86,16 +84,13 @@ export async function generateMetadata({
     },
   };
 }
-export async function generateStaticParams() {
-  const years = officerBatchYears;
 
-  return years.batchYears.flatMap((year) =>
-    year.departments.map((department) => ({
-      params: {
-        slug: [year.year, department.tabName],
-      },
-    }))
-  );
+export async function generateStaticParams() {
+  const params = await getAllOfficerParams();
+
+  return params.map(({ year, department }) => ({
+    slug: [year, department],
+  }));
 }
 
 export default async function page({
@@ -105,9 +100,11 @@ export default async function page({
 }) {
   const { slug } = await params;
 
-  const currentBatch = officerBatchYears.batchYears.find(
-    (year) => year.year === slug[0]
-  );
+  // Fetch data from unified data layer
+  const [allBatchYears, currentBatch] = await Promise.all([
+    getAllBatchYears(),
+    getOfficersByTerm(slug[0]),
+  ]);
 
   if (!currentBatch) {
     return {
@@ -156,21 +153,11 @@ export default async function page({
                   </Link>
                 ))}
               </TabsList>
-              <Select defaultValue={slug[0]}>
-                <SelectTrigger className="w-[180px]">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {officerBatchYears.batchYears.map((year) => (
-                    <SelectItem
-                      key={`batch-year-${year.year}`}
-                      value={year.year}
-                    >
-                      {year.year}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <OfficerTermSelect
+                batchYears={allBatchYears.batchYears}
+                currentYear={slug[0]}
+                currentDepartment={slug[1]}
+              />
             </div>
           </Tabs>
 

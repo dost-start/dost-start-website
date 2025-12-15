@@ -4,18 +4,24 @@ import { useState } from "react";
 import EventCard from "./EventCard";
 import { Button } from "../ui/button";
 import StartDivider from "../StartDivider";
-import { upcomingEvents, currentEvents } from "@/lib/events/events";
+import Event from "@/types/eventType";
+
+interface UpcomingEventsSectionProps {
+  upcomingEvents: Event[];
+  currentEventsCount: number;
+  className?: string;
+}
 
 export default function UpcomingEventsSection({
+  upcomingEvents,
+  currentEventsCount,
   className,
-}: {
-  className?: string;
-}) {
+}: UpcomingEventsSectionProps) {
   const [showAllUpcomingEvents, setShowAllUpcomingEvents] = useState(false);
 
   // If there are no current events, the first 3 upcoming events are shown in CurrentEventsSection
   // so we need to skip them here to avoid duplication
-  const startIndex = currentEvents.length === 0 ? 3 : 0;
+  const startIndex = currentEventsCount === 0 ? 3 : 0;
   const filteredUpcomingEvents = upcomingEvents.slice(startIndex);
 
   const upcomingEventsPreview = filteredUpcomingEvents.slice(0, 6);
