@@ -19,6 +19,11 @@ export {
   getClient,
   isContentfulConfigured,
   getAssetUrl,
+  getThumbnailUrl,
+  getCoverImageUrl,
+  getProfileImageUrl,
+  CACHE_REVALIDATE_SECONDS,
+  CACHE_TAGS,
 } from "./client";
 
 // Event functions

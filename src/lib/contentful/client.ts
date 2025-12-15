@@ -15,6 +15,18 @@ const SPACE_ID = process.env.CONTENTFUL_SPACE_ID;
 const ACCESS_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN;
 const PREVIEW_TOKEN = process.env.CONTENTFUL_PREVIEW_TOKEN;
 
+// Cache duration in seconds (5 minutes for production, false to disable in development)
+export const CACHE_REVALIDATE_SECONDS: number | false = 
+  process.env.NODE_ENV === "production" ? 300 : false;
+
+// Tags for cache invalidation
+export const CACHE_TAGS = {
+  events: "contentful-events",
+  officers: "contentful-officers",
+  terms: "contentful-terms",
+  departments: "contentful-departments",
+} as const;
+
 if (!SPACE_ID || !ACCESS_TOKEN) {
   console.warn(
     "⚠️ Contentful environment variables not set. Falling back to local data."
@@ -53,13 +65,81 @@ export function isContentfulConfigured(): boolean {
   return Boolean(SPACE_ID && ACCESS_TOKEN);
 }
 
-// Helper to extract asset URL
-export function getAssetUrl(asset: Asset | undefined): string {
+/**
+ * Contentful Image API options for optimization
+ */
+interface ImageOptions {
+  width?: number;
+  height?: number;
+  quality?: number;
+  format?: "jpg" | "png" | "webp" | "avif";
+  fit?: "pad" | "fill" | "scale" | "crop" | "thumb";
+}
+
+/**
+ * Get optimized asset URL using Contentful Images API
+ * @see https://www.contentful.com/developers/docs/references/images-api/
+ */
+export function getAssetUrl(asset: Asset | undefined, options?: ImageOptions): string {
   if (!asset?.fields?.file?.url) {
     return "/profile-placeholder.jpg";
   }
-  const url = asset.fields.file.url;
-  return url.startsWith("//") ? `https:${url}` : url;
+  
+  let url = asset.fields.file.url;
+  url = url.startsWith("//") ? `https:${url}` : url;
+  
+  // Apply Contentful Images API transformations if options provided
+  if (options) {
+    const params = new URLSearchParams();
+    
+    if (options.width) params.set("w", options.width.toString());
+    if (options.height) params.set("h", options.height.toString());
+    if (options.quality) params.set("q", options.quality.toString());
+    if (options.format) params.set("fm", options.format);
+    if (options.fit) params.set("fit", options.fit);
+    
+    const queryString = params.toString();
+    if (queryString) {
+      url += `?${queryString}`;
+    }
+  }
+  
+  return url;
+}
+
+/**
+ * Get optimized thumbnail URL (smaller size for cards/lists)
+ */
+export function getThumbnailUrl(asset: Asset | undefined): string {
+  return getAssetUrl(asset, {
+    width: 400,
+    quality: 80,
+    format: "webp",
+  });
+}
+
+/**
+ * Get optimized cover image URL (larger size for hero sections)
+ */
+export function getCoverImageUrl(asset: Asset | undefined): string {
+  return getAssetUrl(asset, {
+    width: 1200,
+    quality: 85,
+    format: "webp",
+  });
+}
+
+/**
+ * Get optimized profile image URL
+ */
+export function getProfileImageUrl(asset: Asset | undefined): string {
+  return getAssetUrl(asset, {
+    width: 300,
+    height: 300,
+    quality: 80,
+    format: "webp",
+    fit: "fill",
+  });
 }
 
 // Helper to extract linked entry ID
@@ -78,4 +158,3 @@ export interface ContentfulEntryFields {
 }
 
 export type ContentfulEntry<T extends ContentfulEntryFields> = Entry<T>;
-

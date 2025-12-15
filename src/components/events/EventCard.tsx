@@ -54,14 +54,15 @@ export default function EventCard({
                       });
                       const dateToShow =
                         upcomingDate || event.date[event.date.length - 1];
-                      return dateToShow.toLocaleDateString("en-US", {
+                      // Ensure dateToShow is a Date object (handles string from cache)
+                      return new Date(dateToShow).toLocaleDateString("en-US", {
                         day: "numeric",
                         month: "long",
                         year: "numeric",
                         weekday: "long",
                       });
                     })()
-                  : event.date.toLocaleDateString("en-US", {
+                  : new Date(event.date).toLocaleDateString("en-US", {
                       day: "numeric",
                       month: "long",
                       year: "numeric",

@@ -70,6 +70,15 @@ function isPastEvent(event: Event): boolean {
 }
 
 /**
+ * Safely get timestamp from a date value (handles both Date objects and strings)
+ */
+function getTimestamp(d: Date | string | number): number {
+  if (d instanceof Date) return d.getTime();
+  if (typeof d === 'string' || typeof d === 'number') return new Date(d).getTime();
+  return 0;
+}
+
+/**
  * Gets the earliest upcoming date for an event, useful for sorting
  */
 function getEarliestUpcomingDate(event: Event): Date | null {
@@ -90,7 +99,7 @@ function getEarliestUpcomingDate(event: Event): Date | null {
     return null;
   }
 
-  return new Date(Math.min(...upcomingDates.map((d) => d.getTime())));
+  return new Date(Math.min(...upcomingDates.map(getTimestamp)));
 }
 
 /**
@@ -114,7 +123,7 @@ function getLatestPastDate(event: Event): Date | null {
     return null;
   }
 
-  return new Date(Math.max(...pastDates.map((d) => d.getTime())));
+  return new Date(Math.max(...pastDates.map(getTimestamp)));
 }
 
 // Export dynamically categorized events

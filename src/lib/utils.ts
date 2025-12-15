@@ -5,7 +5,16 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function formatDate(date: Date | Date[]) {
+/**
+ * Ensures a value is a valid Date object
+ * Handles Date objects, strings (from cache), and numbers (timestamps)
+ */
+function ensureDate(value: Date | string | number): Date {
+  if (value instanceof Date) return value;
+  return new Date(value);
+}
+
+export function formatDate(date: Date | Date[] | string | string[]) {
   const formatter = new Intl.DateTimeFormat("en-GB", {
     day: "numeric",
     month: "long",
@@ -13,8 +22,9 @@ export function formatDate(date: Date | Date[]) {
     weekday: "long",
   });
 
-  const formatSingleDate = (singleDate: Date) => {
-    const parts = formatter.formatToParts(singleDate);
+  const formatSingleDate = (singleDate: Date | string) => {
+    const dateObj = ensureDate(singleDate);
+    const parts = formatter.formatToParts(dateObj);
     const day = parts.find((p) => p.type === "day")?.value ?? "";
     const month = parts.find((p) => p.type === "month")?.value ?? "";
     const year = parts.find((p) => p.type === "year")?.value ?? "";
@@ -29,7 +39,7 @@ export function formatDate(date: Date | Date[]) {
   return formatSingleDate(date);
 }
 
-export function formatDateWithHighlight(date: Date | Date[]) {
+export function formatDateWithHighlight(date: Date | Date[] | string | string[]) {
   const formatter = new Intl.DateTimeFormat("en-GB", {
     day: "numeric",
     month: "long",
@@ -37,8 +47,9 @@ export function formatDateWithHighlight(date: Date | Date[]) {
     weekday: "long",
   });
 
-  const formatSingleDate = (singleDate: Date) => {
-    const parts = formatter.formatToParts(singleDate);
+  const formatSingleDate = (singleDate: Date | string) => {
+    const dateObj = ensureDate(singleDate);
+    const parts = formatter.formatToParts(dateObj);
     const day = parts.find((p) => p.type === "day")?.value ?? "";
     const month = parts.find((p) => p.type === "month")?.value ?? "";
     const year = parts.find((p) => p.type === "year")?.value ?? "";
@@ -55,14 +66,15 @@ export function formatDateWithHighlight(date: Date | Date[]) {
     today.setHours(0, 0, 0, 0);
 
     const upcomingDateIndex = date.findIndex((dateItem) => {
-      const eventDate = new Date(dateItem);
+      const eventDate = ensureDate(dateItem);
       eventDate.setHours(0, 0, 0, 0);
       return eventDate >= today;
     });
 
     // Group dates by year and month
     const groupedDates = date.reduce((acc, dateItem, index) => {
-      const parts = formatter.formatToParts(dateItem);
+      const dateObj = ensureDate(dateItem);
+      const parts = formatter.formatToParts(dateObj);
       const day = parts.find((p) => p.type === "day")?.value ?? "";
       const month = parts.find((p) => p.type === "month")?.value ?? "";
       const year = parts.find((p) => p.type === "year")?.value ?? "";
@@ -99,7 +111,7 @@ export function formatDateWithHighlight(date: Date | Date[]) {
   return formatSingleDate(date);
 }
 
-export function formatDateForDiv(date: Date | Date[]) {
+export function formatDateForDiv(date: Date | Date[] | string | string[]) {
   const formatter = new Intl.DateTimeFormat("en-GB", {
     day: "numeric",
     month: "long",
@@ -107,8 +119,9 @@ export function formatDateForDiv(date: Date | Date[]) {
     weekday: "long",
   });
 
-  const formatSingleDate = (singleDate: Date) => {
-    const parts = formatter.formatToParts(singleDate);
+  const formatSingleDate = (singleDate: Date | string) => {
+    const dateObj = ensureDate(singleDate);
+    const parts = formatter.formatToParts(dateObj);
     const day = parts.find((p) => p.type === "day")?.value ?? "";
     const month = parts.find((p) => p.type === "month")?.value ?? "";
     const year = parts.find((p) => p.type === "year")?.value ?? "";
@@ -125,14 +138,15 @@ export function formatDateForDiv(date: Date | Date[]) {
     today.setHours(0, 0, 0, 0);
 
     const upcomingDateIndex = date.findIndex((dateItem) => {
-      const eventDate = new Date(dateItem);
+      const eventDate = ensureDate(dateItem);
       eventDate.setHours(0, 0, 0, 0);
       return eventDate >= today;
     });
 
     // Group dates by year and month
     const groupedDates = date.reduce((acc, dateItem, index) => {
-      const parts = formatter.formatToParts(dateItem);
+      const dateObj = ensureDate(dateItem);
+      const parts = formatter.formatToParts(dateObj);
       const day = parts.find((p) => p.type === "day")?.value ?? "";
       const month = parts.find((p) => p.type === "month")?.value ?? "";
       const year = parts.find((p) => p.type === "year")?.value ?? "";
