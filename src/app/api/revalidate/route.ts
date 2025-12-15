@@ -35,20 +35,24 @@ export async function POST(request: NextRequest) {
     // Verify the request token
     const token = request.headers.get("x-revalidate-token");
     
-    if (!REVALIDATE_TOKEN) {
+    // If REVALIDATE_TOKEN is configured, always require valid token
+    if (REVALIDATE_TOKEN) {
+      if (token !== REVALIDATE_TOKEN) {
+        return NextResponse.json(
+          { error: "Invalid token" },
+          { status: 401 }
+        );
+      }
+    } else {
+      // Token not configured
       console.warn("REVALIDATE_SECRET_TOKEN not configured");
-      // Still allow revalidation in development
       if (process.env.NODE_ENV === "production") {
         return NextResponse.json(
           { error: "Revalidation not configured" },
           { status: 500 }
         );
       }
-    } else if (token !== REVALIDATE_TOKEN) {
-      return NextResponse.json(
-        { error: "Invalid token" },
-        { status: 401 }
-      );
+      // In development without token configured, allow revalidation for easier testing
     }
 
     const body: ContentfulWebhookPayload = await request.json();
@@ -115,18 +119,23 @@ export async function GET(request: NextRequest) {
   const token = request.nextUrl.searchParams.get("token");
   const tag = request.nextUrl.searchParams.get("tag");
 
-  if (!REVALIDATE_TOKEN) {
+  // If REVALIDATE_TOKEN is configured, always require valid token
+  if (REVALIDATE_TOKEN) {
+    if (token !== REVALIDATE_TOKEN) {
+      return NextResponse.json(
+        { error: "Invalid token" },
+        { status: 401 }
+      );
+    }
+  } else {
+    // Token not configured
     if (process.env.NODE_ENV === "production") {
       return NextResponse.json(
         { error: "Revalidation not configured" },
         { status: 500 }
       );
     }
-  } else if (token !== REVALIDATE_TOKEN) {
-    return NextResponse.json(
-      { error: "Invalid token" },
-      { status: 401 }
-    );
+    // In development without token configured, allow revalidation for easier testing
   }
 
   // Revalidate specific tag or all tags
