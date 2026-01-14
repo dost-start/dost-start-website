@@ -10,7 +10,7 @@ import {
 import { ISR_REVALIDATE_SECONDS } from "@/lib/contentful";
 import { Metadata } from "next";
 import Link from "next/link";
-import { redirect } from "next/navigation";
+import { redirect, notFound } from "next/navigation";
 import OfficerTermSelect from "@/components/officers/OfficerTermSelect";
 
 // Enable ISR with 1-hour revalidation for better performance
@@ -104,6 +104,11 @@ export default async function page({
 }) {
   const { slug } = await params;
 
+  // Expect exactly [year, department]; anything else is a 404
+  if (!slug || slug.length !== 2) {
+    notFound();
+  }
+
   // Fetch data from unified data layer
   const [allBatchYears, currentBatch] = await Promise.all([
     getAllBatchYears(),
@@ -111,10 +116,7 @@ export default async function page({
   ]);
 
   if (!currentBatch) {
-    return {
-      status: 404,
-      error: new Error("Batch not found"),
-    };
+    notFound();
   }
 
   const currentDepartment = currentBatch.departments.find(
