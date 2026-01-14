@@ -7,12 +7,16 @@ import StartDivider from "@/components/StartDivider";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { getEventBySlug, getAllEventSlugs } from "@/lib/data";
+import { ISR_REVALIDATE_SECONDS } from "@/lib/contentful";
 import { formatDateForDiv } from "@/lib/utils";
 import { Calendar, Clock, Globe, MapPin } from "lucide-react";
 import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
+
+// Enable ISR with 1-hour revalidation for better performance
+export const revalidate = ISR_REVALIDATE_SECONDS;
 
 export async function generateMetadata({
   params,

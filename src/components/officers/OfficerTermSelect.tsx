@@ -26,8 +26,14 @@ export default function OfficerTermSelect({
   const handleYearChange = (year: string) => {
     // Find the batch year to check if it has the same department
     const newBatch = batchYears.find((b) => b.year === year);
-    
     if (!newBatch) return;
+
+    // If this term has no departments, fall back to the default officers route
+    // (prevents crashes when Contentful has a term scaffolded but not populated yet)
+    if (!newBatch.departments || newBatch.departments.length === 0) {
+      router.push("/officers");
+      return;
+    }
 
     // Check if the current department exists in the new batch year
     const hasSameDepartment = newBatch.departments.some(
@@ -48,7 +54,9 @@ export default function OfficerTermSelect({
         <SelectValue />
       </SelectTrigger>
       <SelectContent>
-        {batchYears.map((year) => (
+        {batchYears
+          .filter((b) => b.departments && b.departments.length > 0)
+          .map((year) => (
           <SelectItem key={`batch-year-${year.year}`} value={year.year}>
             {year.year}
           </SelectItem>

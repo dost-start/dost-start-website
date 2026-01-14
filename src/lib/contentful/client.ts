@@ -15,9 +15,14 @@ const SPACE_ID = process.env.CONTENTFUL_SPACE_ID;
 const ACCESS_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN;
 const PREVIEW_TOKEN = process.env.CONTENTFUL_PREVIEW_TOKEN;
 
-// Cache duration in seconds (5 minutes for production, false to disable in development)
+// Cache duration in seconds (1 hour for production, false to disable in development)
+// Increased from 5 minutes to 1 hour for better performance
+// Content is revalidated on-demand via webhook when updated in Contentful
 export const CACHE_REVALIDATE_SECONDS: number | false = 
-  process.env.NODE_ENV === "production" ? 300 : false;
+  process.env.NODE_ENV === "production" ? 3600 : false;
+
+// ISR revalidation period for pages (1 hour)
+export const ISR_REVALIDATE_SECONDS = 3600;
 
 // Tags for cache invalidation
 export const CACHE_TAGS = {

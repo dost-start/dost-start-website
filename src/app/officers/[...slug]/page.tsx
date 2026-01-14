@@ -7,10 +7,14 @@ import {
   getOfficersByTerm,
   getAllOfficerParams,
 } from "@/lib/data";
+import { ISR_REVALIDATE_SECONDS } from "@/lib/contentful";
 import { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import OfficerTermSelect from "@/components/officers/OfficerTermSelect";
+
+// Enable ISR with 1-hour revalidation for better performance
+export const revalidate = ISR_REVALIDATE_SECONDS;
 
 export async function generateMetadata({
   params,
@@ -118,9 +122,11 @@ export default async function page({
   );
 
   if (!currentDepartment) {
-    return redirect(
-      `/officers/${slug[0]}/${currentBatch.departments[0].tabName}`
-    );
+    const fallbackDepartment = currentBatch.departments?.[0]?.tabName;
+    if (!fallbackDepartment) {
+      return redirect("/officers");
+    }
+    return redirect(`/officers/${slug[0]}/${fallbackDepartment}`);
   }
 
   return (

@@ -23,6 +23,7 @@ export {
   getCoverImageUrl,
   getProfileImageUrl,
   CACHE_REVALIDATE_SECONDS,
+  ISR_REVALIDATE_SECONDS,
   CACHE_TAGS,
 } from "./client";
 

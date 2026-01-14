@@ -22,24 +22,8 @@ const socialIcons = {
   youtube: FaYoutubeSquare,
   twitter: FaTwitterSquare,
 };
-import { getPlaiceholder } from "plaiceholder";
 
-export async function getImageBlur(src: string) {
-  if (!src.startsWith("https")) {
-    return "";
-  }
-  const transformedSrc = src.replace("/upload/", "/upload/w_10,q_10/");
-
-  const response = await fetch(transformedSrc);
-  const arrayBuffer = await response.arrayBuffer();
-  const buffer = Buffer.from(arrayBuffer);
-
-  const { base64 } = await getPlaiceholder(buffer);
-  return base64;
-}
-
-export default async function OfficerCard({ officer }: { officer: Officer }) {
-  const blurUrl = await getImageBlur(officer.imageSrc);
+export default function OfficerCard({ officer }: { officer: Officer }) {
   return (
     <div className="text-center">
       <Image
@@ -48,8 +32,6 @@ export default async function OfficerCard({ officer }: { officer: Officer }) {
         className="w-45 h-45 rounded-full mx-auto object-cover object-top border"
         width={200}
         height={200}
-        placeholder={officer.imageSrc.startsWith("https") ? "blur" : undefined}
-        blurDataURL={blurUrl}
         loading="lazy"
       />
       <h3 className="text-lg font-semibold mt-4">{officer.name}</h3>

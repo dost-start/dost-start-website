@@ -13,6 +13,10 @@ import logo_s from "../../public/logo-s.png";
 import officerImage from "../../public/officers.png";
 import CurrentEventsSection from "@/components/events/CurrentEventsSection";
 import { getCategorizedEventsData } from "@/lib/data";
+import { ISR_REVALIDATE_SECONDS } from "@/lib/contentful";
+
+// Enable ISR with 1-hour revalidation for better performance
+export const revalidate = ISR_REVALIDATE_SECONDS;
 
 export const metadata: Metadata = {
   title:

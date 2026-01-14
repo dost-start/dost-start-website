@@ -7,8 +7,12 @@ import PageTitle from "@/components/PageTitle";
 import StartDivider from "@/components/StartDivider";
 import gallery from "@/lib/events/gallery";
 import { getCategorizedEventsData, getEventTerms } from "@/lib/data";
+import { ISR_REVALIDATE_SECONDS } from "@/lib/contentful";
 import type { Metadata } from "next";
 import TermFilter from "@/components/events/TermFilter";
+
+// Enable ISR with 1-hour revalidation for better performance
+export const revalidate = ISR_REVALIDATE_SECONDS;
 
 export const metadata: Metadata = {
   title: "Events - DOST START",

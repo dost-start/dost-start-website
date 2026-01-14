@@ -166,8 +166,15 @@ export async function getAllBatchYears(): Promise<BatchYears> {
   if (isContentfulConfigured()) {
     try {
       const batchYears = await contentfulGetAllBatchYears();
-      if (batchYears.batchYears.length > 0) {
-        return batchYears;
+      const filtered = {
+        ...batchYears,
+        batchYears: batchYears.batchYears.filter(
+          (b) => b.departments && b.departments.length > 0
+        ),
+      };
+
+      if (filtered.batchYears.length > 0) {
+        return filtered;
       }
     } catch (error) {
       console.error("Error fetching batch years from Contentful:", error);
@@ -175,7 +182,12 @@ export async function getAllBatchYears(): Promise<BatchYears> {
   }
 
   // Fallback to local data
-  return officerBatchYears;
+  return {
+    ...officerBatchYears,
+    batchYears: officerBatchYears.batchYears.filter(
+      (b) => b.departments && b.departments.length > 0
+    ),
+  };
 }
 
 /**
@@ -210,9 +222,16 @@ export async function getDefaultOfficerPath(): Promise<string> {
     return "/officers/2024-2025/Executive";
   }
 
-  // Get the most recent batch year (first in the sorted list)
-  const latestBatch = batchYears.batchYears[0];
-  const firstDepartment = latestBatch.departments[0];
+  // Get the most recent batch year (first in the sorted list) that has departments
+  const latestBatch = batchYears.batchYears.find(
+    (b) => b.departments && b.departments.length > 0
+  );
+
+  const firstDepartment = latestBatch?.departments?.[0];
+
+  if (!latestBatch || !firstDepartment?.tabName) {
+    return "/officers/2024-2025/Executive";
+  }
 
   return `/officers/${latestBatch.year}/${firstDepartment.tabName}`;
 }
