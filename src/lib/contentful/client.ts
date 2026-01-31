@@ -90,8 +90,10 @@ export function getAssetUrl(asset: Asset | undefined, options?: ImageOptions): s
     return "/profile-placeholder.jpg";
   }
   
-  let url = asset.fields.file.url;
-  url = url.startsWith("//") ? `https:${url}` : url;
+  const rawUrl = asset.fields.file.url;
+  let url = typeof rawUrl === "string"
+    ? (rawUrl.startsWith("//") ? `https:${rawUrl}` : rawUrl)
+    : (rawUrl as { url?: string }).url ?? "";
   
   // Apply Contentful Images API transformations if options provided
   if (options) {
@@ -147,9 +149,9 @@ export function getProfileImageUrl(asset: Asset | undefined): string {
   });
 }
 
-// Helper to extract linked entry ID
+// Helper to extract linked entry ID (accepts Contentful Entry or any object with sys.id)
 export function getLinkedEntryId(
-  entry: Entry<unknown> | { sys: { id: string } } | undefined
+  entry: { sys?: { id?: string } } | undefined
 ): string | null {
   if (!entry?.sys?.id) {
     return null;
@@ -162,4 +164,10 @@ export interface ContentfulEntryFields {
   [key: string]: unknown;
 }
 
-export type ContentfulEntry<T extends ContentfulEntryFields> = Entry<T>;
+/** Entry skeleton shape required by Contentful's Entry<T> */
+type EntrySkeleton<TFields extends ContentfulEntryFields> = {
+  fields: TFields;
+  contentTypeId: string;
+};
+
+export type ContentfulEntry<T extends ContentfulEntryFields> = Entry<EntrySkeleton<T>>;

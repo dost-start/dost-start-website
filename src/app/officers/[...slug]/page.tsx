@@ -7,14 +7,13 @@ import {
   getOfficersByTerm,
   getAllOfficerParams,
 } from "@/lib/data";
-import { ISR_REVALIDATE_SECONDS } from "@/lib/contentful";
 import { Metadata } from "next";
 import Link from "next/link";
 import { redirect, notFound } from "next/navigation";
 import OfficerTermSelect from "@/components/officers/OfficerTermSelect";
 
 // Enable ISR with 1-hour revalidation for better performance
-export const revalidate = ISR_REVALIDATE_SECONDS;
+export const revalidate = 3600; // ISR: revalidate every hour
 
 export async function generateMetadata({
   params,

@@ -93,7 +93,7 @@ async function createOrUpdateContentType(
     existingType.name = model.name;
     existingType.description = model.description;
     existingType.displayField = model.displayField;
-    existingType.fields = fields as ContentType["fields"];
+    existingType.fields = fields as unknown as ContentType["fields"];
 
     const updatedType = await existingType.update();
     await updatedType.publish();
@@ -105,7 +105,7 @@ async function createOrUpdateContentType(
       name: model.name,
       description: model.description,
       displayField: model.displayField,
-      fields: fields as ContentType["fields"],
+      fields: fields as unknown as ContentType["fields"],
     });
 
     await contentType.publish();
