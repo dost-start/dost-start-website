@@ -6,9 +6,8 @@ import MaxLayout from "@/components/MaxLayout";
 import PageTitle from "@/components/PageTitle";
 import StartDivider from "@/components/StartDivider";
 import gallery from "@/lib/events/gallery";
-import { getCategorizedEventsData, getEventTerms } from "@/lib/data";
+import { getCategorizedEventsData } from "@/lib/data";
 import type { Metadata } from "next";
-import TermFilter from "@/components/events/TermFilter";
 
 // Enable ISR with 1-hour revalidation for better performance
 export const revalidate = 3600; // ISR: revalidate every hour
@@ -62,31 +61,15 @@ export const metadata: Metadata = {
   },
 };
 
-interface EventsPageProps {
-  searchParams: Promise<{ term?: string }>;
-}
-
-export default async function Page({ searchParams }: EventsPageProps) {
-  const { term } = await searchParams;
-  
+export default async function Page() {
   // Fetch events data (from Contentful or local fallback)
-  const [eventsData, terms] = await Promise.all([
-    getCategorizedEventsData(term),
-    getEventTerms(),
-  ]);
+  const eventsData = await getCategorizedEventsData();
 
   const { currentEvents, upcomingEvents, pastEvents } = eventsData;
 
   return (
     <MaxLayout>
       <PageTitle text="Events" />
-      
-      {/* Term Filter - only show if there are multiple terms */}
-      {terms.length > 1 && (
-        <div className="flex justify-end px-2 sm:px-10 mb-4">
-          <TermFilter terms={terms} currentTerm={term} />
-        </div>
-      )}
       
       <CurrentEventsSection
         currentEvents={currentEvents}
