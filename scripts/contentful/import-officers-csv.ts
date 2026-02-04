@@ -114,6 +114,40 @@ function mapPositionToRoleType(position: string): "chief" | "deputy" | "committe
 }
 
 /**
+ * Map Position to display order
+ * 0 - chiefs
+ * 1 - deputies
+ * 2 - committees
+ */
+function getDisplayOrder(position: string): number {
+  const posLower = position.toLowerCase().trim();
+  
+  if (posLower === "chief") {
+    return 0;
+  } else if (posLower === "deputy chief" || posLower.includes("deputy")) {
+    return 1;
+  } else if (posLower === "committee" || posLower.includes("committee")) {
+    return 2;
+  }
+  
+  return 3; // Default for other roles
+}
+
+/**
+ * Map Position to section type
+ */
+function getSectionType(position: string): "special" | "regular" | "subDepartment" {
+  const posLower = position.toLowerCase().trim();
+  
+  // Chiefs and deputies are special officers
+  if (posLower === "chief" || posLower === "deputy chief" || posLower.includes("deputy")) {
+    return "special";
+  }
+  
+  return "regular";
+}
+
+/**
  * Extract Google Drive file ID from various URL formats
  */
 function extractGoogleDriveFileId(url: string): string | null {
@@ -231,13 +265,14 @@ async function uploadAsset(
   try {
     console.log(`      📤 Uploading asset: ${title}...`);
     
-    // Read the file
-    const fileBuffer = fs.readFileSync(filePath);
+    // Read the file and convert Buffer to ArrayBuffer
+    const nodeBuffer = fs.readFileSync(filePath);
+    const arrayBuffer = new Uint8Array(nodeBuffer).buffer as ArrayBuffer;
     const fileName = path.basename(filePath);
     
     // Create upload
     const upload = await environment.createUpload({
-      file: fileBuffer,
+      file: arrayBuffer,
     });
     
     // Create asset with the upload
@@ -347,6 +382,158 @@ async function createOfficer(
   }
 }
 
+// Cache for department IDs
+const departmentCache = new Map<string, string>();
+
+/**
+ * Map CSV department names to existing Contentful department name field values
+ */
+const DEPARTMENT_NAME_MAP: Record<string, string> = {
+  "Communication": "Communications Department",
+  "Communications": "Communications Department",
+  "Technology": "Technology Department",
+  "Tech": "Technology Department",
+  "Events": "Events Department",
+  "Marketing": "Marketing Department",
+  "Finance": "Finance Department",
+  "CRRD": "CRRD",
+  "Executive Leadership": "Executive Leadership",
+  "Executive": "Executive Leadership",
+  "Advisors": "Advisors",
+};
+
+/**
+ * Get existing Department entry by name and term
+ */
+async function getExistingDepartment(
+  environment: Environment,
+  csvDepartmentName: string,
+  termId: string
+): Promise<string | null> {
+  // Check cache first
+  const cacheKey = `${csvDepartmentName}-${termId}`;
+  if (departmentCache.has(cacheKey)) {
+    return departmentCache.get(cacheKey)!;
+  }
+  
+  // Map CSV department name to Contentful department name
+  const contentfulDeptName = DEPARTMENT_NAME_MAP[csvDepartmentName];
+  
+  if (!contentfulDeptName) {
+    console.error(`   ❌ No mapping found for department: "${csvDepartmentName}"`);
+    console.log(`      Available mappings: ${Object.keys(DEPARTMENT_NAME_MAP).join(", ")}`);
+    return null;
+  }
+  
+  // Search for existing department by name and term
+  try {
+    const existingDepts = await environment.getEntries({
+      content_type: "department",
+      "fields.name": contentfulDeptName,
+      "fields.term.sys.id": termId,
+      limit: 1,
+    });
+    
+    if (existingDepts.items.length > 0) {
+      const existing = existingDepts.items[0];
+      departmentCache.set(cacheKey, existing.sys.id);
+      console.log(`   📂 Found department: ${contentfulDeptName} (ID: ${existing.sys.id})`);
+      return existing.sys.id;
+    }
+    
+    console.error(`   ❌ Department not found in Contentful: "${contentfulDeptName}" for term ${termId}`);
+    return null;
+  } catch (error) {
+    console.error(`   ❌ Error searching for department:`, error);
+    return null;
+  }
+}
+
+/**
+ * Create DepartmentOfficer link entry
+ */
+async function createDepartmentOfficer(
+  environment: Environment,
+  departmentId: string,
+  officerId: string,
+  officer: CSVOfficer
+): Promise<string | null> {
+  const timestamp = Date.now();
+  const linkId = generateId("deptoff", `${officer.fullName}-${timestamp}`);
+  
+  const displayOrder = getDisplayOrder(officer.position);
+  const section = getSectionType(officer.position);
+  
+  // Create a name for the link entry (officer name and designation)
+  const linkName = `${officer.fullName} - ${officer.designation}`;
+  
+  console.log(`      🔗 Creating department-officer link (order: ${displayOrder}, section: ${section})`);
+  
+  try {
+    const fields: Record<string, unknown> = {
+      name: localized(linkName),
+      department: localized(createLink(departmentId, "Entry")),
+      officer: localized(createLink(officerId, "Entry")),
+      order: localized(displayOrder),
+      section: localized(section),
+    };
+    
+    const entry = await environment.createEntryWithId("departmentOfficer", linkId, { fields });
+    await entry.publish();
+    
+    console.log(`      ✅ Created department-officer link`);
+    return entry.sys.id;
+  } catch (error) {
+    console.error(`      ❌ Failed to create department-officer link:`, error);
+    return null;
+  }
+}
+
+/**
+ * Get or create the active Term
+ */
+async function getOrCreateActiveTerm(environment: Environment): Promise<string | null> {
+  const termName = "2025-2026"; // Current term
+  
+  // Search for existing term by name
+  try {
+    const existingTerms = await environment.getEntries({
+      content_type: "term",
+      "fields.name": termName,
+      limit: 1,
+    });
+    
+    if (existingTerms.items.length > 0) {
+      const existing = existingTerms.items[0];
+      console.log(`📅 Found existing term: ${termName} (ID: ${existing.sys.id})`);
+      return existing.sys.id;
+    }
+  } catch {
+    // Error searching, will try to create
+  }
+  
+  // Term doesn't exist, create it
+  console.log(`📅 Creating term: ${termName}`);
+  
+  try {
+    const entry = await environment.createEntry("term", {
+      fields: {
+        name: localized(termName),
+        startDate: localized("2025-07-01T00:00:00.000Z"),
+        endDate: localized("2026-06-30T23:59:59.000Z"),
+        isActive: localized(true),
+      },
+    });
+    
+    await entry.publish();
+    console.log(`✅ Created term: ${termName}`);
+    return entry.sys.id;
+  } catch (error) {
+    console.error(`❌ Failed to create term:`, error);
+    return null;
+  }
+}
+
 /**
  * Parse CSV file
  */
@@ -441,9 +628,21 @@ async function main(): Promise<void> {
     console.log("-----------------------");
     
     const results = {
-      created: 0,
-      failed: 0,
+      officersCreated: 0,
+      officersFailed: 0,
+      linksCreated: 0,
+      linksFailed: 0,
     };
+    
+    // Get or create the active term first
+    console.log("\n📅 Setting up Term");
+    console.log("-------------------");
+    const termId = await getOrCreateActiveTerm(environment);
+    
+    if (!termId) {
+      console.error("❌ Failed to get/create term. Aborting.");
+      return;
+    }
     
     // Group officers by department
     const byDepartment = new Map<string, CSVOfficer[]>();
@@ -459,6 +658,14 @@ async function main(): Promise<void> {
     
     for (const [department, deptOfficers] of byDepartment) {
       console.log(`\n📁 Department: ${department}`);
+      
+      // Get or create the department
+      const departmentId = await getExistingDepartment(environment, department, termId);
+      
+      if (!departmentId) {
+        console.error(`   ❌ Skipping officers for ${department} - department creation failed`);
+        continue;
+      }
       
       for (const officer of deptOfficers) {
         try {
@@ -489,9 +696,23 @@ async function main(): Promise<void> {
           );
           
           if (officerId) {
-            results.created++;
+            results.officersCreated++;
+            
+            // Create DepartmentOfficer link
+            const linkId = await createDepartmentOfficer(
+              environment,
+              departmentId,
+              officerId,
+              officer
+            );
+            
+            if (linkId) {
+              results.linksCreated++;
+            } else {
+              results.linksFailed++;
+            }
           } else {
-            results.failed++;
+            results.officersFailed++;
           }
           
           globalOrder++;
@@ -500,7 +721,7 @@ async function main(): Promise<void> {
           await new Promise((resolve) => setTimeout(resolve, 500));
         } catch (error) {
           console.error(`   ❌ Error processing ${officer.fullName}:`, error);
-          results.failed++;
+          results.officersFailed++;
         }
       }
     }
@@ -512,12 +733,20 @@ async function main(): Promise<void> {
     console.log("\n=================================");
     console.log("✅ Import completed!");
     console.log("\nSummary:");
-    console.log(`   - Created/Replaced: ${results.created}`);
-    console.log(`   - Failed: ${results.failed}`);
+    console.log(`   Officers:`);
+    console.log(`     - Created: ${results.officersCreated}`);
+    console.log(`     - Failed: ${results.officersFailed}`);
+    console.log(`   Department-Officer Links:`);
+    console.log(`     - Created: ${results.linksCreated}`);
+    console.log(`     - Failed: ${results.linksFailed}`);
+    console.log("\nDisplay Order Used:");
+    console.log(`   0 - Chiefs`);
+    console.log(`   1 - Deputies`);
+    console.log(`   2 - Committees`);
     console.log("\nNext steps:");
     console.log("1. Review the imported officers in Contentful");
     console.log("2. Add missing images manually for any failed uploads");
-    console.log("3. Link officers to departments if needed");
+    console.log("3. Verify department-officer links are correct");
     
   } catch (error) {
     console.error("\n❌ Import failed:", error);
