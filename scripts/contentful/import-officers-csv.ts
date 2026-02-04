@@ -42,7 +42,7 @@ const DEFAULT_LOCALE = "en-US";
 // CSV file path (relative to script location)
 const CSV_FILE_PATH = path.join(
   __dirname,
-  "START Officers and Committees Data Submission for Website Content (Responses) - Sheet1.csv"
+  "FILE_NAME.csv"
 );
 
 // Temp directory for downloaded images
@@ -396,7 +396,7 @@ const DEPARTMENT_NAME_MAP: Record<string, string> = {
   "Events": "Events Department",
   "Marketing": "Marketing Department",
   "Finance": "Finance Department",
-  "CRRD": "CRRD",
+  "CRRD": "Community & Regional Relations Department",
   "Executive Leadership": "Executive Leadership",
   "Executive": "Executive Leadership",
   "Advisors": "Advisors",
