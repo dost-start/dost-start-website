@@ -76,6 +76,38 @@ Run both migrations in sequence:
 npm run contentful:migrate
 ```
 
+### Step 4: Import Officers from CSV (Optional)
+If you have a CSV file with officer data, you can import it:
+
+```bash
+npm run contentful:import-officers
+```
+
+Or directly:
+```bash
+npx tsx scripts/contentful/import-officers-csv.ts
+```
+
+**CSV Format Expected:**
+
+| Column | Description |
+|--------|-------------|
+| Full Name | Officer's full name |
+| Department | Department name (e.g., Communication, Finance) |
+| Position | Role classification (Chief, Deputy Chief, Committee) |
+| Designation/Official Title | Full title (e.g., Chief Communications Officer) |
+| Upload a Square Headshot Photo (JPEG/PNG, Max 10MB) | Google Drive link to photo |
+| LinkedIn | LinkedIn profile URL |
+| Portfolio Website | Personal website URL |
+| Github | GitHub profile URL |
+
+The script will:
+1. Parse the CSV file
+2. Download images from Google Drive links
+3. Upload images as Contentful assets
+4. Create officer entries with all data
+5. Map Position to roleType (Chief→chief, Deputy Chief→deputy, Committee→committee)
+
 ## Content Models Created
 
 ### Term
