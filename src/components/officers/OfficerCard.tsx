@@ -11,6 +11,7 @@ import {
   FaTwitterSquare,
   FaYoutubeSquare,
 } from "react-icons/fa";
+import { BackgroundGradient } from "@/components/ui/background-gradient";
 
 const socialIcons = {
   facebook: FaFacebookSquare,
@@ -25,35 +26,61 @@ const socialIcons = {
 
 export default function OfficerCard({ officer }: { officer: Officer }) {
   return (
-    <div className="text-center">
-      <Image
-        src={officer.imageSrc}
-        alt={officer.name}
-        className="w-45 h-45 rounded-full mx-auto object-cover object-top border"
-        width={200}
-        height={200}
-        loading="lazy"
-      />
-      <h3 className="text-lg font-semibold mt-4">{officer.name}</h3>
-      <p className="text-sm text-gray-500">{officer.position}</p>
-      <div className="flex justify-center gap-3 mt-2">
-        {Object.entries(officer.socialLinks).map(([key, link]) =>
-          link ? (
-            <a
-              key={key}
-              href={link}
-              target="_blank"
-              rel="noreferrer"
-              className="text-gray-600 hover:primary transition-colors"
-            >
-              {socialIcons[key as keyof typeof socialIcons] &&
-                createElement(socialIcons[key as keyof typeof socialIcons], {
-                  size: 24,
-                })}
-            </a>
-          ) : null
-        )}
-      </div>
-    </div>
+    <BackgroundGradient
+      containerClassName="w-[220px] h-[320px] mx-auto"
+      className="h-full"
+    >
+      <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl bg-card text-card-foreground shadow-md border border-border transition-transform duration-300 hover:-translate-y-1">
+        {/* Content wrapper */}
+        <div className="flex flex-1 flex-col items-center justify-between px-4 pt-5 pb-0 gap-1">
+          {/* Name + role */}
+          <header className="text-center space-y-0.5 shrink-0">
+            <h3 className="text-base font-orbitron font-semibold text-foreground leading-snug">
+              {officer.name}
+            </h3>
+            <p className="text-xs text-muted-foreground leading-snug line-clamp-2">
+              {officer.position}
+            </p>
+          </header>
+
+          {/* Portrait */}
+          <div className="relative flex-1 flex items-center justify-center w-full min-h-0">
+            <div className="relative w-[120px] h-[120px] flex items-center justify-center shrink-0">
+              <div className="relative w-full h-full rounded-full overflow-hidden bg-muted/30">
+                <Image
+                  src={officer.imageSrc}
+                  alt={officer.name}
+                  className="object-cover w-full h-full saturate-0 group-hover:saturate-100 transition duration-500 ease-out"
+                  width={220}
+                  height={280}
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Social links */}
+        <footer className="flex flex-wrap items-center justify-center gap-2 px-3 pb-3 pt-2 min-h-[44px] border-t border-border bg-muted/50 shrink-0">
+            {Object.entries(officer.socialLinks).map(([key, link]) =>
+              link ? (
+                <a
+                  key={key}
+                  href={link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center rounded-full bg-secondary text-muted-foreground hover:bg-primary/10 hover:text-primary transition-colors duration-200 p-1.5"
+                  aria-label={key}
+                >
+                  {socialIcons[key as keyof typeof socialIcons] &&
+                    createElement(socialIcons[key as keyof typeof socialIcons], {
+                      size: 14,
+                    })}
+                </a>
+              ) : null,
+            )}
+        </footer>
+      </article>
+    </BackgroundGradient>
   );
 }
