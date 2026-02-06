@@ -9,10 +9,14 @@ import contactImage from "../../public/contact-image.png";
 import homeEventsImage1 from "../../public/home-events-image1.png";
 import homeEventsImage2 from "../../public/home-events-image2.png";
 import homeEventsImage3 from "../../public/home-events-image3.png";
-import logo_s from "../../public/logo-s.png";
+import logo_s from "../../public/logo-s-outline.png";
 import officerImage from "../../public/officers.png";
 import CurrentEventsSection from "@/components/events/CurrentEventsSection";
 import { getCategorizedEventsData } from "@/lib/data";
+import CardSwap from "@/components/home/CardSwap";
+import ImageCard from "@/components/home/ImageCard";
+import MobileImageCarousel from "@/components/home/MobileImageCarousel";
+import { BackgroundRippleEffect } from "@/components/ui/background-ripple-effect";
 
 // Enable ISR with 1-hour revalidation for better performance
 export const revalidate = 3600; // ISR: revalidate every hour
@@ -79,62 +83,139 @@ export default async function HomePage() {
 
   return (
     <div className="flex flex-col w-full">
-      <section className="relative w-full px-4">
-        <div className="relative m-auto w-full h-[40vh] md:h-[55vh] rounded-b-3xl md:rounded-b-[5rem] mx-auto">
-          <Image
-            src={contactImage}
-            alt="DOST START group photo"
-            fill
-            className="object-cover object-bottom rounded-b-3xl md:rounded-b-[5rem] absolute"
-            priority
-            sizes="100vw"
-            placeholder="blur"
-            quality={100}
-          />
-          <div className="absolute bottom-0 left-0 right-0 h-32 md:h-36 bg-gradient-to-t from-blue-500 to-transparent opacity-90 rounded-b-3xl md:rounded-b-[5rem]"></div>
+      <section className="relative w-full min-h-screen flex items-center justify-center pr-0 pt-0 pb-8 md:pb-20 bg-white overflow-visible md:overflow-hidden">
+        <div className="absolute inset-0 [--color-neutral-300:oklch(0.85_0_0)] [--color-neutral-100:oklch(0.92_0_0)] [--color-neutral-500:oklch(0.75_0_0)]">
+          <BackgroundRippleEffect rows={20} cols={35} cellSize={48} />
+        </div>
+        <div className="relative w-full max-w-[1720px] mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center gap-4 md:gap-10 min-h-[80vh] z-10  md:pt-10">
+          {/* Mobile */}
+          <div className="w-full md:hidden -mt-5 -mb-35">
+            <MobileImageCarousel
+              images={[
+                { src: contactImage, alt: "START Event" },
+                { src: homeEventsImage2, alt: "START Event" },
+                { src: homeEventsImage3, alt: "START Event" },
+                { src: homeEventsImage1, alt: "START Event" },
+              ]}
+            />
+          </div>
 
-          <div className="absolute left-1/2 bottom-0 translate-x-[-50%] translate-y-1/2 w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 bg-white rounded-full flex items-start justify-center overflow-hidden z-10">
-            <div className="relative w-3/5 h-3/5 mt-4">
-              <Image
-                src={logo_s}
-                alt="START Logo"
-                fill
-                className="object-contain"
-                placeholder="blur"
-              />
+          {/* Left side - Text content */}
+          <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left w-full md:w-auto justify-center z-10 order-2 md:order-1">
+            {/* Logo */}
+            <div className="relative w-44 h-44 md:-ml-20 sm:w-56 sm:h-56 md:w-64 md:h-64 flex items-center justify-center overflow-hidden shrink-0">
+              <div className="relative w-3/5 h-3/5">
+                <Image
+                  src={logo_s}
+                  alt="START Logo"
+                  fill
+                  className="object-contain"
+                  placeholder="blur"
+                />
+              </div>
+            </div>
+
+            {/* Title and Subtitle */}
+            <div className="mb-4 md:mb-6 -mt-4 md:-mt-6">
+              <h1 className="text-3xl md:text-5xl font-orbitron mb-1.5">
+                <span className="text-primary">United,</span>{" "}
+                <span className="text-foreground">We Innovate</span>
+              </h1>
+              <p className="text-primary md:text-lg leading-relaxed">
+                Scholars Transforming Advancement and Research for Technology
+              </p>
+            </div>
+
+            {/* Yellow Dividers */}
+            <div className="w-full max-w-md flex justify-center md:justify-start items-center gap-1 md:gap-2 my-4 md:my-5">
+              <div className="h-1.5 md:h-2 bg-accent rounded-full border border-black w-[2%]"></div>
+              <div className="h-1.5 md:h-2 bg-accent rounded-full border border-black w-[28%]"></div>
+              <div className="h-1.5 md:h-2 bg-accent rounded-full border border-black w-[36%]"></div>
+              <div className="h-1.5 md:h-2 bg-accent rounded-full border border-black w-[12%]"></div>
+              <div className="h-1.5 md:h-2 bg-accent rounded-full border border-black w-[2%]"></div>
+            </div>
+
+            {/* Button */}
+            <div className="mt-2 md:mt-4">
+              <Link href="/about">
+                <Button size={"xl"} className="text-lg">
+                  About START →
+                </Button>
+              </Link>
             </div>
           </div>
-        </div>
 
-        <div className="relative text-center mt-12 md:mt-16 px-4 z-20">
-          <h1 className="text-3xl md:text-5xl font-orbitron mb-2">
-            <span className="text-sky-500">United,</span>{" "}
-            <span className="text-gray-600">We Innovate</span>
-          </h1>
-          <p className="text-sky-500 md:text-lg">
-            Scholars Transforming Advancement and Research for Technology
-          </p>
-        </div>
-
-        <div className="relative z-20 w-full max-w-5xl mx-auto flex justify-center items-center gap-1 md:gap-2 my-12">
-          <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border border-black w-[2%]"></div>
-          <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border border-black w-[28%]"></div>
-          <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border border-black w-[36%]"></div>
-          <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border border-black w-[12%]"></div>
-          <div className="h-1.5 md:h-2 bg-yellow-400 rounded-full border border-black w-[2%]"></div>
-        </div>
-
-        <div className="flex justify-center mt-6 mb-8 md:mb-12">
-          <Link href="/about">
-            <Button size={"xl"} className="text-lg">
-              About START →
-            </Button>
-          </Link>
+          {/* Right side - CardSwap (Desktop only) */}
+          <div className="flex-1 relative w-full md:w-auto flex justify-center md:justify-end items-start md:items-center md:min-h-[800px] md:h-[800px] md:mr-0 overflow-visible order-1 md:order-2">
+            {/* Desktop */}
+            <div className="relative w-full h-full md:w-[680px] md:h-[800px] hidden md:block overflow-visible">
+              <CardSwap
+                width={680}
+                height={600}
+                cardDistance={68}
+                verticalDistance={85}
+                delay={5000}
+                pauseOnHover={false}
+                skewAmount={6}
+                easing="elastic"
+                rightOffset="0"
+                bottomOffset="0%"
+              >
+              {/* Card 1 */}
+              <ImageCard>
+                <Image
+                  src={contactImage}
+                  alt="START Event"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 800px"
+                  placeholder="blur"
+                />
+              </ImageCard>
+              
+              {/* Card 2 */}
+              <ImageCard>
+                <Image
+                  src={homeEventsImage2}
+                  alt="START Event"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 800px"
+                  placeholder="blur"
+                />
+              </ImageCard>
+              
+              {/* Card 3 */}
+              <ImageCard>
+                <Image
+                  src={homeEventsImage3}
+                  alt="START Event"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 800px"
+                  placeholder="blur"
+                />
+              </ImageCard>
+              
+              {/* Card 4 */}
+              <ImageCard>
+                <Image
+                  src={homeEventsImage1}
+                  alt="START Event"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 800px"
+                  placeholder="blur"
+                />
+              </ImageCard>
+              </CardSwap>
+            </div>
+          </div>
         </div>
       </section>
 
       <MaxLayout>
-        <section className="pt-6 md:pt-12 w-full relative mb-24">
+        <section className="pt-40 md:pt-40 pb-16 w-full relative mb-24">
           <div className="w-full mx-auto relative">
             <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[80%] h-[110%] md:h-[120%] border-4 border-yellow-400"></div>
 
