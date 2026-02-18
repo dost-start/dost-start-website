@@ -19,7 +19,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
           "--success-text": "var(--primary-foreground)",
           "--success-border": "var(--accent)",
           "--border-width": "2px",
-          "--font": "var(--font-roboto)",
+          "--font": "var(--font-plus-jakarta)",
         } as React.CSSProperties
       }
       {...props}
