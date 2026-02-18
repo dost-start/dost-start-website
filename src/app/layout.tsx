@@ -1,10 +1,13 @@
 import Footer from "@/components/Footer";
+import GradualBlur from "@/components/GradualBlur";
 import Navbar from "@/components/Navbar";
 import { Toaster } from "@/components/ui/sonner";
-import { montserrat, orbitron, roboto, robotoMono } from "@/lib/fonts";
+import { montserrat, orbitron, plusJakartaSans, robotoMono } from "@/lib/fonts";
 import type { Metadata } from "next";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/next";
+import { BackgroundRippleEffect } from "@/components/ui/background-ripple-effect";
+import LogoBackgroundShapes from "@/components/home/LogoBackgroundShapes";
 
 export const metadata: Metadata = {
   title: {
@@ -98,8 +101,24 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${roboto.variable} ${robotoMono.variable} ${montserrat.variable} ${orbitron.variable} font-sans antialiased  mx-auto flex flex-col min-h-screen`}
+        className={`${plusJakartaSans.variable} ${robotoMono.variable} ${montserrat.variable} ${orbitron.variable} font-sans antialiased mx-auto flex flex-col min-h-screen`}
       >
+        {/* Blurred logo shapes in background */}
+        <LogoBackgroundShapes />
+        {/* Global background ripple at the top layer */}
+        <div className="fixed inset-0 -z-10">
+          <BackgroundRippleEffect rows={20} cols={35} cellSize={48} />
+        </div>
+        {/* Blur under navbar (starts below navbar: top-4 + h-16 ≈ 5rem) */}
+        <GradualBlur
+          preset="page-header"
+          position="top"
+          height="6rem"
+          strength={3}
+          target="page"
+          zIndex={-60}
+          style={{ top: "5.5rem" }}
+        />
         <Navbar />
         <div className="w-full  mx-auto mb-10 max-w-[1920px]">{children}</div>
         <Footer className="mt-auto" />
