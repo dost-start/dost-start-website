@@ -1,8 +1,9 @@
-import { Roboto, Roboto_Mono, Orbitron, Montserrat } from "next/font/google";
+import { Roboto_Mono, Orbitron, Montserrat, Plus_Jakarta_Sans } from "next/font/google";
 
-const roboto = Roboto({
-  variable: "--font-roboto",
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 const robotoMono = Roboto_Mono({
@@ -17,8 +18,8 @@ const orbitron = Orbitron({
 });
 
 const montserrat = Montserrat({
-    variable: "--font-montserrat",
-    subsets: ["latin"],
-})
+  variable: "--font-montserrat",
+  subsets: ["latin"],
+});
 
-export { roboto, robotoMono, orbitron, montserrat };
+export { plusJakartaSans, robotoMono, orbitron, montserrat };
