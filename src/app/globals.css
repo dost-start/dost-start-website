@@ -214,6 +214,49 @@
     animation: float-shape 6s ease-in-out infinite;
   }
 
+  /* Glowing outline for floating shapes – gradual pulse */
+  @keyframes shape-glow-pulse-primary {
+    0%, 100% {
+      box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.12),
+        0 0 0 2px var(--primary),
+        0 0 12px color-mix(in oklch, var(--primary) 45%, transparent),
+        0 0 28px color-mix(in oklch, var(--primary) 25%, transparent);
+    }
+    50% {
+      box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.12),
+        0 0 0 2px var(--primary),
+        0 0 22px color-mix(in oklch, var(--primary) 65%, transparent),
+        0 0 44px color-mix(in oklch, var(--primary) 35%, transparent);
+    }
+  }
+
+  @keyframes shape-glow-pulse-accent {
+    0%, 100% {
+      box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.12),
+        0 0 0 2px var(--accent),
+        0 0 12px color-mix(in oklch, var(--accent) 45%, transparent),
+        0 0 28px color-mix(in oklch, var(--accent) 25%, transparent);
+    }
+    50% {
+      box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.12),
+        0 0 0 2px var(--accent),
+        0 0 22px color-mix(in oklch, var(--accent) 65%, transparent),
+        0 0 44px color-mix(in oklch, var(--accent) 35%, transparent);
+    }
+  }
+
+  .shape-outline-glow-primary {
+    animation: shape-glow-pulse-primary 2.5s ease-in-out infinite;
+  }
+
+  .shape-outline-glow-accent {
+    animation: shape-glow-pulse-accent 2.5s ease-in-out infinite;
+  }
+
   @keyframes bounce-scroll {
     0%, 100% {
       transform: translateY(0);
