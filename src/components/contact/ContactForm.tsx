@@ -21,11 +21,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { sendEmail } from "@/lib/serverFunctions";
 import MessageType from "@/types/messageType";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 import { Checkbox } from "../ui/checkbox";
+import { cn } from "@/lib/utils";
 
 const formSchema = z.object({
   name: z.string().min(1, "Name is required").max(50),
@@ -36,6 +37,14 @@ const formSchema = z.object({
 });
 
 export default function ContactForm() {
+  const [mounted, setMounted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+
+  // Hydration Fix: Ensure component is mounted before rendering browser-specific logic
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -47,13 +56,9 @@ export default function ContactForm() {
     },
   });
 
-  const [submitting, setSubmitting] = useState(false);
+  if (!mounted) return null;
 
-  const onSubmit = (data: MessageType) => {
-    submitForm(data);
-  };
-
-  async function submitForm(data: MessageType) {
+  async function onSubmit(data: MessageType) {
     setSubmitting(true);
     const res = await sendEmail(data);
     setSubmitting(false);
@@ -65,56 +70,61 @@ export default function ContactForm() {
     }
   }
 
+  // Common styling for inputs to match the glass theme
+  const inputClasses = "bg-foreground/[0.03] border-foreground/10 focus:border-primary/50 focus:ring-primary/20 rounded-xl transition-all duration-300 placeholder:text-muted-foreground/50";
+  const labelClasses = "text-[10px] uppercase font-black tracking-[0.2em] text-primary/70 mb-1.5 ml-1";
+
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-4 max-w-2xl mx-auto bg-white text-black p-6 rounded-2xl border-2"
+        className="space-y-5 w-full bg-transparent text-foreground"
       >
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Name</FormLabel>
-              <FormControl>
-                <Input placeholder="Your Name" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className={labelClasses}>Full Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="Juan Dela Cruz" className={inputClasses} {...field} />
+                </FormControl>
+                <FormMessage className="text-[10px]" />
+              </FormItem>
+            )}
+          />
 
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input type="email" placeholder="Your Email" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className={labelClasses}>Email Address</FormLabel>
+                <FormControl>
+                  <Input type="email" placeholder="juan@example.com" className={inputClasses} {...field} />
+                </FormControl>
+                <FormMessage className="text-[10px]" />
+              </FormItem>
+            )}
+          />
+        </div>
 
         <FormField
           control={form.control}
           name="purpose"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Purpose</FormLabel>
+              <FormLabel className={labelClasses}>Nature of Inquiry</FormLabel>
               <FormControl>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
-                  value={field.value}
                 >
-                  <SelectTrigger>
+                  <SelectTrigger className={inputClasses}>
                     <SelectValue placeholder="Select a purpose" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-background/95 backdrop-blur-xl border-foreground/10 rounded-xl">
                     <SelectItem value="inquiry">General Inquiry</SelectItem>
                     <SelectItem value="support">Support</SelectItem>
                     <SelectItem value="feedback">Feedback</SelectItem>
@@ -122,25 +132,7 @@ export default function ContactForm() {
                   </SelectContent>
                 </Select>
               </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="isPartner"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Are you a partner?</FormLabel>
-              <FormControl>
-                <Checkbox
-                  checked={field.value}
-                  onCheckedChange={field.onChange}
-                  className="size-6"
-                />
-              </FormControl>
-              <FormMessage />
+              <FormMessage className="text-[10px]" />
             </FormItem>
           )}
         />
@@ -150,27 +142,48 @@ export default function ContactForm() {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Message</FormLabel>
+              <FormLabel className={labelClasses}>Your Message</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Your Message"
-                  className="h-[120px]"
+                  placeholder="Tell us how we can help..."
+                  className={cn(inputClasses, "h-[120px] resize-none")}
                   {...field}
                 />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="text-[10px]" />
             </FormItem>
           )}
         />
 
-        <Button
-          type="submit"
-          className="w-full md:w-xs"
-          variant={"accent"}
-          disabled={submitting}
-        >
-          {submitting ? "Submitting..." : "Submit"}
-        </Button>
+        <div className="flex items-center justify-between gap-4 pt-2">
+          <FormField
+            control={form.control}
+            name="isPartner"
+            render={({ field }) => (
+              <FormItem className="flex flex-row items-center space-x-3 space-y-0">
+                <FormControl>
+                  <Checkbox
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                    className="size-5 rounded-md border-primary/30 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
+                  />
+                </FormControl>
+                <FormLabel className="text-xs font-medium text-foreground/70 cursor-pointer">
+                  I am a START Partner
+                </FormLabel>
+              </FormItem>
+            )}
+          />
+
+          <Button
+            type="submit"
+            variant="accent"
+            disabled={submitting}
+            className="rounded-full px-8 h-12 font-bold uppercase tracking-widest border-2 border-white/20 shadow-[0_0_15px_rgba(var(--accent-rgb),0.3)] hover:shadow-[0_0_25px_rgba(var(--accent-rgb),0.5)] transition-all duration-300"
+          >
+            {submitting ? "Processing..." : "Submit →"}
+          </Button>
+        </div>
       </form>
     </Form>
   );
