@@ -1,10 +1,8 @@
 import Gallery from "@/components/events/gallery";
 import PastEventsSection from "@/components/events/PastEventsSection";
-import CurrentEventsSection from "@/components/events/CurrentEventsSection";
-import UpcomingEventsSection from "@/components/events/UpcomingEventsSection";
+import CurrentAndUpcomingEventsSection from "@/components/events/UpcomingEventsSection";
 import MaxLayout from "@/components/MaxLayout";
 import PageTitle from "@/components/PageTitle";
-import StartDivider from "@/components/StartDivider";
 import gallery from "@/lib/events/gallery";
 import { getCategorizedEventsData } from "@/lib/data";
 import type { Metadata } from "next";
@@ -69,29 +67,37 @@ export default async function Page() {
 
   return (
     <MaxLayout>
-      <PageTitle text="Events" />
-      
-      <CurrentEventsSection
-        currentEvents={currentEvents}
-        upcomingEvents={upcomingEvents}
-      />
+      <div className="mt-15">
+        <PageTitle text="Events" />
+      </div>
 
-      <section className="m-2 mt-14 sm:px-10">
-        <UpcomingEventsSection
+      <section className="m-2 sm:px-10">
+        <CurrentAndUpcomingEventsSection
+          currentEvents={currentEvents}
           upcomingEvents={upcomingEvents}
-          currentEventsCount={currentEvents.length}
           className="mb-14"
         />
         <PastEventsSection pastEvents={pastEvents} />
 
-        <div className="mt-14">
-          <div className="flex items-center mb-4 gap-2">
-            <h2 className="text-4xl font-bold shrink-0 mr-4 my-6">Gallery</h2>
-            <StartDivider variant="accent" width="10%" />
-            <StartDivider variant="accent" width="20%" />
-            <StartDivider variant="accent" width="20%" />
-            <StartDivider variant="accent" />
+
+        <div className="p-5 mt-10 md:mt-14">
+          <div className="mb-8 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold shrink-0 sm:pr-4">
+              Gallery
+            </h2>
+            
+            {/* Standardized Responsive Divider */}
+            <div className="flex flex-1 justify-start items-center gap-0.5 md:gap-1 min-w-0 overflow-hidden">
+              {[7, 1, 20, 7, 1, 20, 7, 1, 20, 7, 1].map((n, i) => (
+                <div
+                  key={i}
+                  className="h-1 md:h-2 bg-accent rounded-full border border-foreground/20 md:border-2 flex-shrink min-w-[3px]"
+                  style={{ flex: `${n} ${n} 0%` }}
+                />
+              ))}
+            </div>
           </div>
+
           <Gallery images={gallery} />
         </div>
       </section>

@@ -107,6 +107,7 @@ export default async function page({
 
   return (
     <MaxLayout>
+      <div className="p-5">
       <div className="px-1 mt-8">
         <BackButton className="mb-4" />
         <StartDiv className="p-0 overflow-hidden border-4 w-full">
@@ -270,23 +271,27 @@ export default async function page({
           )}
         </section>
 
+        {/* Gallery Section */}
         {eventData.images && (
-          <>
-            <section className="mt-16">
-              <div className="flex gap-2 items-center mb-4">
-                <h2 className="text-xl font-extrabold shrink-0 ">
-                  Event Gallery
-                </h2>
-                <StartDivider variant="accent" width="20%" />
-                <StartDivider variant="accent" />
-                <StartDivider variant="accent" />
-                <StartDivider variant="accent" width="10%" />
+          <div className="pt-16 border-t border-foreground/5">
+            <div className="mb-10 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold font-body shrink-0 sm:pr-4">
+                Event Gallery
+              </h2>
+              <div className="flex flex-1 justify-start items-center gap-0.5 md:gap-1 min-w-0 overflow-hidden">
+                {[7, 1, 20, 7, 1, 20, 7, 1, 20, 7, 1].map((n, i) => (
+                  <div
+                    key={i}
+                    className="h-1 md:h-2 bg-accent rounded-full border border-foreground/20 md:border-2 flex-shrink min-w-[3px]"
+                    style={{ flex: `${n} ${n} 0%` }}
+                  />
+                ))}
               </div>
-            </section>
-
+            </div>
             <Gallery images={eventData.images} />
-          </>
+          </div>
         )}
+      </div>
       </div>
     </MaxLayout>
   );
