@@ -1,15 +1,14 @@
 import StickerPeel from "@/components/StickerPeel";
 import GlassSurface from "@/components/GlassSurface";
-import CurrentEventsSection from "@/components/events/CurrentEventsSection";
-import EventsPreviewSection from "@/components/home/EventsPreviewSection";
+import ContactUsSection from "@/components/home/ContactUsSection";
+import EventsOfficersPreviewSection from "@/components/home/EventsPreviewSection";
 import FloatingLogoShapes from "@/components/home/FloatingLogoShapes";
 import ScrollIndicator from "@/components/home/ScrollIndicator";
 import { getCategorizedEventsData } from "@/lib/data";
 import { Metadata } from "next";
 import Link from "next/link";
 
-// Enable ISR with 1-hour revalidation for better performance
-export const revalidate = 3600; // ISR: revalidate every hour
+export const revalidate = 3600; 
 
 export const metadata: Metadata = {
   title:
@@ -118,15 +117,9 @@ export default async function HomePage() {
         <ScrollIndicator />
       </div>
 
-      {/* Current events - visible when scrolled */}
-      <section className="w-full px-4 pb-16">
-        <CurrentEventsSection
-          currentEvents={currentEvents}
-          upcomingEvents={upcomingEvents}
-        />
-      </section>
+      <EventsOfficersPreviewSection />
 
-      <EventsPreviewSection />
+      <ContactUsSection />
     </>
   );
 }
