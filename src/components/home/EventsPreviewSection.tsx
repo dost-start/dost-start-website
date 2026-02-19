@@ -1,6 +1,7 @@
 "use client";
 
 import EventsSectionShapes from "@/components/home/EventsSectionShapes";
+import OfficersPreviewSection from "@/components/home/OfficersPreviewSection";
 import GlassSurface from "@/components/GlassSurface";
 import gallery from "@/lib/events/gallery";
 import Image from "next/image";
@@ -169,6 +170,7 @@ export default function EventsPreviewSection() {
               </div>
             </GlassSurface>
           </div>
+          <OfficersPreviewSection />
         </div>
         <EventsSectionShapes />
       </div>
