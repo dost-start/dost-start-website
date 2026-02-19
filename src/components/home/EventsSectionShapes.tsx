@@ -47,27 +47,27 @@ export default function EventsSectionShapes() {
           transition: "opacity 0.4s ease, transform 0.15s ease-out",
         }}
       >
-        <div className="w-24 h-24 sm:w-36 sm:h-36 rounded-2xl bg-accent shadow-xl shadow-accent/30 animate-float-shape" />
+        <div className="w-24 h-24 sm:w-36 sm:h-36 rounded-2xl bg-accent shape-outline-glow-accent animate-float-shape" />
       </div>
       <div
-        className="absolute -left-[5%] top-[55%] hidden sm:block"
+        className="absolute -left-[9%] top-[55%] hidden sm:block"
         style={{
           opacity: state.reveal * 0.9,
           transform: `translate3d(${30 * (1 - state.reveal)}px, ${baseY * 0.07}px, 0) scale(${0.4 + state.reveal * 0.6})`,
           transition: "opacity 0.5s ease 0.1s, transform 0.15s ease-out",
         }}
       >
-        <div className="w-32 h-32 sm:w-44 sm:h-44 rounded-full bg-primary shadow-xl shadow-primary/30 animate-float-shape" style={{ animationDelay: "-2s" }} />
+        <div className="w-32 h-32 sm:w-44 sm:h-44 rounded-full bg-primary shape-outline-glow-primary animate-float-shape" style={{ animationDelay: "-2s" }} />
       </div>
       <div
-        className="absolute -left-[6%] bottom-[15%]"
+        className="absolute -left-[9%] bottom-[15%]"
         style={{
           opacity: state.reveal * 0.85,
           transform: `translate3d(${25 * (1 - state.reveal)}px, ${baseY * 0.06}px, 0) scale(${0.45 + state.reveal * 0.55})`,
           transition: "opacity 0.5s ease 0.15s, transform 0.15s ease-out",
         }}
       >
-        <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-xl bg-accent shadow-lg shadow-accent/25 animate-float-shape" style={{ animationDelay: "-3s" }} />
+        <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-xl bg-accent shape-outline-glow-accent animate-float-shape" style={{ animationDelay: "-3s" }} />
       </div>
       {/* Right shapes - reveal from right with parallax */}
       <div
@@ -78,19 +78,10 @@ export default function EventsSectionShapes() {
           transition: "opacity 0.5s ease 0.1s, transform 0.15s ease-out",
         }}
       >
-        <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-2xl bg-accent shadow-xl shadow-accent/30 animate-float-shape" style={{ animationDelay: "-2.5s" }} />
+        <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-2xl bg-accent shape-outline-glow-accent animate-float-shape" style={{ animationDelay: "-2.5s" }} />
       </div>
     
-      <div
-        className="absolute right-[12%] top-[65%] hidden md:block"
-        style={{
-          opacity: state.reveal * 0.7,
-          transform: `translate3d(0, ${baseY * 0.04}px, 0) scale(${0.3 + state.reveal * 0.5})`,
-          transition: "opacity 0.6s ease 0.25s, transform 0.15s ease-out",
-        }}
-      >
-        <div className="w-14 h-14 sm:w-[4.5rem] sm:h-[4.5rem] rounded-lg bg-primary shadow-md shadow-primary/20 animate-float-shape" style={{ animationDelay: "-3.5s" }} />
-      </div>
+      
     </div>
   );
 }
