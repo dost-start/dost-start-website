@@ -1,8 +1,6 @@
 import MaxLayout from "@/components/MaxLayout";
 import OfficerCard from "@/components/officers/OfficerCard";
 import PageTitle from "@/components/PageTitle";
-import StartDivider from "@/components/StartDivider";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   getAllBatchYears,
   getOfficersByTerm,
@@ -133,21 +131,64 @@ export default async function page({
 
   return (
     <MaxLayout>
-      <div className="text-center px-2">
+      <div className="px-2 sm:px-4 md:px-6 mt-15">
         <PageTitle text="Officers" />
-        <div>
+        <p className="text-center text-sm md:text-base text-muted-foreground max-w-2xl pr-2 pl-2 mx-auto mt-2">
           DOST START officers are dedicated individuals who lead and manage
-          various departments within the organization. Each officer plays a
-          crucial role in ensuring the smooth operation and success of their
-          respective departments, contributing to the overall mission of DOST
-          START.
-        </div>
-        <section className="mt-10 space-y-10 text-left">
-          {/* Top controls: year + department selection */}
-          <Tabs defaultValue={currentDepartment.tabName} className="w-full">
-            <div className="max-w-5xl mx-auto flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-              {/* Year selector */}
-              <div className="flex flex-col items-start gap-1">
+          various departments within the organization.
+        </p>
+
+        <div className="mt-8 sm:mt-10 max-w-7xl mx-auto px-2 sm:px-4">
+          {/* Department tabs - book page markers, outside the box */}
+          <div className="w-full">
+            <div className="flex flex-wrap justify-center gap-2">
+              {currentBatch.departments.map((dept, idx) => {
+                const isActive = dept.tabName === currentDepartment.tabName;
+                const colors = [
+                  "bg-amber-200/90 dark:bg-amber-700/80",
+                  "bg-rose-200/90 dark:bg-rose-700/80",
+                  "bg-emerald-200/90 dark:bg-emerald-700/80",
+                  "bg-sky-200/90 dark:bg-sky-700/80",
+                  "bg-violet-200/90 dark:bg-violet-700/80",
+                  "bg-teal-200/90 dark:bg-teal-700/80",
+                ];
+                const color = colors[idx % colors.length];
+                return (
+                  <Link
+                    key={dept.name}
+                    href={`/officers/${currentBatch.year}/${dept.tabName}`}
+                    className={`no-underline block transition-all hover:scale-105 hover:z-10 ${isActive ? "z-10 scale-105" : ""}`}
+                  >
+                    <span
+                      className={`inline-block px-4 py-2 text-sm font-medium rounded-t-[18px] border border-b-0 border-primary/30 dark:border-primary/50 shadow-sm ${isActive ? "ring-2 ring-primary/50 ring-offset-2 ring-offset-background" : ""} ${color}`}
+                    >
+                      {dept.tabName}
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+
+          {/* Glass box - light colored, START border radius */}
+          <div
+            className="start-border-radius w-full px-4 py-5 sm:px-6 sm:py-6 md:px-8 md:py-8 border border-primary/20 dark:border-primary/30 shadow-lg bg-card/90 dark:bg-card/80 backdrop-blur-[20px]"
+          >
+              {/* Department heading */}
+              <div className="text-center mb-2 sm:mb-3">
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-orbitron font-semibold text-foreground">
+                  {currentDepartment.name}
+                </h2>
+              </div>
+
+              {/* Description */}
+              {currentDepartment.description && (
+                <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto text-center mb-4 sm:mb-5">
+                  {currentDepartment.description}
+                </p>
+              )}
+
+              {/* Batch year selection - centered under description */}
+              <div className="flex flex-col items-center gap-1 mb-5 sm:mb-6">
                 <span className="text-[11px] uppercase tracking-wide text-muted-foreground">
                   Batch year
                 </span>
@@ -158,66 +199,23 @@ export default async function page({
                 />
               </div>
 
-              {/* Department tabs row */}
-              <div className="w-full md:w-auto">
-                <span className="text-[11px] uppercase tracking-wide text-muted-foreground block mb-1">
-                  Departments
-                </span>
-                <TabsList className="inline-flex flex-wrap items-center justify-start gap-1 rounded-full bg-white px-1 py-1 !border-0 shadow-none">
-                  {currentBatch.departments.map((department) => (
-                    <Link
-                      key={department.name}
-                      href={`/officers/${currentBatch.year}/${department.tabName}`}
-                      passHref
-                      className="no-underline"
-                    >
-                      <TabsTrigger
-                        value={department.tabName}
-                        className="px-3 py-1.5 text-xs md:text-sm rounded-full text-foreground hover:text-primary transition-colors data-[state=active]:bg-accent data-[state=active]:text-accent-foreground data-[state=active]:font-medium after:!hidden cursor-pointer border-0"
-                      >
-                        {department.tabName}
-                      </TabsTrigger>
-                    </Link>
-                  ))}
-                </TabsList>
-              </div>
-            </div>
-          </Tabs>
-
-          {/* Department heading / description above cards */}
-          <div className="space-y-4 text-center mt-4">
-            <div className="space-y-1">
-              <h2 className="text-2xl md:text-3xl font-orbitron font-semibold text-foreground">
-                {currentDepartment.name}
-              </h2>
-              <div className="flex items-center justify-center pt-5 gap-2">
-                <StartDivider variant="accent" width="170px" />
-                <StartDivider variant="accent" width="20px" />
-                <StartDivider variant="accent" width="80px" />
-              </div>
-            </div>
-            <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
-              {currentDepartment.description}
-            </p>
-          </div>
-
-          {/* Officer cards */}
-          <div className="space-y-12">
+              {/* Officer cards */}
+              <div className="space-y-8 sm:space-y-10">
             {currentDepartment.specialOfficers.length > 0 && (
-                <section className="space-y-4">
+                <section className="space-y-3">
                   <div className="text-center space-y-1">
                     <p className="text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
                       Lead officers
                     </p>
-                    <h3 className="text-base md:text-lg font-semibold text-foreground">
+                    <h3 className="text-base md:text-lg font-semibold pb-8 text-foreground">
                       Executive & key positions
                     </h3>
                   </div>
                   <div
                     className={
                       currentDepartment.specialOfficers.length <= 2
-                        ? "grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 w-full max-w-xl mx-auto place-content-center justify-items-center"
-                        : "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-6 md:gap-8 w-full max-w-5xl mx-auto place-content-center justify-items-center"
+                        ? "grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 w-full max-w-2xl mx-auto justify-items-center"
+                        : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8 w-full justify-items-center"
                     }
                   >
                     {currentDepartment.specialOfficers.map((officer) => (
@@ -227,46 +225,50 @@ export default async function page({
                 </section>
               )}
 
-            <section className="space-y-4">
-                <div className="text-center space-y-1">
-                  <p className="text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
-                    Department officers
-                  </p>
-                  <h3 className="text-base md:text-lg font-semibold text-foreground">
-                    Core team
-                  </h3>
-                </div>
-                <div
-                  className={
-                    currentDepartment.officers.length <= 2
-                      ? "grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 w-full max-w-xl mx-auto place-content-center justify-items-center"
-                      : "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-6 md:gap-8 w-full max-w-5xl mx-auto place-content-center justify-items-center"
-                  }
-                >
-                  {currentDepartment.officers.map((officer) => (
-                    <OfficerCard key={officer.name} officer={officer} />
-                  ))}
-                </div>
-              </section>
+            {currentDepartment.officers.length > 0 && (
+                <section className="space-y-3">
+                  <div className="text-center space-y-1">
+                    <p className="text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
+                      Department officers
+                    </p>
+                    <h3 className="text-base md:text-lg font-semibold pb-8 text-foreground">
+                      Core team
+                    </h3>
+                  </div>
+                  <div
+                    className={
+                      currentDepartment.officers.length <= 2
+                        ? "grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 w-full max-w-2xl mx-auto justify-items-center"
+                        : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8 w-full justify-items-center"
+                    }
+                  >
+                    {currentDepartment.officers.map((officer) => (
+                      <OfficerCard key={officer.name} officer={officer} />
+                    ))}
+                  </div>
+                </section>
+              )}
 
             {currentDepartment.subDepartment &&
               currentDepartment.subDepartment.length > 0 && (
-                <section className="space-y-10">
+                <section className="space-y-5 sm:space-y-6">
                   {currentDepartment.subDepartment.map((subDept) => (
-                    <div key={subDept.name} className="space-y-4">
+                    <div key={subDept.name} className="space-y-3">
                       <div className="space-y-1 text-center">
-                        <h4 className="text-lg font-semibold">
+                        <h4 className="text-base sm:text-lg font-semibold text-foreground">
                           {subDept.name}
                         </h4>
-                        <p className="text-sm text-muted-foreground">
-                          {subDept.description}
-                        </p>
+                        {subDept.description && (
+                          <p className="text-sm text-muted-foreground">
+                            {subDept.description}
+                          </p>
+                        )}
                       </div>
                       <div
                         className={
                           subDept.officers.length <= 2
-                            ? "grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 w-full max-w-xl mx-auto place-content-center justify-items-center"
-                            : "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-6 md:gap-8 w-full max-w-5xl mx-auto place-content-center justify-items-center"
+                            ? "grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 w-full max-w-2xl mx-auto justify-items-center"
+                            : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8 w-full justify-items-center"
                         }
                       >
                         {subDept.officers.map((officer) => (
@@ -277,8 +279,10 @@ export default async function page({
                   ))}
                 </section>
               )}
+              </div>
           </div>
-        </section>
+          </div>
+        </div>
       </div>
     </MaxLayout>
   );
