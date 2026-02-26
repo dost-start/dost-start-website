@@ -59,13 +59,13 @@ export default function AboutUsClient() {
               <div>
                 <GlassSurface
                   width="100%"
-                  height={450}
+                  height="auto"
                   borderRadius={20}
                   variant="light"
                   matte
-                  className="overflow-visible w-full relative z-10 min-h-0 md:min-h-[320px]"
+                  className="w-full relative z-10 min-h-0 md:min-h-[450px]"
                 >
-                  <div className="w-full h-full absolute inset-0 z-0 pointer-events-none rounded-[inherit]">
+                  <div className="w-afull h-full absolute inset-0 z-0 pointer-events-none rounded-[inherit]">
                     <div
                       className="absolute inset-0 rounded-[inherit]"
                       style={{
@@ -76,7 +76,7 @@ export default function AboutUsClient() {
                       }}
                     />
                   </div>
-                  <div className="flex flex-col p-4 sm:p-6 md:p-10 z-10 relative w-full h-full min-h-0">
+                  <div className="flex flex-col p-4 sm:p-6 md:p-10 z-10 relative w-full min-h-0">
                     <h1 className="text-xl sm:text-2xl md:text-4xl mb-3 md:mb-6 font-orbitron text-primary text-left">
                       WHAT IS START?
                     </h1>
@@ -106,7 +106,7 @@ export default function AboutUsClient() {
                 <div className="flex-1">
                   <GlassSurface
                     width="100%"
-                    height={300}
+                    height="auto"
                     borderRadius={20}
                     variant="light"
                     matte
@@ -164,7 +164,7 @@ export default function AboutUsClient() {
                 <div className="flex-1">
                   <GlassSurface
                     width="100%"
-                    height={320}
+                    height="auto"
                     borderRadius={20}
                     variant="light"
                     matte
@@ -234,7 +234,7 @@ export default function AboutUsClient() {
             <div>
               <GlassSurface
                 width="100%"
-                height={450}
+                height="auto"
                 borderRadius={20}
                 variant="light"
                 matte

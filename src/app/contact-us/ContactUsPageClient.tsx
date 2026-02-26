@@ -136,7 +136,7 @@ export default function ContactUsPageClient() {
           >
             <GlassSurface
               width="100%"
-              height={520}
+              height="auto"
               borderRadius={20}
               variant="light"
               matte

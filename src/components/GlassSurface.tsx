@@ -416,7 +416,7 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
         <>
           <div className="glass-edge" aria-hidden />
           <div className="glass-sheen" aria-hidden />
-          <div className="!absolute !inset-0 z-10 flex !h-full w-full items-center justify-center p-2 rounded-[inherit]">
+          <div className=" !inset-0 z-10 flex !h-full w-full items-center justify-center p-2 rounded-[inherit]">
             {children}
           </div>
         </>

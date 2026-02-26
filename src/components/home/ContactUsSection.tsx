@@ -58,7 +58,7 @@ export default function ContactUsSection() {
         >
           <GlassSurface
             width="100%"
-            height={360}
+            height="auto"
             borderRadius={20}
             variant="light"
             matte
