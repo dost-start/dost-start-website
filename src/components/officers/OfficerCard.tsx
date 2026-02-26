@@ -38,7 +38,7 @@ export default function OfficerCard({ officer }: { officer: Officer }) {
             <h3 className="text-base font-orbitron font-semibold text-foreground leading-snug">
               {officer.name}
             </h3>
-            <p className="text-xs text-muted-foreground leading-snug line-clamp-2">
+            <p className="text-xs text-muted-foreground leading-snug">
               {officer.position}
             </p>
           </header>
@@ -50,7 +50,7 @@ export default function OfficerCard({ officer }: { officer: Officer }) {
                 <Image
                   src={officer.imageSrc}
                   alt={officer.name}
-                  className="object-cover w-full h-full saturate-0 group-hover:saturate-100 transition duration-500 ease-out"
+                  className="object-cover object-top w-full h-full saturate-0 group-hover:saturate-100 transition duration-500 ease-out"
                   width={220}
                   height={280}
                   loading="lazy"

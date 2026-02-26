@@ -56,7 +56,6 @@ export default function CurrentAndUpcomingEventsSection({
   const GlassBlock = ({
     title,
     events,
-    isUpcoming = false,
     hasNoRealEvents = false,
     className: blockClassName,
   }: {

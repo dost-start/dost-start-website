@@ -3,7 +3,6 @@ import Gallery from "@/components/events/gallery";
 import ShareButton from "@/components/events/ShareButton";
 import MaxLayout from "@/components/MaxLayout";
 import StartDiv from "@/components/StartDiv";
-import StartDivider from "@/components/StartDivider";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { getEventBySlug, getAllEventSlugs } from "@/lib/data";

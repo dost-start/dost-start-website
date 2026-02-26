@@ -190,7 +190,7 @@ export default async function page({
               {/* Batch year selection - centered under description */}
               <div className="flex flex-col items-center gap-1 mb-5 sm:mb-6">
                 <span className="text-[11px] uppercase tracking-wide text-muted-foreground">
-                  Batch year
+                  Term
                 </span>
                 <OfficerTermSelect
                   batchYears={allBatchYears.batchYears}
@@ -204,18 +204,22 @@ export default async function page({
             {currentDepartment.specialOfficers.length > 0 && (
                 <section className="space-y-3">
                   <div className="text-center space-y-1">
-                    <p className="text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
+                    {/* <p className="text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
                       Lead officers
-                    </p>
+                    </p> */}
                     <h3 className="text-base md:text-lg font-semibold pb-8 text-foreground">
-                      Executive & key positions
+                      Chief and Deputies
                     </h3>
                   </div>
                   <div
                     className={
-                      currentDepartment.specialOfficers.length <= 2
-                        ? "grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 w-full max-w-2xl mx-auto justify-items-center"
-                        : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8 w-full justify-items-center"
+                      currentDepartment.specialOfficers.length === 1
+                        ? "grid grid-cols-1 gap-4 sm:gap-6 md:gap-8 w-full max-w-2xl mx-auto justify-center justify-items-center"
+                        : currentDepartment.specialOfficers.length === 2
+                          ? "grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 w-full max-w-2xl mx-auto justify-center justify-items-center"
+                          : currentDepartment.specialOfficers.length === 3
+                            ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 sm:gap-6 md:gap-8 w-full max-w-4xl mx-auto justify-center justify-items-center"
+                            : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8 w-full justify-center justify-items-center"
                     }
                   >
                     {currentDepartment.specialOfficers.map((officer) => (
@@ -228,18 +232,22 @@ export default async function page({
             {currentDepartment.officers.length > 0 && (
                 <section className="space-y-3">
                   <div className="text-center space-y-1">
-                    <p className="text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
+                    {/* <p className="text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
                       Department officers
-                    </p>
+                    </p> */}
                     <h3 className="text-base md:text-lg font-semibold pb-8 text-foreground">
-                      Core team
+                      Committee Members
                     </h3>
                   </div>
                   <div
                     className={
-                      currentDepartment.officers.length <= 2
-                        ? "grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 w-full max-w-2xl mx-auto justify-items-center"
-                        : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8 w-full justify-items-center"
+                      currentDepartment.officers.length === 1
+                        ? "grid grid-cols-1 gap-4 sm:gap-6 md:gap-8 w-full max-w-2xl mx-auto justify-center justify-items-center"
+                        : currentDepartment.officers.length === 2
+                          ? "grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 w-full max-w-2xl mx-auto justify-center justify-items-center"
+                          : currentDepartment.officers.length === 3
+                            ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 sm:gap-6 md:gap-8 w-full max-w-4xl mx-auto justify-center justify-items-center"
+                            : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8 w-full justify-center justify-items-center"
                     }
                   >
                     {currentDepartment.officers.map((officer) => (
@@ -266,9 +274,13 @@ export default async function page({
                       </div>
                       <div
                         className={
-                          subDept.officers.length <= 2
-                            ? "grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 w-full max-w-2xl mx-auto justify-items-center"
-                            : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8 w-full justify-items-center"
+                          subDept.officers.length === 1
+                            ? "grid grid-cols-1 gap-4 sm:gap-6 md:gap-8 w-full max-w-2xl mx-auto justify-center justify-items-center"
+                            : subDept.officers.length === 2
+                              ? "grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 w-full max-w-2xl mx-auto justify-center justify-items-center"
+                              : subDept.officers.length === 3
+                                ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 sm:gap-6 md:gap-8 w-full max-w-4xl mx-auto justify-center justify-items-center"
+                                : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8 w-full justify-center justify-items-center"
                         }
                       >
                         {subDept.officers.map((officer) => (

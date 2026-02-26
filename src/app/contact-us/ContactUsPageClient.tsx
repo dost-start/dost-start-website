@@ -1,6 +1,5 @@
 "use client";
 
-import PageTitle from "@/components/PageTitle";
 import GlassSurface from "@/components/GlassSurface";
 import socialLinks from "@/components/SocialLinks";
 import ContactForm from "@/components/contact/ContactForm";

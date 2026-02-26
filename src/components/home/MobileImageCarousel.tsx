@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 
 interface MobileImageCarouselProps {
-  images: Array<{ src: any; alt: string }>;
+  images: Array<{ src: string; alt: string }>;
 }
 
 export default function MobileImageCarousel({ images }: MobileImageCarouselProps) {

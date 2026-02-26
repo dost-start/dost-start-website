@@ -67,7 +67,7 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const { currentEvents, upcomingEvents } = await getCategorizedEventsData();
+  await getCategorizedEventsData();
 
   return (
     <>
