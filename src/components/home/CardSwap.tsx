@@ -107,6 +107,7 @@ import React, {
           };
   
     const childArr = useMemo(() => Children.toArray(children) as ReactElement<CardProps>[], [children]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- refs intentionally depend only on length to avoid recreating refs when childArr identity changes
     const refs = useMemo<CardRef[]>(() => childArr.map(() => React.createRef<HTMLDivElement>()), [childArr.length]);
   
     const order = useRef<number[]>(Array.from({ length: childArr.length }, (_, i) => i));
@@ -199,6 +200,7 @@ import React, {
         };
       }
       return () => clearInterval(intervalRef.current);
+      // eslint-disable-next-line react-hooks/exhaustive-deps -- config/refs intentionally excluded to avoid restarting interval on every config change
     }, [cardDistance, verticalDistance, delay, pauseOnHover, skewAmount, easing]);
   
     const rendered = childArr.map((child, i) =>

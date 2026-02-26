@@ -150,6 +150,7 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
     });
 
     gaussianBlurRef.current?.setAttribute('stdDeviation', displace.toString());
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- updateDisplacementMap reads refs, deps are intentional
   }, [
     width,
     height,
@@ -170,6 +171,7 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
 
   useEffect(() => {
     setSvgSupported(supportsSVGFilters());
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- supportsSVGFilters is stable (no DOM deps)
   }, []);
 
   useEffect(() => {
@@ -184,6 +186,7 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
     return () => {
       resizeObserver.disconnect();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- run once on mount to set up ResizeObserver
   }, []);
 
   useEffect(() => {
@@ -198,10 +201,12 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
     return () => {
       resizeObserver.disconnect();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- run once on mount
   }, []);
 
   useEffect(() => {
     setTimeout(updateDisplacementMap, 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- updateDisplacementMap is a ref callback, width/height trigger is intentional
   }, [width, height]);
 
   const supportsSVGFilters = () => {

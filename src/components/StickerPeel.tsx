@@ -1,5 +1,6 @@
 'use client';
 import { useRef, useEffect, useMemo, CSSProperties } from 'react';
+import Image from 'next/image';
 import { gsap, Draggable } from 'gsap/all';
 
 gsap.registerPlugin(Draggable);
@@ -343,12 +344,14 @@ const StickerPeel: React.FC<StickerPeelProps> = ({
       >
         <div className="sticker-main" style={stickerMainStyle}>
           <div style={{ filter: 'url(#pointLight)' }}>
-            <img
+            <Image
               src={imageSrc}
               alt=""
+              width={width}
+              height={width}
               className="block"
               style={imageStyle}
-              draggable="false"
+              draggable={false}
               onContextMenu={e => e.preventDefault()}
             />
           </div>
@@ -356,12 +359,14 @@ const StickerPeel: React.FC<StickerPeelProps> = ({
 
         <div className="absolute top-4 left-2 w-full h-full opacity-40" style={{ filter: 'brightness(0) blur(8px)' }}>
           <div className="sticker-flap" style={flapStyle}>
-            <img
+            <Image
               src={imageSrc}
               alt=""
+              width={width}
+              height={width}
               className="block"
               style={shadowImageStyle}
-              draggable="false"
+              draggable={false}
               onContextMenu={e => e.preventDefault()}
             />
           </div>
@@ -369,12 +374,14 @@ const StickerPeel: React.FC<StickerPeelProps> = ({
 
         <div className="sticker-flap absolute w-full h-full left-0" style={flapStyle}>
           <div style={{ filter: 'url(#pointLightFlipped)' }}>
-            <img
+            <Image
               src={imageSrc}
               alt=""
+              width={width}
+              height={width}
               className="block"
               style={shadowImageStyle}
-              draggable="false"
+              draggable={false}
               onContextMenu={e => e.preventDefault()}
             />
           </div>

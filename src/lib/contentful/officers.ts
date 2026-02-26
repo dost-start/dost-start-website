@@ -41,13 +41,18 @@ function transformOfficer(entry: any): Officer & { order: number; roleType: stri
   };
 }
 
-// Sort officers by role type then order
+// Sort officers by display order (primary) then role type (secondary)
 const roleOrder = { chief: 0, deputy: 1, committee: 2, member: 3 };
 function sortOfficers(a: Officer & { order: number; roleType?: string }, b: Officer & { order: number; roleType?: string }) {
+  // Primary sort: explicit display order
+  if (a.order !== b.order) {
+    return a.order - b.order;
+  }
+
+  // Secondary sort: role type grouping when display order is tied or missing
   const roleA = roleOrder[a.roleType as keyof typeof roleOrder] ?? 3;
   const roleB = roleOrder[b.roleType as keyof typeof roleOrder] ?? 3;
-  if (roleA !== roleB) return roleA - roleB;
-  return a.order - b.order;
+  return roleA - roleB;
 }
 
 /**
@@ -76,7 +81,12 @@ function buildDepartments(
       if (!link.fields.officer) continue;
       
       const officer = transformOfficer(link.fields.officer);
-      officer.order = link.fields.order || 0;
+
+      // Prefer per-department display order when set, otherwise fall back to officer-level order
+      const linkOrder = link.fields.order;
+      if (typeof linkOrder === "number") {
+        officer.order = linkOrder;
+      }
 
       switch (link.fields.section) {
         case "special":

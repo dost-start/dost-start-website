@@ -11,6 +11,7 @@ const useMedia = (queries: string[], values: number[], defaultValue: number): nu
     const handler = () => setValue(get);
     queries.forEach(q => matchMedia(q).addEventListener('change', handler));
     return () => queries.forEach(q => matchMedia(q).removeEventListener('change', handler));
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- get is derived from queries/values, intentional
   }, [queries]);
 
   return value;
@@ -184,6 +185,7 @@ const Masonry: React.FC<MasonryProps> = ({
     });
 
     hasMounted.current = true;
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- getInitialPosition is stable, mount/values trigger is intentional
   }, [grid, imagesReady, stagger, animateFrom, blurToFocus, duration, ease]);
 
   const handleMouseEnter = (id: string, element: HTMLElement) => {
