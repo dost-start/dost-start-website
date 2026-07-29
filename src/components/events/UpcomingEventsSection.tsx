@@ -26,7 +26,6 @@ export default function CurrentAndUpcomingEventsSection({
   const firstBlockEvents =
     !hasCurrentEvents && !showAllUpcomingEvents ? firstBlockSource.slice(0, 6) : firstBlockSource;
   const firstBlockTitle = hasCurrentEvents ? "Current Events" : "Upcoming Events";
-  const firstBlockIsUpcoming = !hasCurrentEvents;
   const showSeeMoreForFirst =
     !hasCurrentEvents && !showAllUpcomingEvents && firstBlockSource.length > 6;
 
@@ -43,12 +42,8 @@ export default function CurrentAndUpcomingEventsSection({
   }: {
     title: string;
     events: Event[];
-    isUpcoming?: boolean;
     className?: string;
   }) => {
-    const isUpcomingBlock = title === "Upcoming Events";
-    const shouldScroll = isUpcomingBlock && events.length > 1;
-
     return (
       <div className={blockClassName}>
         <div className="relative flex justify-center w-full min-w-0 overflow-visible">
@@ -89,27 +84,15 @@ export default function CurrentAndUpcomingEventsSection({
                 </div>
               </div>
 
-              {shouldScroll ? (
-                <div className="overflow-x-auto pb-4 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
-                  <div className="flex gap-4 sm:gap-6 w-max justify-center mx-auto min-w-full">
-                    {events.map((event, index) => (
-                      <div key={`${title}-${event.title}-${index}`} className="flex-shrink-0 w-[260px] sm:w-[280px]">
-                        <EventCard event={event} eventType="upcoming" />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 w-full max-w-6xl mx-auto">
-                  {events.map((event, index) => (
-                    <EventCard
-                      key={`${title}-${event.title}-${index}`}
-                      event={event}
-                      eventType="upcoming"
-                    />
-                  ))}
-                </div>
-              )}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 w-full max-w-6xl mx-auto justify-items-center">
+                {events.map((event, index) => (
+                  <EventCard
+                    key={`${title}-${event.title}-${index}`}
+                    event={event}
+                    eventType="upcoming"
+                  />
+                ))}
+              </div>
             </div>
           </GlassSurface>
         </div>
@@ -134,11 +117,7 @@ export default function CurrentAndUpcomingEventsSection({
 
   return (
     <section className={`${className} px-4 md:px-0`}>
-      <GlassBlock
-        title={firstBlockTitle}
-        events={firstBlockEvents}
-        isUpcoming={firstBlockIsUpcoming}
-      />
+      <GlassBlock title={firstBlockTitle} events={firstBlockEvents} />
       {showSeeMoreForFirst && <SeeMoreButton onClick={() => setShowAllUpcomingEvents(true)} />}
 
       {showSecondBlock && (
@@ -146,7 +125,6 @@ export default function CurrentAndUpcomingEventsSection({
           <GlassBlock
             title="Upcoming Events"
             events={secondBlockEvents}
-            isUpcoming={true}
             className="mt-10 sm:mt-14"
           />
           {showSeeMoreForSecond && <SeeMoreButton onClick={() => setShowAllUpcomingEvents(true)} />}

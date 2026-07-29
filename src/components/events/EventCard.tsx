@@ -1,11 +1,10 @@
-"use client";
 import Event from "@/types/eventType";
 import Image from "next/image";
+import Link from "next/link";
 import { CometCard } from "../ui/comet-card";
 import { ArrowRight, Calendar, MapPin } from "lucide-react";
-import { Button } from "../ui/button";
+import { buttonVariants } from "../ui/button";
 import { cn } from "@/lib/utils";
-import { useRouter } from "next/navigation";
 import placeholder from "../../../public/event-placeholder.png";
 
 export default function EventCard({
@@ -17,8 +16,6 @@ export default function EventCard({
   eventType: "upcoming" | "past";
   className?: string;
 }) {
-  const router = useRouter();
-
   const truncateText = (text: string, maxChars: number) => {
     const normalized = (text ?? "").trim();
     if (normalized.length <= maxChars) return normalized;
@@ -55,15 +52,18 @@ export default function EventCard({
       {/* IDLE STATE: Neutral gray border and very faint white/gray shadow.
           HOVER STATE: Switches to Primary Blue glow and border.
       */}
-      <div
+      <Link
+        href={`/events/${event.slug}`}
+        aria-label={event.title}
         className={cn(
           "rounded-2xl overflow-hidden bg-white flex flex-col h-full transition-all duration-500 relative z-10",
           // Idle: Subtle neutral outline
-          "border border-gray-200 shadow-[0_0_10px_rgba(0,0,0,0.03)]", 
-          // Hover: Primary blue glow
-          "group-hover:border-primary/50 group-hover:shadow-[0_0_25px_rgba(59,130,246,0.35)]"
+          "border border-gray-200 shadow-[0_0_10px_rgba(0,0,0,0.03)]",
+          // Hover / keyboard focus: Primary blue glow
+          "group-hover:border-primary/50 group-hover:shadow-[0_0_25px_rgba(59,130,246,0.35)]",
+          "focus-visible:border-primary/50 focus-visible:shadow-[0_0_25px_rgba(59,130,246,0.35)]",
+          "outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
         )}
-        onClick={() => router.push(`/events/${event.slug}`)}
       >
         {/* Image Section */}
         <div className="relative w-full aspect-[4/3] overflow-hidden">
@@ -111,28 +111,21 @@ export default function EventCard({
             </div>
           </div>
 
-          {/* Button Section */}
+          {/* Call to action — visual only; the whole card is the link */}
           <div className="pt-4 border-t border-gray-100">
-            <Button
-              variant="accent"
-              size="lg"
+            <span
               className={cn(
+                buttonVariants({ variant: "accent", size: "lg" }),
                 "w-full rounded-full h-11 text-base font-medium border-2 border-white transition-all duration-300",
-                "shadow-sm hover:shadow-[0_0_15px_rgba(var(--accent-rgb),0.4)]"
+                "shadow-sm group-hover:shadow-[0_0_15px_rgba(var(--accent-rgb),0.4)]"
               )}
-              onClick={(e) => {
-                e.stopPropagation();
-                router.push(`/events/${event.slug}`);
-              }}
             >
-              <span className="flex items-center justify-center gap-2">
-                Learn More
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </span>
-            </Button>
+              Learn More
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </span>
           </div>
         </div>
-      </div>
+      </Link>
     </CometCard>
   );
 }
