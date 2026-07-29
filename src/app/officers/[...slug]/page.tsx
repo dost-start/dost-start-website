@@ -207,9 +207,11 @@ export default async function page({
                     {/* <p className="text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
                       Lead officers
                     </p> */}
-                    <h3 className="text-base md:text-lg font-semibold pb-8 text-foreground">
-                      Chief and Deputies
-                    </h3>
+                    {currentDepartment.name !== "Executive Leadership" && (
+                      <h3 className="text-base md:text-lg font-semibold pb-8 text-foreground">
+                        Chief and Deputies
+                      </h3>
+                    )}
                   </div>
                   <div
                     className={
