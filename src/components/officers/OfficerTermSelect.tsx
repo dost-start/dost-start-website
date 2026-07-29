@@ -50,7 +50,11 @@ export default function OfficerTermSelect({
 
   return (
     <Select value={currentYear} onValueChange={handleYearChange}>
-      <SelectTrigger className="w-[180px]">
+      <SelectTrigger
+        aria-label="Select officer term"
+        className="min-w-[150px]"
+      >
+        <span className="text-muted-foreground">Term</span>
         <SelectValue />
       </SelectTrigger>
       <SelectContent>

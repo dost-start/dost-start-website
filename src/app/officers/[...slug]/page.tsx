@@ -139,6 +139,15 @@ export default async function page({
         </p>
 
         <div className="mt-8 sm:mt-10 max-w-7xl mx-auto px-2 sm:px-4">
+          {/* Term selection - scopes the whole page, so it sits above the tabs */}
+          <div className="flex justify-center mb-4 sm:mb-5">
+            <OfficerTermSelect
+              batchYears={allBatchYears.batchYears}
+              currentYear={slug[0]}
+              currentDepartment={slug[1]}
+            />
+          </div>
+
           {/* Department tabs - book page markers, outside the box */}
           <div className="w-full">
             <div className="flex flex-wrap justify-center gap-2">
@@ -187,20 +196,8 @@ export default async function page({
                 </p>
               )}
 
-              {/* Batch year selection - centered under description */}
-              <div className="flex flex-col items-center gap-1 mb-5 sm:mb-6">
-                <span className="text-[11px] uppercase tracking-wide text-muted-foreground">
-                  Term
-                </span>
-                <OfficerTermSelect
-                  batchYears={allBatchYears.batchYears}
-                  currentYear={slug[0]}
-                  currentDepartment={slug[1]}
-                />
-              </div>
-
               {/* Officer cards */}
-              <div className="space-y-8 sm:space-y-10">
+              <div className="mt-5 sm:mt-6 space-y-8 sm:space-y-10">
             {currentDepartment.specialOfficers.length > 0 && (
                 <section className="space-y-3">
                   <div className="text-center space-y-1">
