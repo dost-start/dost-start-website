@@ -6,15 +6,6 @@ import { Button } from "../ui/button";
 import GlassSurface from "@/components/GlassSurface";
 import Event from "@/types/eventType";
 
-const SAMPLE_EVENT: Event = {
-  title: "Event coming soon",
-  description:
-    "Stay tuned for our next START event. Details will be announced here soon.",
-  coverImage: "/event-placeholder.png",
-  eventDisplayImage: "/event-placeholder.png",
-  slug: "event-coming-soon",
-};
-
 interface CurrentAndUpcomingEventsSectionProps {
   currentEvents: Event[];
   upcomingEvents: Event[];
@@ -28,45 +19,35 @@ export default function CurrentAndUpcomingEventsSection({
 }: CurrentAndUpcomingEventsSectionProps) {
   const [showAllUpcomingEvents, setShowAllUpcomingEvents] = useState(false);
   const hasCurrentEvents = currentEvents.length > 0;
-  const hasRealUpcomingEvents = upcomingEvents.length > 0;
+  const hasUpcomingEvents = upcomingEvents.length > 0;
 
-  // First block logic
-  const eventsForFirstBlock = hasCurrentEvents ? currentEvents : upcomingEvents;
-  const firstBlockSource = eventsForFirstBlock.length > 0 ? eventsForFirstBlock : [SAMPLE_EVENT];
-  const firstBlockPreview = firstBlockSource.slice(0, 6);
-  const firstBlockFull = firstBlockSource.slice(6);
-  const firstBlockEvents = !hasCurrentEvents && !showAllUpcomingEvents ? firstBlockPreview : firstBlockSource;
+  // First block logic — current events when there are any, otherwise the upcoming ones
+  const firstBlockSource = hasCurrentEvents ? currentEvents : upcomingEvents;
+  const firstBlockEvents =
+    !hasCurrentEvents && !showAllUpcomingEvents ? firstBlockSource.slice(0, 6) : firstBlockSource;
   const firstBlockTitle = hasCurrentEvents ? "Current Events" : "Upcoming Events";
   const firstBlockIsUpcoming = !hasCurrentEvents;
-  const firstBlockHasNoRealEvents = firstBlockIsUpcoming && !hasRealUpcomingEvents;
+  const showSeeMoreForFirst =
+    !hasCurrentEvents && !showAllUpcomingEvents && firstBlockSource.length > 6;
 
-  // Second block logic
-  const upcomingSource = hasRealUpcomingEvents
-    ? upcomingEvents
-    : hasCurrentEvents
-      ? [{ ...SAMPLE_EVENT, title: "Upcoming event coming soon", slug: "upcoming-event-coming-soon" }]
-      : [];
-  const upcomingPreview = upcomingSource.slice(0, 6);
-  const upcomingFull = upcomingSource.slice(6);
-  const showSecondBlock = hasCurrentEvents;
-  const secondBlockEvents = !showAllUpcomingEvents ? upcomingPreview : [...upcomingPreview, ...upcomingFull];
-  const showSeeMoreForFirst = !hasCurrentEvents && firstBlockFull.length > 0;
-  const showSeeMoreForSecond = hasCurrentEvents && hasRealUpcomingEvents && upcomingFull.length > 0;
+  // Second block logic — only rendered when there are both current and upcoming events
+  const showSecondBlock = hasCurrentEvents && hasUpcomingEvents;
+  const secondBlockEvents = !showAllUpcomingEvents ? upcomingEvents.slice(0, 6) : upcomingEvents;
+  const showSeeMoreForSecond =
+    showSecondBlock && !showAllUpcomingEvents && upcomingEvents.length > 6;
 
   const GlassBlock = ({
     title,
     events,
-    hasNoRealEvents = false,
     className: blockClassName,
   }: {
     title: string;
     events: Event[];
     isUpcoming?: boolean;
-    hasNoRealEvents?: boolean;
     className?: string;
   }) => {
     const isUpcomingBlock = title === "Upcoming Events";
-    const shouldScroll = isUpcomingBlock && events.length > 1 && !hasNoRealEvents;
+    const shouldScroll = isUpcomingBlock && events.length > 1;
 
     return (
       <div className={blockClassName}>
@@ -108,13 +89,7 @@ export default function CurrentAndUpcomingEventsSection({
                 </div>
               </div>
 
-              {hasNoRealEvents && isUpcomingBlock ? (
-                <div className="flex items-center justify-center py-8 sm:py-12 text-center px-2">
-                  <p className="text-muted-foreground text-base sm:text-lg">
-                    No upcoming events scheduled at this time. Check back soon!
-                  </p>
-                </div>
-              ) : shouldScroll ? (
+              {shouldScroll ? (
                 <div className="overflow-x-auto pb-4 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
                   <div className="flex gap-4 sm:gap-6 w-max justify-center mx-auto min-w-full">
                     {events.map((event, index) => (
@@ -152,13 +127,17 @@ export default function CurrentAndUpcomingEventsSection({
     </div>
   );
 
+  // Nothing current and nothing upcoming — render neither block
+  if (!hasCurrentEvents && !hasUpcomingEvents) {
+    return null;
+  }
+
   return (
     <section className={`${className} px-4 md:px-0`}>
-      <GlassBlock 
-        title={firstBlockTitle} 
-        events={firstBlockEvents} 
+      <GlassBlock
+        title={firstBlockTitle}
+        events={firstBlockEvents}
         isUpcoming={firstBlockIsUpcoming}
-        hasNoRealEvents={firstBlockHasNoRealEvents}
       />
       {showSeeMoreForFirst && <SeeMoreButton onClick={() => setShowAllUpcomingEvents(true)} />}
 
@@ -168,7 +147,6 @@ export default function CurrentAndUpcomingEventsSection({
             title="Upcoming Events"
             events={secondBlockEvents}
             isUpcoming={true}
-            hasNoRealEvents={!hasRealUpcomingEvents}
             className="mt-10 sm:mt-14"
           />
           {showSeeMoreForSecond && <SeeMoreButton onClick={() => setShowAllUpcomingEvents(true)} />}
