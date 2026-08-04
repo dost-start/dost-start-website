@@ -10,6 +10,7 @@
     "contentful:migrate-models": "tsx scripts/contentful/migrate-models.ts",
     "contentful:migrate-data": "tsx scripts/contentful/migrate-data.ts",
     "contentful:migrate": "npm run contentful:migrate-models && npm run contentful:migrate-data",
+    "contentful:create-departments": "tsx scripts/contentful/create-departments.ts",
     "contentful:import-officers": "tsx scripts/contentful/import-officers-csv.ts"
   },
   "dependencies": {

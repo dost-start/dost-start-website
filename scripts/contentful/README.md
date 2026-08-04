@@ -76,7 +76,30 @@ Run both migrations in sequence:
 npm run contentful:migrate
 ```
 
-### Step 4: Import Officers from CSV (Optional)
+### Step 4: Seed a New Term's Departments
+Departments belong to a term, so a new term starts with none. This copies every
+department from one term into another — same `name`, `tabName`, `description` and
+`order`, only the entry ID and `term` link change:
+
+```bash
+npm run contentful:create-departments -- --dry-run   # preview
+npm run contentful:create-departments                # write
+```
+
+Terms default to the `SOURCE_TERM_NAME` / `TARGET_TERM_NAME` constants at the top of
+[create-departments.ts](create-departments.ts), overridable per run:
+
+```bash
+npx tsx scripts/contentful/create-departments.ts --from 2025-2026 --to 2026-2027
+```
+
+The target term is created (and published, `isActive: true`) if it doesn't exist.
+New entry IDs are `dept-{name-slug}-{term-suffix}`, e.g. `dept-executive-leadership-2627`.
+Departments already present in the target term are skipped, so re-running is safe.
+
+Run this **before** importing that term's officers.
+
+### Step 5: Import Officers from CSV
 If you have a CSV file with officer data, you can import it:
 
 ```bash
@@ -101,12 +124,23 @@ npx tsx scripts/contentful/import-officers-csv.ts
 | Portfolio Website | Personal website URL |
 | Github | GitHub profile URL |
 
+The CSV file it reads and the term it imports into are the `CSV_FILE_PATH` and
+`TERM_NAME` constants at the top of [import-officers-csv.ts](import-officers-csv.ts).
+
 The script will:
 1. Parse the CSV file
 2. Download images from Google Drive links
 3. Upload images as Contentful assets
 4. Create officer entries with all data
 5. Map Position to roleType (Chief→chief, Deputy Chief→deputy, Committee→committee)
+6. Link each officer to their department via a `departmentOfficer` entry
+
+It looks departments up by name + term and **does not create them** — if you see
+`Department not found in Contentful`, run `npm run contentful:create-departments` first.
+
+> ⚠️ Officer and departmentOfficer entry IDs include a timestamp, so re-running the
+> same CSV creates duplicates rather than updating. Delete the previous run's entries
+> before retrying.
 
 ## Content Models Created
 

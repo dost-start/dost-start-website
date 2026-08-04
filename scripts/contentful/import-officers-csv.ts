@@ -42,8 +42,11 @@ const DEFAULT_LOCALE = "en-US";
 // CSV file path (relative to script location)
 const CSV_FILE_PATH = path.join(
   __dirname,
-  "FILE_NAME.csv"
+  "2627-initial.csv"
 );
+
+// Term the imported officers belong to (created if it doesn't exist yet)
+const TERM_NAME = "2026-2027";
 
 // Temp directory for downloaded images
 const TEMP_DIR = path.join(__dirname, "temp-images");
@@ -403,7 +406,10 @@ const DEPARTMENT_NAME_MAP: Record<string, string> = {
 };
 
 /**
- * Get existing Department entry by name and term
+ * Get existing Department entry by name and term.
+ *
+ * Departments are never created here - run `npm run contentful:create-departments`
+ * first to seed a new term's departments from the previous term.
  */
 async function getExistingDepartment(
   environment: Environment,
@@ -415,16 +421,16 @@ async function getExistingDepartment(
   if (departmentCache.has(cacheKey)) {
     return departmentCache.get(cacheKey)!;
   }
-  
+
   // Map CSV department name to Contentful department name
   const contentfulDeptName = DEPARTMENT_NAME_MAP[csvDepartmentName];
-  
+
   if (!contentfulDeptName) {
     console.error(`   ❌ No mapping found for department: "${csvDepartmentName}"`);
     console.log(`      Available mappings: ${Object.keys(DEPARTMENT_NAME_MAP).join(", ")}`);
     return null;
   }
-  
+
   // Search for existing department by name and term
   try {
     const existingDepts = await environment.getEntries({
@@ -433,15 +439,16 @@ async function getExistingDepartment(
       "fields.term.sys.id": termId,
       limit: 1,
     });
-    
+
     if (existingDepts.items.length > 0) {
       const existing = existingDepts.items[0];
       departmentCache.set(cacheKey, existing.sys.id);
       console.log(`   📂 Found department: ${contentfulDeptName} (ID: ${existing.sys.id})`);
       return existing.sys.id;
     }
-    
+
     console.error(`   ❌ Department not found in Contentful: "${contentfulDeptName}" for term ${termId}`);
+    console.log(`      Run: npm run contentful:create-departments`);
     return null;
   } catch (error) {
     console.error(`   ❌ Error searching for department:`, error);
@@ -493,8 +500,9 @@ async function createDepartmentOfficer(
  * Get or create the active Term
  */
 async function getOrCreateActiveTerm(environment: Environment): Promise<string | null> {
-  const termName = "2025-2026"; // Current term
-  
+  const termName = TERM_NAME;
+  const startYear = Number(termName.slice(0, 4));
+
   // Search for existing term by name
   try {
     const existingTerms = await environment.getEntries({
@@ -519,8 +527,8 @@ async function getOrCreateActiveTerm(environment: Environment): Promise<string |
     const entry = await environment.createEntry("term", {
       fields: {
         name: localized(termName),
-        startDate: localized("2025-07-01T00:00:00.000Z"),
-        endDate: localized("2026-06-30T23:59:59.000Z"),
+        startDate: localized(`${startYear}-07-01T00:00:00.000Z`),
+        endDate: localized(`${startYear + 1}-06-30T23:59:59.000Z`),
         isActive: localized(true),
       },
     });
@@ -659,11 +667,11 @@ async function main(): Promise<void> {
     for (const [department, deptOfficers] of byDepartment) {
       console.log(`\n📁 Department: ${department}`);
       
-      // Get or create the department
+      // Look up the department (created ahead of time by create-departments.ts)
       const departmentId = await getExistingDepartment(environment, department, termId);
-      
+
       if (!departmentId) {
-        console.error(`   ❌ Skipping officers for ${department} - department creation failed`);
+        console.error(`   ❌ Skipping officers for ${department} - could not resolve department`);
         continue;
       }
       

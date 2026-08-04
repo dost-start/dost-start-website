@@ -333,8 +333,16 @@ export const departmentModel: ContentModel = {
   id: "department",
   name: "Department",
   description: "Department within START organization",
-  displayField: "name",
+  displayField: "entryTitle",
   fields: [
+    {
+      // CMS-facing entry name only - carries a term marker so the same
+      // department is distinguishable across terms, e.g. "CRRD - 2627"
+      id: "entryTitle",
+      name: "Entry Title",
+      type: "Symbol",
+      required: true,
+    },
     {
       id: "name",
       name: "Name",
@@ -382,8 +390,15 @@ export const departmentOfficerModel: ContentModel = {
   id: "departmentOfficer",
   name: "Department Officer",
   description: "Links officers to departments with ordering and section info",
-  displayField: "order",
+  displayField: "name",
   fields: [
+    {
+      // CMS-facing entry name, e.g. "Juan Dela Cruz - Chief Finance Officer"
+      id: "name",
+      name: "Name",
+      type: "Symbol",
+      required: true,
+    },
     {
       id: "department",
       name: "Department",
