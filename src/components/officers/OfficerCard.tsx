@@ -50,7 +50,7 @@ export default function OfficerCard({ officer }: { officer: Officer }) {
                 <Image
                   src={officer.imageSrc}
                   alt={officer.name}
-                  className="object-cover object-top w-full h-full saturate-0 group-hover:saturate-100 transition duration-500 ease-out"
+                  className="object-cover object-top w-full h-full"
                   width={220}
                   height={280}
                   loading="lazy"

@@ -151,17 +151,8 @@ export default async function page({
           {/* Department tabs - book page markers, outside the box */}
           <div className="w-full">
             <div className="flex flex-wrap justify-center gap-2">
-              {currentBatch.departments.map((dept, idx) => {
+              {currentBatch.departments.map((dept) => {
                 const isActive = dept.tabName === currentDepartment.tabName;
-                const colors = [
-                  "bg-amber-200/90 dark:bg-amber-700/80",
-                  "bg-rose-200/90 dark:bg-rose-700/80",
-                  "bg-emerald-200/90 dark:bg-emerald-700/80",
-                  "bg-sky-200/90 dark:bg-sky-700/80",
-                  "bg-violet-200/90 dark:bg-violet-700/80",
-                  "bg-teal-200/90 dark:bg-teal-700/80",
-                ];
-                const color = colors[idx % colors.length];
                 return (
                   <Link
                     key={dept.name}
@@ -169,7 +160,11 @@ export default async function page({
                     className={`no-underline block transition-all hover:scale-105 hover:z-10 ${isActive ? "z-10 scale-105" : ""}`}
                   >
                     <span
-                      className={`inline-block px-4 py-2 text-sm font-medium rounded-t-[18px] border border-b-0 border-primary/30 dark:border-primary/50 shadow-sm ${isActive ? "ring-2 ring-primary/50 ring-offset-2 ring-offset-background" : ""} ${color}`}
+                      className={`inline-block px-4 py-2 text-sm font-medium rounded-t-[18px] border border-b-0 shadow-sm transition-colors duration-200 ${
+                        isActive
+                          ? "bg-primary text-primary-foreground border-primary"
+                          : "bg-primary/10 dark:bg-primary/15 border-primary/30 dark:border-primary/50 text-foreground hover:bg-primary/20 dark:hover:bg-primary/25"
+                      }`}
                     >
                       {dept.tabName}
                     </span>
